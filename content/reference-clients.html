@@ -1,0 +1,6 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Language-neutral</div><h1>Reference clients</h1><p class="lede">The small TypeScript client is a convenience wrapper over fetch and is intentionally easy to replace in any language.</p><h2>TypeScript</h2><pre><code>const trestle = new TrestleClient("https://api.example.com", token);
+const page = await trestle.list("issues", "?limit=25");
+await trestle.create("issues", {title: "Investigate"});</code></pre><h2>Python</h2><pre><code>requests.get(f"{base}/api/v1/collections/issues/records",
+  headers={"Authorization": f"Bearer {token}"}).raise_for_status()</code></pre><h2>Go</h2><pre><code>req, _ := http.NewRequest("GET", base+"/api/v1/capabilities", nil)
+req.Header.Set("Authorization", "Bearer "+token)
+response, err := http.DefaultClient.Do(req)</code></pre><p>These examples use the same routes, tokens, limits and errors. A client cannot bypass rules, gain hidden operations or infer secrets.</p></article></div>

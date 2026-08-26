@@ -1,9 +1,9 @@
 {
-  "name": "field-types",
-  "title": "Field types",
+  "name": "api-reference",
+  "title": "HTTP API reference",
   "template": "templates/template.html",
-  "content": "content/field-types.html",
-  "output": "public/field-types.html",
+  "content": "content/api-reference.html",
+  "output": "public/api-reference.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/field-types.html",
+    "content/api-reference.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

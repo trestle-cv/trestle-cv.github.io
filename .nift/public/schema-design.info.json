@@ -20,6 +20,8 @@
   "reqs": [
     "public/access-rules.html",
     "public/admin-security.html",
+    "public/ai-agents.html",
+    "public/api-reference.html",
     "public/architecture.html",
     "public/assets/css/style.css",
     "public/assets/js/script.js",
@@ -62,6 +64,7 @@
     "public/record-writes.html",
     "public/records.html",
     "public/recovery.html",
+    "public/reference-clients.html",
     "public/relation-expansion.html",
     "public/roadmap.html",
     "public/rule-debugging.html",
