@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
-		<title>Physical collection schema · Trestle</title>
+		<title>Job delivery and recovery · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
@@ -43,7 +43,7 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">CP06 · Implemented</div><h1>Physical collection schema</h1><p class="lede">Every base collection receives its own SQLite <code>STRICT</code> table.</p><h2>Generated record columns</h2><p>Every table includes stable record ID, positive version, created time and updated time columns. Field columns use stable hashed identifiers. Text-like, date, select and relation metadata map to text storage; numbers map to real values; booleans are constrained integers; JSON is checked with SQLite's JSON validator.</p><h2>Constraints</h2><p>Required and unique metadata becomes physical <code>NOT NULL</code> and <code>UNIQUE</code> constraints. Application validation will provide friendlier errors at CP07, while SQLite remains the final integrity boundary.</p><h2>Deletion</h2><p>Deleting a collection drops its physical table and metadata in one transaction. This is intentionally irreversible until backup/restore support lands.</p><div class="callout planned"><strong>Relations</strong><p>Relation values have physical storage, but target-aware record validation and referential integrity become active with record CRUD in CP07.</p></div></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Job contract</div><h1>Delivery, retries and recovery</h1><p class="lede">The queue provides durable at-least-once execution, not magical exactly-once side effects.</p><p>A worker can complete an external action and fail before recording success. Executors and destinations must therefore use the job or event identifier as an idempotency key. Lease expiry permits another worker to recover abandoned work.</p><h2>Dead letters</h2><p>After the configured maximum attempts, a job becomes <code>dead</code>. Inspect and repair the cause before retrying; retry resets the attempt counter and preserves the original identity and payload.</p><h2>Shutdown</h2><p>Shutdown stops new claims through context cancellation. Any unfinished lease later returns to pending. The Trestle process never executes arbitrary user code.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>
