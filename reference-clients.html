@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
-		<title>Audit · Trestle</title>
+		<title>Reference clients · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
@@ -44,8 +44,12 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">CP15 · Implemented</div><h1>Audit</h1><p class="lede">Trestle records append-oriented facts for administrative and security-relevant operations with action, target, outcome, request correlation and structurally redacted detail.</p><h2>Inspect and export</h2><pre><code>GET /admin/v1/audit
-GET /admin/v1/audit?action=record.update</code></pre><p>The dashboard presents a bounded 200-row timeline and exports the same authorized JSON representation. Request IDs correlate a fact with structured server logs.</p><h2>Redaction</h2><p>Detail keys containing password, secret or token are replaced before persistence. Application code should still avoid placing unnecessary sensitive material in diagnostics.</p><div class="callout"><strong>Integrity boundary</strong><p>Audit rows share the operator-owned SQLite database. They improve attribution and incident reconstruction but are not tamper-proof against a host administrator. Export them to independently controlled storage when that threat matters.</p></div></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Language-neutral</div><h1>Reference clients</h1><p class="lede">The small TypeScript client is a convenience wrapper over fetch and is intentionally easy to replace in any language.</p><h2>TypeScript</h2><pre><code>const trestle = new TrestleClient("https://api.example.com", token);
+const page = await trestle.list("issues", "?limit=25");
+await trestle.create("issues", {title: "Investigate"});</code></pre><h2>Python</h2><pre><code>requests.get(f"{base}/api/v1/collections/issues/records",
+  headers={"Authorization": f"Bearer {token}"}).raise_for_status()</code></pre><h2>Go</h2><pre><code>req, _ := http.NewRequest("GET", base+"/api/v1/capabilities", nil)
+req.Header.Set("Authorization", "Bearer "+token)
+response, err := http.DefaultClient.Do(req)</code></pre><p>These examples use the same routes, tokens, limits and errors. A client cannot bypass rules, gain hidden operations or infer secrets.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>
