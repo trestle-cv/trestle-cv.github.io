@@ -1,9 +1,9 @@
 {
-  "name": "schema-design",
-  "title": "Schema design",
+  "name": "function-envelope",
+  "title": "Function event envelope",
   "template": "templates/template.html",
-  "content": "content/schema-design.html",
-  "output": "public/schema-design.html",
+  "content": "content/function-envelope.html",
+  "output": "public/function-envelope.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/schema-design.html",
+    "content/function-envelope.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

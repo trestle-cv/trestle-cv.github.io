@@ -40,6 +40,8 @@
     {"name":"s3-providers","title":"S3 provider examples","template":"templates/template.html"},
     {"name":"realtime","title":"Durable realtime","template":"templates/template.html"},
     {"name":"event-schemas","title":"Event schemas","template":"templates/template.html"},
+    {"name":"aws-lambda","title":"AWS Lambda integration","template":"templates/template.html"},
+    {"name":"function-envelope","title":"Function event envelope","template":"templates/template.html"},
     {"name":"webhooks","title":"Signed webhooks","template":"templates/template.html"},
     {"name":"webhook-security","title":"Webhook security","template":"templates/template.html"},
     {"name":"jobs","title":"Durable jobs","template":"templates/template.html"},

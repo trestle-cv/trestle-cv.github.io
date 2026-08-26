@@ -1,0 +1,5 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Function contract</div><h1>Event envelope and callbacks</h1><pre><code>{
+  "version":"1", "id":"inv_...", "topic":"record.updated",
+  "collection":"issues", "recordId":"rec_...", "payload":{},
+  "callbackScopes":["records:read"]
+}</code></pre><p>Callback scopes are declared target metadata and remain narrow by design. The initial Lambda adapter does not place long-lived administrator or service credentials in an event. Applications needing callbacks should use a separately managed scoped service identity until short-lived grants are enabled for that target.</p><h2>Why there is no local runtime</h2><p>A local user-code runtime would add sandboxing, package, resource-isolation and patching obligations to the trusted server. It is deliberately deferred; external functions interact through the same HTTP API available to every language.</p></article></div>
