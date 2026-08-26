@@ -1,0 +1,10 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP05 · Implemented metadata</div><h1>Base collections</h1><p class="lede">An authenticated administrator can now create, inspect, list, change and delete base-collection metadata through the admin API and dashboard.</p><h2>Admin API</h2><pre><code>GET    /admin/v1/collections
+POST   /admin/v1/collections
+GET    /admin/v1/collections/{name}
+PATCH  /admin/v1/collections/{name}
+DELETE /admin/v1/collections/{name}</code></pre><p>Reads require a live administrator session. Mutations additionally require the current session's <code>X-Trestle-CSRF</code> token and same-origin request.</p><h2>Create metadata</h2><pre><code>{
+  "name": "issues",
+  "fields": [
+    {"name":"title","type":"text","required":true,"unique":false}
+  ]
+}</code></pre><h2>Current boundary</h2><p>CP05 stores and validates schemas only. CP06 creates physical collection tables and safe schema-change machinery. Record CRUD therefore remains unavailable.</p></article></div>

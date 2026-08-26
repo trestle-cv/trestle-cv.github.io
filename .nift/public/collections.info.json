@@ -1,0 +1,21 @@
+{
+  "name": "collections",
+  "title": "Base collections",
+  "template": "templates/template.html",
+  "content": "content/collections.html",
+  "output": "public/collections.html",
+  "minify": false,
+  "minify-version": 0,
+  "pagination": false,
+  "pagination-items-per-page": 0,
+  "pagination-template": "",
+  "pagination-separator": "",
+  "pagination-pages": 0,
+  "dependencies": [
+    "content/collections.html",
+    "templates/docs-nav.html",
+    "templates/head.html",
+    "templates/template.html"
+  ],
+  "reqs": []
+}
