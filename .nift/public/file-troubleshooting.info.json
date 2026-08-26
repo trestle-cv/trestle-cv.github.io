@@ -1,9 +1,9 @@
 {
-  "name": "docs",
-  "title": "Documentation",
+  "name": "file-troubleshooting",
+  "title": "File troubleshooting",
   "template": "templates/template.html",
-  "content": "content/docs.html",
-  "output": "public/docs.html",
+  "content": "content/file-troubleshooting.html",
+  "output": "public/file-troubleshooting.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/docs.html",
+    "content/file-troubleshooting.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

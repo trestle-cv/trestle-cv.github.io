@@ -1,0 +1,5 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Files</div><h1>Upload and download</h1><pre><code>curl -X POST http://127.0.0.1:8090/api/v1/files \
+  -H "Authorization: Bearer $TRESTLE_TOKEN" \
+  -F file=@report.pdf \
+  -F collection=documents \
+  -F recordId=rec_example</code></pre><p>Downloads support standard HTTP byte ranges through <code>Range</code> and return <code>206 Partial Content</code>. Responses set the stored media type, disable MIME sniffing and use a safe fixed content-disposition filename.</p></article></div>
