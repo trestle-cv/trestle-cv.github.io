@@ -1,0 +1,5 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Authentication</div><h1>Browser sessions</h1><p class="lede">A browser client keeps its refresh token in appropriately protected application storage and rotates it through the refresh endpoint.</p><pre><code>const response = await fetch("/api/v1/auth/refresh", {
+  method: "POST",
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify({refreshToken})
+});</code></pre><p>Concurrent refresh attempts cannot both win. The first transaction revokes the old session and creates its replacement; later attempts receive the same generic invalid-refresh response.</p></article></div>

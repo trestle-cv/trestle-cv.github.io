@@ -1,9 +1,9 @@
 {
-  "name": "architecture",
-  "title": "Architecture",
+  "name": "browser-sessions",
+  "title": "Browser sessions",
   "template": "templates/template.html",
-  "content": "content/architecture.html",
-  "output": "public/architecture.html",
+  "content": "content/browser-sessions.html",
+  "output": "public/browser-sessions.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/architecture.html",
+    "content/browser-sessions.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

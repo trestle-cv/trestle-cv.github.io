@@ -1,9 +1,9 @@
 {
-  "name": "architecture",
-  "title": "Architecture",
+  "name": "recovery",
+  "title": "Verification and recovery",
   "template": "templates/template.html",
-  "content": "content/architecture.html",
-  "output": "public/architecture.html",
+  "content": "content/recovery.html",
+  "output": "public/recovery.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/architecture.html",
+    "content/recovery.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

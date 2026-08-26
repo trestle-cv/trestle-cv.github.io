@@ -1,9 +1,9 @@
 {
-  "name": "architecture",
-  "title": "Architecture",
+  "name": "native-auth",
+  "title": "Mobile and native authentication",
   "template": "templates/template.html",
-  "content": "content/architecture.html",
-  "output": "public/architecture.html",
+  "content": "content/native-auth.html",
+  "output": "public/native-auth.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/architecture.html",
+    "content/native-auth.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

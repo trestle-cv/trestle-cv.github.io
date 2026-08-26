@@ -1,0 +1,4 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP09 · Implemented</div><h1>Application authentication</h1><p class="lede">Application users have their own identities, password hashes and rotating sessions. They are never administrators.</p><pre><code>POST /api/v1/auth/register
+POST /api/v1/auth/login
+POST /api/v1/auth/refresh
+POST /api/v1/auth/logout</code></pre><p>Passwords require seven Unicode characters and use Argon2id. Login failures are deliberately generic. Refresh tokens are random, stored only as hashes, expire after 30 days, rotate on every use and can be revoked server-side.</p></article></div>

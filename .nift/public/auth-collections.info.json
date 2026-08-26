@@ -1,9 +1,9 @@
 {
-  "name": "architecture",
-  "title": "Architecture",
+  "name": "auth-collections",
+  "title": "Auth collections",
   "template": "templates/template.html",
-  "content": "content/architecture.html",
-  "output": "public/architecture.html",
+  "content": "content/auth-collections.html",
+  "output": "public/auth-collections.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/architecture.html",
+    "content/auth-collections.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
