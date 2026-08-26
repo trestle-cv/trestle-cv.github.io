@@ -18,7 +18,7 @@
 		<main id="main"><div class="docs-layout"><aside><nav class="docs-nav" aria-label="Documentation">
                                                     <strong>Explore</strong>
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
-                                                    <details open><summary>Data model</summary><div>
+                                                    <details><summary>Data model</summary><div>
                                                       <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
@@ -45,7 +45,11 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">Authentication</div><h1>Mobile and native clients</h1><p class="lede">The authentication contract is plain JSON over HTTPS and does not require a Trestle SDK.</p><p>Store refresh tokens in the platform secure credential store, never logs or ordinary preferences. Treat rotation as an atomic replacement: persist the new token before discarding the response, and never reuse the previous token.</p><p>CP09 returns refresh credentials only. Short-lived access credentials become useful when collection access rules are activated in CP11.</p></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Authentication</div><h1>Mobile and native clients</h1><p class="lede">Native applications use the same JSON authentication, short-lived access tokens and rotating refresh sessions as other application clients.</p><h2>Sign in</h2><pre><code>POST /api/v1/auth/login
+Content-Type: application/json
+
+{"email":"nick@example.com","password":"correct horse battery staple"}</code></pre><p>Send the returned access token as <code>Authorization: Bearer ...</code>. Store the refresh token in Keychain, Android Keystore or the platform's equivalent protected credential store, never ordinary preferences or logs.</p><h2>Rotate atomically</h2><ol><li>Read the current refresh token from secure storage.</li><li>Exchange it exactly once.</li><li>Persist the replacement refresh token before treating the operation as complete.</li><li>Discard the old token and update the in-memory access token.</li><li>If the exchange response is lost, sign in again rather than replaying an already-consumed token indefinitely.</li></ol><h2>Authenticated request</h2><pre><code>GET /api/v1/collections/issues/records?limit=25
+Authorization: Bearer $ACCESS_TOKEN</code></pre><h2>Offline and reconnect behavior</h2><p>Cache product data according to your own threat model, not refresh credentials. Resume record lists from cursors where valid and reconnect realtime streams with the last processed event sequence. Handle 401 by attempting one controlled refresh, then return the user to sign-in.</p><h2>Logout</h2><p>Call the application logout/revocation endpoint while online, then delete both access and refresh material locally. Server-side revocation matters because deleting a local token alone does not invalidate a copied credential.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

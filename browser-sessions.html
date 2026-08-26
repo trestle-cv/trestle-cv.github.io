@@ -18,7 +18,7 @@
 		<main id="main"><div class="docs-layout"><aside><nav class="docs-nav" aria-label="Documentation">
                                                     <strong>Explore</strong>
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
-                                                    <details open><summary>Data model</summary><div>
+                                                    <details><summary>Data model</summary><div>
                                                       <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
@@ -45,11 +45,9 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">Authentication</div><h1>Browser sessions</h1><p class="lede">A browser client keeps its refresh token in appropriately protected application storage and rotates it through the refresh endpoint.</p><pre><code>const response = await fetch("/api/v1/auth/refresh", {
-  method: "POST",
-  headers: {"Content-Type": "application/json"},
-  body: JSON.stringify({refreshToken})
-});</code></pre><p>Concurrent refresh attempts cannot both win. The first transaction revokes the old session and creates its replacement; later attempts receive the same generic invalid-refresh response.</p></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Browser authentication</div><h1>Browser sessions</h1><p class="lede">Choose between direct application-user bearer tokens and a same-origin backend-for-frontend that keeps refresh credentials in HttpOnly cookies.</p><h2>Direct SPA</h2><pre><code>const response = await fetch(`${TRESTLE_URL}/api/v1/collections/issues/records`, {
+  headers: {Authorization: `Bearer ${accessToken}`}
+});</code></pre><p>Keep short-lived access tokens in memory where practical. Browser storage is vulnerable to successful script injection, so avoid long-lived service or refresh credentials in <code>localStorage</code>.</p><h2>Backend-for-frontend</h2><div class="stack-diagram"><span>Browser with same-origin HttpOnly cookie</span><span>Your server route</span><span>Trestle application-user or scoped service API</span></div><p>This pattern gives the browser a same-origin session while the server owns refresh rotation and credential storage. Apply CSRF protections to cookie-authenticated mutations.</p><h2>Realtime</h2><p>Native <code>EventSource</code> cannot set an Authorization header. A same-origin SSE proxy or cookie-based application boundary is usually cleaner than putting bearer credentials in query strings.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

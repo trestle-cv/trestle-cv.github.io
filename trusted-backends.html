@@ -18,7 +18,7 @@
 		<main id="main"><div class="docs-layout"><aside><nav class="docs-nav" aria-label="Documentation">
                                                     <strong>Explore</strong>
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
-                                                    <details open><summary>Data model</summary><div>
+                                                    <details><summary>Data model</summary><div>
                                                       <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
@@ -45,8 +45,16 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">CP10 · Implemented</div><h1>Trusted backends</h1><p class="lede">Any language that can send HTTP can use a scoped service credential.</p><pre><code>curl -H "Authorization: Bearer $TRESTLE_TOKEN" \
-  http://127.0.0.1:8090/api/v1/collections/issues/records</code></pre><p>Bearer identities do not use administrator cookies or CSRF tokens. Every use is scope checked, updates last-used metadata and records attributable audit activity.</p></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Server integration</div><h1>Trusted backends</h1><p class="lede">Go, Node, Python, .NET, PHP and other servers use the same HTTP API with a scoped service credential.</p><h2>Read records</h2><pre><code>curl "$TRESTLE_URL/api/v1/collections/issues/records?limit=25" \
+  -H "Authorization: Bearer $TRESTLE_SERVICE_TOKEN"</code></pre><h2>Create a record</h2><pre><code>const response = await fetch(`${process.env.TRESTLE_URL}/api/v1/collections/issues/records`, {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${process.env.TRESTLE_SERVICE_TOKEN}`,
+    "Content-Type": "application/json",
+    "Idempotency-Key": requestId
+  },
+  body: JSON.stringify({values: {title, owner_id: userId}})
+});</code></pre><p>Give each service and environment a separate credential. Propagate request IDs, handle structured errors, use idempotency keys for retryable creates, and never forward the service secret to a browser.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

@@ -18,7 +18,7 @@
 		<main id="main"><div class="docs-layout"><aside><nav class="docs-nav" aria-label="Documentation">
                                                     <strong>Explore</strong>
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
-                                                    <details open><summary>Data model</summary><div>
+                                                    <details><summary>Data model</summary><div>
                                                       <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
@@ -45,7 +45,12 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">Rules</div><h1>Common recipes</h1><h2>Signed-in users</h2><pre><code>actor.kind == "user"</code></pre><h2>Trusted backend only</h2><pre><code>actor.kind == "service"</code></pre><h2>Owner field</h2><pre><code>actor.id == record.owner</code></pre><p>Use <code>input.owner</code> for create-time ownership. Keep privileged maintenance on a narrowly scoped service identity rather than weakening every user rule.</p></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Authorization</div><h1>Rule recipes</h1><p class="lede">Start closed, open one operation at a time, and test each recipe against real actors and representative record values.</p><h2>Authenticated read-only</h2><pre><code>{"list":"actor.id != ''","view":"actor.id != ''",
+ "create":"false","update":"false","delete":"false"}</code></pre><h2>Owner-managed records</h2><pre><code>{"list":"actor.id != ''","view":"owner_id = actor.id",
+ "create":"actor.id != ''","update":"owner_id = actor.id",
+ "delete":"owner_id = actor.id"}</code></pre><h2>Public catalogue, private administration</h2><pre><code>{"list":"true","view":"true","create":"false",
+ "update":"false","delete":"false"}</code></pre><h2>Service-only ingestion</h2><pre><code>{"list":"actor.kind = 'service'","view":"actor.kind = 'service'",
+ "create":"actor.kind = 'service'","update":"false","delete":"false"}</code></pre><p>Service rules still require matching credential scopes. Run every operation through the Settings simulator, then verify with an actual bearer request before relying on the policy.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

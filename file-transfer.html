@@ -18,7 +18,7 @@
 		<main id="main"><div class="docs-layout"><aside><nav class="docs-nav" aria-label="Documentation">
                                                     <strong>Explore</strong>
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
-                                                    <details open><summary>Data model</summary><div>
+                                                    <details><summary>Data model</summary><div>
                                                       <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
@@ -45,11 +45,13 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">Files</div><h1>Upload and download</h1><pre><code>curl -X POST http://127.0.0.1:8090/api/v1/files \
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Files</div><h1>Upload and download</h1><p class="lede">File bytes move through authenticated HTTP while Trestle keeps provider paths and credentials private.</p><h2>Multipart upload</h2><pre><code>curl -X POST "$TRESTLE_URL/api/v1/files" \
   -H "Authorization: Bearer $TRESTLE_TOKEN" \
-  -F file=@report.pdf \
-  -F collection=documents \
-  -F recordId=rec_example</code></pre><p>Downloads support standard HTTP byte ranges through <code>Range</code> and return <code>206 Partial Content</code>. Responses set the stored media type, disable MIME sniffing and use a safe fixed content-disposition filename.</p></article></div></main>
+  -F "file=@report.pdf" \
+  -F "collection=issues" \
+  -F "recordId=rec_123"</code></pre><p>The response contains the generated file ID, content type, size, hash and optional record binding. Preserve the ID, not a guessed filesystem path.</p><h2>Download and ranges</h2><pre><code>curl "$TRESTLE_URL/api/v1/files/file_123" \
+  -H "Authorization: Bearer $TRESTLE_TOKEN" \
+  -H "Range: bytes=0-1048575" --output chunk.bin</code></pre><p>Standard byte ranges support media and resumable clients. An unauthenticated request is refused, and invalid or multiple ranges do not trigger unbounded provider reads.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>
