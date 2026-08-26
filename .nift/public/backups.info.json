@@ -1,9 +1,9 @@
 {
-  "name": "realtime",
-  "title": "Durable realtime",
+  "name": "backups",
+  "title": "Backups",
   "template": "templates/template.html",
-  "content": "content/realtime.html",
-  "output": "public/realtime.html",
+  "content": "content/backups.html",
+  "output": "public/backups.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/realtime.html",
+    "content/backups.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

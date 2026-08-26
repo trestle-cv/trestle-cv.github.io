@@ -1,9 +1,9 @@
 {
-  "name": "realtime",
-  "title": "Durable realtime",
+  "name": "export-import",
+  "title": "Export and import",
   "template": "templates/template.html",
-  "content": "content/realtime.html",
-  "output": "public/realtime.html",
+  "content": "content/export-import.html",
+  "output": "public/export-import.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/realtime.html",
+    "content/export-import.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

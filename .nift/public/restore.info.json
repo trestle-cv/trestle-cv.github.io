@@ -1,9 +1,9 @@
 {
-  "name": "realtime",
-  "title": "Durable realtime",
+  "name": "restore",
+  "title": "Restore",
   "template": "templates/template.html",
-  "content": "content/realtime.html",
-  "output": "public/realtime.html",
+  "content": "content/restore.html",
+  "output": "public/restore.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/realtime.html",
+    "content/restore.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
