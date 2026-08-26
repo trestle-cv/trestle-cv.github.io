@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
-		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
+		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Collection access rules · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
@@ -30,6 +30,7 @@
                                                       <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
                                                     </div></details>
                                                     <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">Reference clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
+                                                    <details><summary>Example stacks</summary><div><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
                                                     <details><summary>Access rules</summary><div>
                                                       <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
                                                     </div></details>
@@ -44,7 +45,14 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">CP11 · Implemented</div><h1>Collection access rules</h1><p class="lede">Every collection can define separate list, view, create, update and delete rules. Missing rules deny access.</p><p>Administrators bypass application rules through their separately protected administration routes. Application users present 15-minute access tokens. Service credentials require both their credential scope and the collection rule.</p><p>Denied individual lookups return the same not-found shape as missing records to avoid leaking existence.</p></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Authorization</div><h1>Collection access rules</h1><p class="lede">Define list, view, create, update and delete independently. Rules execute on the server for application users and service identities.</p><h2>Owner-only issues</h2><pre><code>{
+  "list": "actor.id != ''",
+  "view": "owner_id = actor.id",
+  "create": "actor.id != ''",
+  "update": "owner_id = actor.id",
+  "delete": "owner_id = actor.id"
+}</code></pre><p>Set these values in <strong>Settings → Collection access rules</strong>, save, then use the simulator with representative actors and record values. List rules authorize the operation; returned rows are still constrained by the rule’s record-aware predicate where applicable.</p><h2>Public catalogue</h2><pre><code>{"list":"true","view":"true","create":"false","update":"false","delete":"false"}</code></pre><h2>Service-managed records</h2><pre><code>{"list":"actor.kind = 'service'","view":"actor.kind = 'service'",
+ "create":"actor.kind = 'service'","update":"actor.kind = 'service'","delete":"false"}</code></pre><p>A service must also possess the matching bearer scope. Rules can narrow a scope but cannot manufacture one.</p><h2>Failure behavior</h2><p>Individual view/update/delete denials avoid revealing whether a record exists. UI state is never an authorization boundary, and simulator output is diagnostic rather than a substitute for a real request test.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

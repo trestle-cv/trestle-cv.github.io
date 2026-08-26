@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
-		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
+		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Durable realtime · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
@@ -30,6 +30,7 @@
                                                       <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
                                                     </div></details>
                                                     <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">Reference clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
+                                                    <details><summary>Example stacks</summary><div><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
                                                     <details><summary>Access rules</summary><div>
                                                       <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
                                                     </div></details>
@@ -44,10 +45,15 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">CP14 · Implemented</div><h1>Durable realtime</h1><p class="lede">Every committed record mutation writes a monotonically sequenced event in the same SQLite transaction and can be consumed through Server-Sent Events.</p><h2>Connect</h2><pre><code>const events = new EventSource("/api/v1/realtime");
-events.addEventListener("record.created", event =&gt; {
-  console.log(JSON.parse(event.data));
-});</code></pre><p>The stream requires an authorized administrator session or a credential with <code>records:read</code>. Optional <code>?topic=record.updated</code> filtering happens server-side.</p><h2>Reconnect and replay</h2><p>Browsers automatically send <code>Last-Event-ID</code> after a disconnect. Trestle resumes after that durable sequence. Fifteen-second comment heartbeats keep well-configured proxies from idling the connection.</p><h2>Operational boundaries</h2><p>Each poll reads at most 100 events, the dashboard retains only its latest 200 rendered entries, and disconnect cancellation immediately stops the loop. Reverse proxies must disable response buffering for this endpoint.</p></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Realtime</div><h1>Replayable Server-Sent Events</h1><p class="lede">Subscribe to committed record events through an authorized, ordered journal rather than an in-memory notification channel.</p><h2>Browser subscription</h2><pre><code>const stream = new EventSource(
+  `${TRESTLE_URL}/api/v1/realtime?topic=record.created`
+);
+stream.addEventListener("record.created", event => {
+  const envelope = JSON.parse(event.data);
+  console.log(envelope.sequence, envelope.recordId);
+});</code></pre><p>Native <code>EventSource</code> cannot add an Authorization header. Use same-origin cookie infrastructure or a small authenticated server proxy when bearer authentication is required.</p><h2>Resume after interruption</h2><pre><code>curl -N "$TRESTLE_URL/api/v1/realtime?topic=record.updated" \
+  -H "Authorization: Bearer $TRESTLE_TOKEN" \
+  -H "Last-Event-ID: 418"</code></pre><p>Trestle replays retained events after sequence 418, then continues live. Clients must tolerate duplicate delivery around reconnect boundaries and refetch authoritative state if their cursor predates retention.</p><h2>Operational behavior</h2><p>Slow consumers are disconnected instead of growing unbounded memory. The dashboard retains at most 200 rendered events and can pause display without altering the durable journal.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

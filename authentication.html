@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
-		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
+		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Application authentication · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
@@ -30,6 +30,7 @@
                                                       <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
                                                     </div></details>
                                                     <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">Reference clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
+                                                    <details><summary>Example stacks</summary><div><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
                                                     <details><summary>Access rules</summary><div>
                                                       <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
                                                     </div></details>
@@ -44,10 +45,9 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">CP09 · Implemented</div><h1>Application authentication</h1><p class="lede">Application users have their own identities, password hashes and rotating sessions. They are never administrators.</p><pre><code>POST /api/v1/auth/register
-POST /api/v1/auth/login
-POST /api/v1/auth/refresh
-POST /api/v1/auth/logout</code></pre><p>Passwords require seven Unicode characters and use Argon2id. Login failures are deliberately generic. Refresh tokens are random, stored only as hashes, expire after 30 days, rotate on every use and can be revoked server-side.</p></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Identity</div><h1>Authentication</h1><p class="lede">Trestle keeps dashboard administrators, application users and machine identities separate so one credential cannot silently acquire another audience’s authority.</p><h2>Application-user flow</h2><ol><li>Register or sign in through the application authentication API.</li><li>Receive a rotating refresh credential and short-lived access token.</li><li>Send the access token as a bearer credential to collection, file and realtime APIs.</li><li>When access expires, exchange the current refresh token once and persist its replacement atomically.</li><li>On logout, revoke the refresh session and discard local credentials.</li></ol><pre><code>curl -X POST "$TRESTLE_URL/api/v1/auth/login" \
+  -H "Content-Type: application/json" \
+  --data '{"email":"nick@example.com","password":"correct horse battery staple"}'</code></pre><h2>Administrator flow</h2><p>The embedded dashboard uses a server-side cookie session, CSRF token and origin checks. Do not reuse that cookie from an application client or automation script. Use a personal token for administrator-owned automation.</p><h2>Machine flow</h2><p>Create a scoped service account for each deployed workload. Store the copy-once secret in that workload’s secret manager and send it only over HTTPS.</p><div class="callout"><strong>Recovery boundary</strong><p>Outbound email verification and password recovery are not yet implemented. Do not present a recovery UI that Trestle cannot complete.</p></div></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

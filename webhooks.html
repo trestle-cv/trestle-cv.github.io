@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
-		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
+		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Signed webhooks · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
@@ -30,6 +30,7 @@
                                                       <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
                                                     </div></details>
                                                     <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">Reference clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
+                                                    <details><summary>Example stacks</summary><div><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
                                                     <details><summary>Access rules</summary><div>
                                                       <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
                                                     </div></details>
@@ -44,10 +45,33 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">CP17 · Implemented</div><h1>Signed webhooks</h1><p class="lede">Webhook targets subscribe to event topics and deliver through the durable job engine with retry, dead-letter visibility and versioned HMAC envelopes.</p><h2>Headers</h2><pre><code>Trestle-Delivery: del_...
+                                                  </nav></aside><article class="prose"><div class="eyebrow">CP17 · Implemented</div><h1>Signed webhooks</h1><p class="lede">Subscribe an HTTPS endpoint to committed event topics. Trestle signs every delivery and runs it through the durable retry and dead-letter engine.</p>
+                  <h2>Configure a target</h2><p>Open <strong>Integrations</strong>, enter a descriptive name, the receiver’s public HTTPS URL and a comma-separated topic list. The signing secret is displayed once; copy it into the receiver’s secret store before leaving the page.</p><pre><code>Name: Billing projection
+HTTPS endpoint: https://hooks.example.com/trestle
+Topics: record.created,record.updated</code></pre><p>The administrative API accepts the same model:</p><pre><code>curl -X POST "$TRESTLE_URL/admin/v1/webhooks" \
+  -H "Cookie: trestle_admin=$ADMIN_SESSION" \
+  -H "X-Trestle-CSRF: $CSRF" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "name":"Billing projection",
+    "url":"https://hooks.example.com/trestle",
+    "topics":["record.created","record.updated"]
+  }'</code></pre>
+                  <h2>Verify a delivery</h2><pre><code>Trestle-Delivery: del_...
 Trestle-Timestamp: 178...
-Trestle-Signature: v1=hex-hmac-sha256</code></pre><p>Compute HMAC-SHA256 over <code>timestamp + "." + rawBody</code> using the copy-once signing secret, compare in constant time, reject stale timestamps and deduplicate delivery IDs.</p><h2>Envelope</h2><pre><code>{"version":"1","id":"del_...","topic":"record.created",
- "collection":"issues","recordId":"rec_...","payload":{}}</code></pre><p>A non-2xx response, timeout or connection failure retries through the ordinary job backoff policy. Delivery remains at least once.</p></article></div></main>
+Trestle-Signature: v1=hex-hmac-sha256</code></pre><p>Compute HMAC-SHA256 over <code>timestamp + "." + rawBody</code>, compare signatures in constant time, reject stale timestamps and deduplicate the delivery ID before applying side effects.</p><pre><code>const signed = `${timestamp}.${rawBody}`;
+const expected = createHmac("sha256", secret).update(signed).digest("hex");
+if (!timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) {
+  return new Response("invalid signature", {status: 401});
+}</code></pre>
+                  <h2>Envelope and delivery semantics</h2><pre><code>{
+  "version":"1",
+  "id":"del_...",
+  "topic":"record.created",
+  "collection":"issues",
+  "recordId":"rec_...",
+  "payload":{}
+}</code></pre><p>Delivery is at least once. A non-2xx response, timeout or connection failure retries with backoff. Inspect the corresponding job for attempts and bounded diagnostics; repair the receiver before retrying a dead job.</p><h2>Local development</h2><p>Private and loopback destinations are deliberately refused. Use a temporary public HTTPS tunnel or a deployed development receiver, never weaken SSRF protections to reach localhost.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
-		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
+		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Batch operations · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
@@ -30,6 +30,7 @@
                                                       <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
                                                     </div></details>
                                                     <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">Reference clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
+                                                    <details><summary>Example stacks</summary><div><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
                                                     <details><summary>Access rules</summary><div>
                                                       <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
                                                     </div></details>
@@ -44,13 +45,15 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">Records</div><h1>Batch operations</h1><p class="lede">Create up to 100 records in one all-or-nothing SQLite transaction.</p><pre><code>POST /api/v1/collections/issues/records/batch
-Content-Type: application/json
-
-{"records":[
-  {"values":{"title":"One"}},
-  {"values":{"title":"Two"}}
-]}</code></pre><p>If any record fails validation or conflicts with a physical constraint, none of the records are committed. Validation paths include the failing item index, for example <code>records[1].values.title</code>.</p><div class="callout"><strong>Bounded work</strong><p>Empty batches and batches larger than 100 records are rejected. Request bodies are limited to 1 MiB.</p></div></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Records</div><h1>Batch operations</h1><p class="lede">Create up to 1,000 records in one all-or-nothing SQLite transaction.</p><h2>Request</h2><pre><code>curl -X POST "$TRESTLE_URL/api/v1/collections/issues/records/batch" \
+  -H "Authorization: Bearer $TRESTLE_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{"records":[
+    {"values":{"title":"Import customer records","priority":3}},
+    {"values":{"title":"Verify webhook signature","priority":2}}
+  ]}'</code></pre><p>If any item fails validation or a physical constraint, none are committed. Error paths include the failing index, such as <code>records[1].values.title</code>.</p><h2>Why 1,000?</h2><p>The original 100-record ceiling was an intentionally conservative checkpoint default, not a SQLite limit. A 1,000-record transaction is large enough for practical ingestion while bounding memory, audit work, rollback cost and the size of indexed validation errors. The request body ceiling is 8 MiB.</p><h2>Importing larger datasets</h2><pre><code>for (const records of chunks(sourceRows, 1000)) {
+  await trestle.batchCreate("issues", records);
+}</code></pre><p>Commit chunks sequentially and retain the source offset after each successful response. If strict whole-file atomicity is essential, stage the import outside the public request path and promote it only after validation.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>Upload and download files · Trestle</title>
+		<title>example-stacks · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
@@ -45,11 +45,25 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">Files</div><h1>Upload and download</h1><pre><code>curl -X POST http://127.0.0.1:8090/api/v1/files \
-  -H "Authorization: Bearer $TRESTLE_TOKEN" \
-  -F file=@report.pdf \
-  -F collection=documents \
-  -F recordId=rec_example</code></pre><p>Downloads support standard HTTP byte ranges through <code>Range</code> and return <code>206 Partial Content</code>. Responses set the stored media type, disable MIME sniffing and use a safe fixed content-disposition filename.</p></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Architecture recipes</div><h1>Example stacks</h1><p class="lede">Trestle is the backend platform, not the frontend framework. Choose the client and server shape that fits your product while keeping credentials in the correct trust zone.</p>
+                  <h2>React, Vue or Svelte single-page app</h2><div class="stack-diagram"><span>Browser application</span><span>Trestle user authentication + access tokens</span><span>Collections, files and realtime SSE</span></div><p>Use application-user credentials directly from the browser. Keep refresh material in the safest storage your architecture permits, apply collection rules to every operation, and never ship service credentials in the bundle. A small same-origin session broker is preferable when you need HttpOnly cookies.</p><pre><code>const response = await fetch(`${TRESTLE_URL}/api/v1/collections/issues/records`, {
+  headers: {Authorization: `Bearer ${accessToken}`}
+});
+const {items, nextCursor} = await response.json();</code></pre>
+                  <h2>Next.js, Nuxt or SvelteKit</h2><div class="stack-diagram"><span>Browser routes and components</span><span>Framework server routes / SSR</span><span>Trestle scoped service account</span></div><p>Keep the Trestle service secret on the framework server. Server-render protected data, perform trusted mutations through server actions/routes, and issue a separate application-user session when the browser must subscribe directly to user-scoped realtime events.</p><pre><code>// Server-only route
+const issues = await fetch(`${TRESTLE_URL}/api/v1/collections/issues/records`, {
+  headers: {Authorization: `Bearer ${process.env.TRESTLE_SERVICE_TOKEN}`}
+});</code></pre>
+                  <h2>Go, Node, Python or .NET backend</h2><div class="stack-diagram"><span>Web or mobile client</span><span>Your domain/API service</span><span>Trestle data, identity and automation APIs</span></div><p>Use one service account per workload and environment. Your service can own domain-specific orchestration while Trestle handles persistence, files, audit and event delivery. Pass request IDs across the boundary and keep scopes narrow.</p>
+                  <h2>Mobile application</h2><div class="stack-diagram"><span>iOS / Android app</span><span>Trestle application-user tokens</span><span>HTTPS API and SSE</span></div><p>Store refresh credentials in Keychain or Android Keystore, rotate them atomically, and keep short-lived access tokens in memory where practical. Resume paginated lists with cursors and reconnect SSE after network changes.</p>
+                  <h2>Static site plus serverless functions</h2><div class="stack-diagram"><span>Static frontend</span><span>Provider function / edge route</span><span>Trestle scoped service credential</span></div><p>Use provider functions as a credential boundary for contact forms, private content or administrative actions. Public read-only data may be exposed through tightly constrained collection rules; privileged writes should remain server-side.</p>
+                  <h2>Automation-heavy system</h2><div class="stack-diagram"><span>Committed Trestle record event</span><span>Durable job</span><span>Signed webhook or AWS Lambda</span></div><p>Make handlers idempotent by delivery/event ID. Webhooks suit arbitrary HTTPS services; Lambda suits AWS-hosted asynchronous functions. Neither path should treat provider acceptance as proof that downstream work completed.</p>
+                  <h2>Repository layout</h2><pre><code>my-product/
+├── apps/web/              # React, Vue, Svelte, Next, Nuxt, etc.
+├── services/domain-api/   # optional trusted domain layer
+├── infrastructure/        # Trestle config, proxy and deployment manifests
+├── scripts/schema/        # repeatable collection/bootstrap requests
+└── .env.example           # names only; never real secrets</code></pre><p class="example-note">Keep Trestle data outside the source tree in deployments, back it up as an operational asset, and use separate credentials for development, staging and production.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>
