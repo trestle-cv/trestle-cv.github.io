@@ -1,9 +1,9 @@
 {
-  "name": "/",
-  "title": "Open-source application backend",
+  "name": "product",
+  "title": "Product",
   "template": "templates/template.html",
-  "content": "content/index.html",
-  "output": "public/index.html",
+  "content": "content/product.html",
+  "output": "public/product.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,8 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/index.html",
+    "content/product.html",
+    "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
   ],

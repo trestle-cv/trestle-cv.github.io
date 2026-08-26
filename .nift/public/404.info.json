@@ -1,9 +1,9 @@
 {
-  "name": "/",
-  "title": "Open-source application backend",
+  "name": "404",
+  "title": "Page not found",
   "template": "templates/template.html",
-  "content": "content/index.html",
-  "output": "public/index.html",
+  "content": "content/404.html",
+  "output": "public/404.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/index.html",
+    "content/404.html",
     "templates/head.html",
     "templates/template.html"
   ],

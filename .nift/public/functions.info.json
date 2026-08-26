@@ -1,9 +1,9 @@
 {
-  "name": "/",
-  "title": "Open-source application backend",
+  "name": "functions",
+  "title": "Functions",
   "template": "templates/template.html",
-  "content": "content/index.html",
-  "output": "public/index.html",
+  "content": "content/functions.html",
+  "output": "public/functions.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,8 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/index.html",
+    "content/functions.html",
+    "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
   ],

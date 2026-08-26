@@ -1,9 +1,9 @@
 {
-  "name": "/",
-  "title": "Open-source application backend",
+  "name": "security",
+  "title": "Security",
   "template": "templates/template.html",
-  "content": "content/index.html",
-  "output": "public/index.html",
+  "content": "content/security.html",
+  "output": "public/security.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,8 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/index.html",
+    "content/security.html",
+    "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
   ],
