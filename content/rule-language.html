@@ -1,0 +1,6 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Rules</div><h1>Rule language</h1><p class="lede">The first rule language is intentionally small, typed and closed to arbitrary code.</p><pre><code>true
+false
+actor.kind == "user"
+actor.kind == "service"
+actor.id == record.owner
+actor.id == input.owner</code></pre><p>Expressions outside this grammar are rejected before storage. There are no function calls, SQL fragments, regex engines or unbounded recursion.</p></article></div>
