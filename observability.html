@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
-		<title>Rules and service accounts · Trestle</title>
+		<title>Observability · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
@@ -42,7 +42,10 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">Rules</div><h1>Service account interaction</h1><p class="lede">Service authority is the intersection of token scope and collection rule.</p><p>A credential with <code>records:write</code> still fails if the operation's rule does not allow <code>actor.kind == "service"</code>. Conversely, a service rule cannot grant a scope absent from the token.</p><p>This two-part boundary lets deployments distinguish public application traffic from trusted backend jobs without granting either administrator authority.</p></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">Operations</div><h1>Observability and diagnostics</h1><p class="lede">Operational endpoints expose bounded counts and database size without returning credentials, record bodies or session tokens.</p><pre><code>GET /system/health
+GET /system/ready
+GET /system/version
+GET /admin/v1/operations</code></pre><p>The first three endpoints are deliberately narrow. The authenticated operations summary includes collection, file, session and event counts plus the SQLite page-derived size.</p><h2>Logging</h2><p>Every HTTP request receives an <code>X-Request-ID</code> and a structured completion log. Audit facts retain the same identifier for supported mutations. Logs are operational evidence, not a substitute for backups or durable metrics.</p><h2>Retention</h2><p>Keep logs and exported audit facts according to the deployment's privacy and incident-response requirements. Avoid indefinite retention by accident.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>
