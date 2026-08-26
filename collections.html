@@ -6,16 +6,16 @@
 		<meta name="theme-color" content="#0b0d10">
 		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
 		<title>Base collections · Trestle</title>
-		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
 		<header class="site-header">
-			<a class="brand" href="/" aria-label="Trestle home"><span aria-hidden="true">T</span> Trestle</a>
+			<a class="brand" href="./" aria-label="Trestle home"><span aria-hidden="true">T</span> Trestle</a>
 			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="/product.html">Product</a><a href="/docs.html">Docs</a><a href="/architecture.html">Architecture</a><a href="/security.html">Security</a><a href="/functions.html">Functions</a><a href="/roadmap.html">Roadmap</a></nav>
+			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="./product.html">Product</a><a href="./docs.html">Docs</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a></nav>
 		</header>
-		<main id="main"><div class="docs-layout"><aside><nav class="docs-nav" aria-label="Documentation"><strong>Explore</strong><a href="/docs.html">Documentation</a><a href="/collections.html">Collections</a><a href="/field-types.html">Field types</a><a href="/schema-design.html">Schema design</a><a href="/configuration.html">Configuration</a><a href="/operations.html">Health &amp; operations</a><a href="/sqlite.html">SQLite</a><a href="/migrations.html">Migrations</a><a href="/dashboard.html">Dashboard</a><a href="/first-run.html">First-run setup</a><a href="/admin-security.html">Admin security</a><a href="/product.html">Product</a><a href="/architecture.html">Architecture</a><a href="/security.html">Security</a><a href="/functions.html">Functions</a><a href="/roadmap.html">Roadmap</a><a href="/contributing.html">Contributing</a></nav></aside><article class="prose"><div class="eyebrow">CP05 · Implemented metadata</div><h1>Base collections</h1><p class="lede">An authenticated administrator can now create, inspect, list, change and delete base-collection metadata through the admin API and dashboard.</p><h2>Admin API</h2><pre><code>GET    /admin/v1/collections
+		<main id="main"><div class="docs-layout"><aside><nav class="docs-nav" aria-label="Documentation"><strong>Explore</strong><a href="./docs.html">Documentation</a><a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./configuration.html">Configuration</a><a href="./operations.html">Health &amp; operations</a><a href="./sqlite.html">SQLite</a><a href="./migrations.html">Migrations</a><a href="./dashboard.html">Dashboard</a><a href="./first-run.html">First-run setup</a><a href="./admin-security.html">Admin security</a><a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a></nav></aside><article class="prose"><div class="eyebrow">CP05 · Implemented metadata</div><h1>Base collections</h1><p class="lede">An authenticated administrator can now create, inspect, list, change and delete base-collection metadata through the admin API and dashboard.</p><h2>Admin API</h2><pre><code>GET    /admin/v1/collections
 POST   /admin/v1/collections
 GET    /admin/v1/collections/{name}
 PATCH  /admin/v1/collections/{name}
@@ -25,7 +25,7 @@ DELETE /admin/v1/collections/{name}</code></pre><p>Reads require a live administ
     {"name":"title","type":"text","required":true,"unique":false}
   ]
 }</code></pre><h2>Current boundary</h2><p>CP05 stores and validates schemas only. CP06 creates physical collection tables and safe schema-change machinery. Record CRUD therefore remains unavailable.</p></article></div></main>
-		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="/contributing.html">Contributing</a><a href="/docs.html">Documentation</a><a href="/roadmap.html">Status</a></nav></footer>
-		<script src="/assets/js/script.js" defer></script>
+		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
+		<script src="assets/js/script.js" defer></script>
 	</body>
 </html>
