@@ -1,5 +1,11 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP08 · Implemented</div><h1>Querying records</h1><p class="lede">Record lists combine bounded filters, sorting, projection and deterministic cursor pagination through ordinary URL parameters.</p><pre><code>GET /api/v1/collections/issues/records
-  ?filter=status%20%3D%20%22open%22%20%26%26%20score%20%3E%3D%203
-  &amp;sort=-updatedAt
-  &amp;fields=title,status,score
-  &amp;limit=50</code></pre><p>The dashboard exposes the same filter and sort contract and can copy the generated HTTP request. Query text is stored only in the browser for convenience.</p></article></div>
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Records</div><h1>Querying records</h1><p class="lede">Combine bounded filters, sorting, projection and deterministic cursor pagination through ordinary URL parameters.</p><h2>Filtered list</h2><pre><code>GET /api/v1/collections/issues/records
+  ?filter=status%20%3D%20%22open%22%20%26%26%20priority%20%3E%3D%203
+  &amp;sort=-priority,id
+  &amp;fields=title,status,priority
+  &amp;limit=25</code></pre><h2>JavaScript</h2><pre><code>const params = new URLSearchParams({
+  filter: 'status = "open" &amp;&amp; priority &gt;= 3',
+  sort: '-priority,id',
+  fields: 'title,status,priority',
+  limit: '25'
+});
+const page = await trestle.get(`/api/v1/collections/issues/records?${params}`);</code></pre><h2>Next page</h2><p>When <code>nextCursor</code> is present, pass it unchanged as <code>cursor</code>. Do not decode it or combine it with a different filter/sort contract. List pages are capped at 100 records; use repeated cursor requests rather than asking for an unbounded response.</p></article></div>

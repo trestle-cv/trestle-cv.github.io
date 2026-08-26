@@ -1,2 +1,10 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP10 · Implemented</div><h1>Trusted backends</h1><p class="lede">Any language that can send HTTP can use a scoped service credential.</p><pre><code>curl -H "Authorization: Bearer $TRESTLE_TOKEN" \
-  http://127.0.0.1:8090/api/v1/collections/issues/records</code></pre><p>Bearer identities do not use administrator cookies or CSRF tokens. Every use is scope checked, updates last-used metadata and records attributable audit activity.</p></article></div>
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Server integration</div><h1>Trusted backends</h1><p class="lede">Go, Node, Python, .NET, PHP and other servers use the same HTTP API with a scoped service credential.</p><h2>Read records</h2><pre><code>curl "$TRESTLE_URL/api/v1/collections/issues/records?limit=25" \
+  -H "Authorization: Bearer $TRESTLE_SERVICE_TOKEN"</code></pre><h2>Create a record</h2><pre><code>const response = await fetch(`${process.env.TRESTLE_URL}/api/v1/collections/issues/records`, {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${process.env.TRESTLE_SERVICE_TOKEN}`,
+    "Content-Type": "application/json",
+    "Idempotency-Key": requestId
+  },
+  body: JSON.stringify({values: {title, owner_id: userId}})
+});</code></pre><p>Give each service and environment a separate credential. Propagate request IDs, handle structured errors, use idempotency keys for retryable creates, and never forward the service secret to a browser.</p></article></div>

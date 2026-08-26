@@ -1,1 +1,18 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Functions</div><h1>Invoke isolated services from committed events.</h1><p class="lede">The first functions feature will dispatch versioned events to AWS Lambda through a provider-neutral job boundary.</p><ol class="steps"><li>The application transaction changes state.</li><li>The same transaction records its event and outbox job.</li><li>A worker claims the committed job with a lease.</li><li>The provider adapter invokes Lambda asynchronously.</li><li>Trestle records acceptance, attempts and safe diagnostics.</li></ol><h2>At least once, deliberately</h2><p>Events receive stable IDs and idempotency keys. Handlers must tolerate retries. Provider acceptance is not misrepresented as handler completion.</p><h2>No in-process user code</h2><p>A local runtime is deferred until it has a separate worker process, resource limits, capabilities, secret scoping, cancellation and credible platform isolation.</p></article></div>
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Functions</div><h1>Invoke isolated services from committed events.</h1><p class="lede">Trestle dispatches selected event topics to AWS Lambda through its durable job boundary. Application transactions never wait for function execution.</p><h2>Configure a target</h2><p>Open <strong>Integrations → AWS Lambda</strong>, then provide a name, function ARN, region, subscribed topics and any callback scopes required by the handler.</p><pre><code>Name: Enrich new issues
+Function ARN: arn:aws:lambda:ap-southeast-2:123456789012:function:enrich-issue
+Region: ap-southeast-2
+Topics: record.created
+Callback scopes: records:read,records:write</code></pre><h2>Delivery path</h2><ol class="steps"><li>The application transaction changes state.</li><li>The same transaction records its event and outbox job.</li><li>A worker claims the committed job with a finite lease.</li><li>Trestle signs an asynchronous Lambda invocation with process-held AWS credentials.</li><li>HTTP 202 records provider acceptance; retries and diagnostics remain in the job record.</li></ol><h2>Function envelope</h2><pre><code>{
+  "version":"1",
+  "eventId":"evt_...",
+  "topic":"record.created",
+  "collection":"issues",
+  "recordId":"rec_...",
+  "occurredAt":"2026-08-27T04:30:00Z",
+  "payload":{}
+}</code></pre><h2>Idempotent handler</h2><pre><code>export const handler = async event => {
+  if (await alreadyHandled(event.eventId)) return;
+  const issue = await trestle.records.get(event.collection, event.recordId);
+  await enrich(issue);
+  await markHandled(event.eventId);
+};</code></pre><p>Invocation is at least once. Use the stable event ID as an idempotency key. A 202 response means AWS accepted the event, not that the handler completed successfully.</p><h2>Credentials and callbacks</h2><p>AWS credentials stay in Trestle process configuration and are never exposed in the dashboard. Callback credentials must be narrower than an administrator session and limited to the scopes the handler needs.</p><h2>Why no local scripts?</h2><p>Trestle does not execute arbitrary user code inside the server process. A credible local runtime would require a separate worker boundary, resource limits, capabilities, secret isolation and cancellation rather than an unsafe convenience hook.</p></article></div>
