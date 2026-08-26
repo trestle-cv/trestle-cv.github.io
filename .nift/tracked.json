@@ -12,6 +12,8 @@
     {"name":"sqlite","title":"SQLite foundation","template":"templates/template.html"},
     {"name":"migrations","title":"Database migrations","template":"templates/template.html"},
     {"name":"dashboard","title":"Administration dashboard","template":"templates/template.html"},
+    {"name":"first-run","title":"First-run administration","template":"templates/template.html"},
+    {"name":"admin-security","title":"Administrator security","template":"templates/template.html"},
     {"name":"architecture","title":"Architecture","template":"templates/template.html"},
     {"name":"security","title":"Security","template":"templates/template.html"},
     {"name":"functions","title":"Functions","template":"templates/template.html"},

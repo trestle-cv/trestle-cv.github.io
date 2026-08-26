@@ -1,0 +1,21 @@
+{
+  "name": "first-run",
+  "title": "First-run administration",
+  "template": "templates/template.html",
+  "content": "content/first-run.html",
+  "output": "public/first-run.html",
+  "minify": false,
+  "minify-version": 0,
+  "pagination": false,
+  "pagination-items-per-page": 0,
+  "pagination-template": "",
+  "pagination-separator": "",
+  "pagination-pages": 0,
+  "dependencies": [
+    "content/first-run.html",
+    "templates/docs-nav.html",
+    "templates/head.html",
+    "templates/template.html"
+  ],
+  "reqs": []
+}

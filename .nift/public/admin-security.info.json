@@ -1,0 +1,21 @@
+{
+  "name": "admin-security",
+  "title": "Administrator security",
+  "template": "templates/template.html",
+  "content": "content/admin-security.html",
+  "output": "public/admin-security.html",
+  "minify": false,
+  "minify-version": 0,
+  "pagination": false,
+  "pagination-items-per-page": 0,
+  "pagination-template": "",
+  "pagination-separator": "",
+  "pagination-pages": 0,
+  "dependencies": [
+    "content/admin-security.html",
+    "templates/docs-nav.html",
+    "templates/head.html",
+    "templates/template.html"
+  ],
+  "reqs": []
+}
