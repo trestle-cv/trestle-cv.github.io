@@ -6,8 +6,7 @@ project; the nested `public/` repository is the generated deployment output.
 
 Read `README.md` and `PLAN.md`, then read the product contracts in the sibling
 `../trestle/` repository before changing claims. Never present roadmap items as
-shipped capabilities. Trestle seeks useful product parity where appropriate but
-does not promise PocketBase API compatibility.
+shipped capabilities. Trestle has its own API and behavioural contracts.
 
 The site should be dark, minimalist, fast, accessible, and content-rich. Use
 plain HTML, CSS, and JavaScript with Nift for generation. Product screenshots
