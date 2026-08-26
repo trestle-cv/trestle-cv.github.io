@@ -33,8 +33,10 @@
     "public/index.html",
     "public/migrations.html",
     "public/operations.html",
+    "public/physical-schema.html",
     "public/product.html",
     "public/roadmap.html",
+    "public/schema-changes.html",
     "public/schema-design.html",
     "public/security.html",
     "public/sqlite.html"

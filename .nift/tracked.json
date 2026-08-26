@@ -10,6 +10,8 @@
     {"name":"collections","title":"Base collections","template":"templates/template.html"},
     {"name":"field-types","title":"Field types","template":"templates/template.html"},
     {"name":"schema-design","title":"Schema design","template":"templates/template.html"},
+    {"name":"schema-changes","title":"Schema changes","template":"templates/template.html"},
+    {"name":"physical-schema","title":"Physical collection schema","template":"templates/template.html"},
     {"name":"configuration","title":"Configuration","template":"templates/template.html"},
     {"name":"operations","title":"Health and operations","template":"templates/template.html"},
     {"name":"sqlite","title":"SQLite foundation","template":"templates/template.html"},

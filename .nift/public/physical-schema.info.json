@@ -1,9 +1,9 @@
 {
-  "name": "operations",
-  "title": "Health and operations",
+  "name": "physical-schema",
+  "title": "Physical collection schema",
   "template": "templates/template.html",
-  "content": "content/operations.html",
-  "output": "public/operations.html",
+  "content": "content/physical-schema.html",
+  "output": "public/physical-schema.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/operations.html",
+    "content/physical-schema.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

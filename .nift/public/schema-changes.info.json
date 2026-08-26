@@ -1,9 +1,9 @@
 {
-  "name": "operations",
-  "title": "Health and operations",
+  "name": "schema-changes",
+  "title": "Schema changes",
   "template": "templates/template.html",
-  "content": "content/operations.html",
-  "output": "public/operations.html",
+  "content": "content/schema-changes.html",
+  "output": "public/schema-changes.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/operations.html",
+    "content/schema-changes.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
