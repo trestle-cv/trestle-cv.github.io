@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
-		<title>Product · Trestle</title>
+		<title>Signed webhooks · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
@@ -43,7 +43,10 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">Product</div><h1>A compact backend without a closed ecosystem.</h1><p class="lede">Trestle is designed for browser and mobile clients operating through collection rules, and trusted application backends using scoped service identities.</p><h2>Planned capabilities</h2><div class="feature-list"><section><h3>Collections and records</h3><p>Typed schemas, relations, validation, transactions, filters and deterministic pagination.</p></section><section><h3>Authentication and rules</h3><p>Application users, service accounts and operation-specific access rules with explainable evaluation.</p></section><section><h3>Files and realtime</h3><p>Local or S3-compatible storage plus durable, replayable Server-Sent Events.</p></section><section><h3>Operations and automation</h3><p>Audit, backup, durable jobs, signed webhooks and AWS Lambda invocation from committed events.</p></section></div><h2>Explicit boundaries</h2><p>Clustering, PostgreSQL, GraphQL, hosted cloud and in-process user scripts are not first-release commitments.</p></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">CP17 · Implemented</div><h1>Signed webhooks</h1><p class="lede">Webhook targets subscribe to event topics and deliver through the durable job engine with retry, dead-letter visibility and versioned HMAC envelopes.</p><h2>Headers</h2><pre><code>Trestle-Delivery: del_...
+Trestle-Timestamp: 178...
+Trestle-Signature: v1=hex-hmac-sha256</code></pre><p>Compute HMAC-SHA256 over <code>timestamp + "." + rawBody</code> using the copy-once signing secret, compare in constant time, reject stale timestamps and deduplicate delivery IDs.</p><h2>Envelope</h2><pre><code>{"version":"1","id":"del_...","topic":"record.created",
+ "collection":"issues","recordId":"rec_...","payload":{}}</code></pre><p>A non-2xx response, timeout or connection failure retries through the ordinary job backoff policy. Delivery remains at least once.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>
