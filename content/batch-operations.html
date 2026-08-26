@@ -1,0 +1,7 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Records</div><h1>Batch operations</h1><p class="lede">Create up to 100 records in one all-or-nothing SQLite transaction.</p><pre><code>POST /api/v1/collections/issues/records/batch
+Content-Type: application/json
+
+{"records":[
+  {"values":{"title":"One"}},
+  {"values":{"title":"Two"}}
+]}</code></pre><p>If any record fails validation or conflicts with a physical constraint, none of the records are committed. Validation paths include the failing item index, for example <code>records[1].values.title</code>.</p><div class="callout"><strong>Bounded work</strong><p>Empty batches and batches larger than 100 records are rejected. Request bodies are limited to 1 MiB.</p></div></article></div>

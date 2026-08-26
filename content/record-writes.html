@@ -1,0 +1,9 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Records</div><h1>Creating and updating</h1><p class="lede">Writes are schema validated, size bounded, retry-safe where requested, and protected by optimistic concurrency.</p><h2>Create from Go</h2><pre><code>payload := strings.NewReader(`{"values":{"title":"From Go"}}`)
+req, _ := http.NewRequest("POST", base+"/api/v1/collections/issues/records", payload)
+req.Header.Set("Content-Type", "application/json")
+req.Header.Set("Idempotency-Key", "job-1042")
+res, err := http.DefaultClient.Do(req)</code></pre><h2>Update from Python</h2><pre><code>requests.patch(
+    f"{base}/api/v1/collections/issues/records/{record_id}",
+    json={"values": {"status": "done"}},
+    headers={"If-Match": '"3"'},
+)</code></pre><p><code>If-Match</code> is mandatory for update and delete. A stale version returns <code>412 version_conflict</code>; a missing version returns <code>428 precondition_required</code>. A repeated create carrying the same idempotency key returns the original record with <code>Idempotency-Replayed: true</code>.</p></article></div>

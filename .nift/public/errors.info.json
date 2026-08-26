@@ -1,9 +1,9 @@
 {
-  "name": "migrations",
-  "title": "Database migrations",
+  "name": "errors",
+  "title": "API errors",
   "template": "templates/template.html",
-  "content": "content/migrations.html",
-  "output": "public/migrations.html",
+  "content": "content/errors.html",
+  "output": "public/errors.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/migrations.html",
+    "content/errors.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

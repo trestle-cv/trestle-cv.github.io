@@ -1,0 +1,6 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">HTTP contract</div><h1>Errors</h1><p class="lede">Trestle returns stable machine-readable error codes without leaking database details.</p><pre><code>{"error":{
+  "code":"validation_failed",
+  "message":"The request could not be applied.",
+  "requestId":"req_2f",
+  "fields":[{"path":"values.title","code":"required"}]
+}}</code></pre><h2>Core statuses</h2><ul><li><code>400</code> malformed input or invalid limits.</li><li><code>401/403</code> missing identity or insufficient authority.</li><li><code>404</code> collection or record not found.</li><li><code>409</code> uniqueness, schema, or idempotency conflict.</li><li><code>412/428</code> stale or missing optimistic version.</li><li><code>422</code> field validation failure.</li></ul><p>Use the response's request ID to correlate the failure with structured server logs.</p></article></div>
