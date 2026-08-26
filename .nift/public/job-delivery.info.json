@@ -1,9 +1,9 @@
 {
-  "name": "audit",
-  "title": "Audit",
+  "name": "job-delivery",
+  "title": "Job delivery and recovery",
   "template": "templates/template.html",
-  "content": "content/audit.html",
-  "output": "public/audit.html",
+  "content": "content/job-delivery.html",
+  "output": "public/job-delivery.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/audit.html",
+    "content/job-delivery.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

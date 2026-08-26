@@ -1,0 +1,6 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP16 · Implemented</div><h1>Durable jobs</h1><p class="lede">Trestle persists asynchronous work before execution and uses atomic SQLite claims, finite leases and bounded retry state.</p><h2>Lifecycle</h2><pre><code>pending → running → succeeded
+                  ↘ pending (backoff)
+                  ↘ dead
+pending/running → cancelled</code></pre><p>Workers recover expired running leases at startup and during ordinary polling. Attempts use exponential backoff capped to prevent unbounded shifts. An idempotency key prevents duplicate enqueue records for the same producer operation.</p><h2>Administration</h2><pre><code>GET  /admin/v1/jobs?status=dead
+POST /admin/v1/jobs/{id} {"action":"retry"}
+POST /admin/v1/jobs/{id} {"action":"cancel"}</code></pre><p>The dashboard exposes payload, attempts, terminal error and retry/cancel controls. Payloads should contain stable identifiers rather than copied secrets.</p></article></div>

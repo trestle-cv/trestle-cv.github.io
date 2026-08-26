@@ -1,9 +1,9 @@
 {
-  "name": "audit",
-  "title": "Audit",
+  "name": "jobs",
+  "title": "Durable jobs",
   "template": "templates/template.html",
-  "content": "content/audit.html",
-  "output": "public/audit.html",
+  "content": "content/jobs.html",
+  "output": "public/jobs.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/audit.html",
+    "content/jobs.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

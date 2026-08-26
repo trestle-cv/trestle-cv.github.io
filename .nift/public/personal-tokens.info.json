@@ -45,6 +45,8 @@
     "public/first-run.html",
     "public/functions.html",
     "public/index.html",
+    "public/job-delivery.html",
+    "public/jobs.html",
     "public/local-storage.html",
     "public/migrations.html",
     "public/native-auth.html",
