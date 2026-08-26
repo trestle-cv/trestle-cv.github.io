@@ -2,9 +2,24 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>index</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#0b0d10">
+		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
+		<title>Open-source application backend · Trestle</title>
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
-		
+		<a class="skip-link" href="#main">Skip to content</a>
+		<header class="site-header">
+			<a class="brand" href="/" aria-label="Trestle home"><span aria-hidden="true">T</span> Trestle</a>
+			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="/product.html">Product</a><a href="/docs.html">Docs</a><a href="/architecture.html">Architecture</a><a href="/security.html">Security</a><a href="/functions.html">Functions</a><a href="/roadmap.html">Roadmap</a></nav>
+		</header>
+		<main id="main"><section class="hero"><div class="eyebrow">Product definition · not yet released</div><h1>Your application backend, on foundations you can inspect.</h1><p class="lede">Trestle is a planned open-source, self-hosted backend for collections, authentication, files, realtime events and automation—one Go service, SQLite first, and a language-neutral HTTP API.</p><div class="actions"><a class="button" href="/product.html">Explore the product</a><a class="button secondary" href="/roadmap.html">Follow the build</a></div></section>
+                  <section class="grid three"><article><span class="kicker">Portable</span><h2>Any language</h2><p>HTTP, JSON and Server-Sent Events are the product contract. SDKs will be conveniences, never privileged gateways.</p></article><article><span class="kicker">Understandable</span><h2>SQLite first</h2><p>A deliberately single-node starting point keeps transactions, backup, failure and ownership legible.</p></article><article><span class="kicker">Self-contained</span><h2>One executable</h2><p>The Nift-built administration interface will ship embedded in the Go binary, with no runtime frontend toolchain.</p></article></section>
+                  <section class="split"><div><div class="eyebrow">Direction</div><h2>Product parity where it helps. A Trestle contract everywhere.</h2></div><div><p>Trestle takes inspiration from compact application backends without copying PocketBase APIs, migrations, filters or UI. A future importer may translate data; compatibility is not the architecture.</p><a class="text-link" href="/architecture.html">Read the architecture →</a></div></section>
+                  <section class="status"><div><div class="eyebrow">Current status</div><h2>The contracts come before the claims.</h2></div><p>The repository is at scaffold stage. The roadmap publishes what is planned, experimental and verified as each checkpoint lands.</p></section></main>
+		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="/contributing.html">Contributing</a><a href="/docs.html">Documentation</a><a href="/roadmap.html">Status</a></nav></footer>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

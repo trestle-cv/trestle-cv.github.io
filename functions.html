@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#0b0d10">
+		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
+		<title>Functions · Trestle</title>
+		<link rel="stylesheet" href="/assets/css/style.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<header class="site-header">
+			<a class="brand" href="/" aria-label="Trestle home"><span aria-hidden="true">T</span> Trestle</a>
+			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="/product.html">Product</a><a href="/docs.html">Docs</a><a href="/architecture.html">Architecture</a><a href="/security.html">Security</a><a href="/functions.html">Functions</a><a href="/roadmap.html">Roadmap</a></nav>
+		</header>
+		<main id="main"><div class="docs-layout"><aside><nav class="docs-nav" aria-label="Documentation"><strong>Explore</strong><a href="/docs.html">Documentation</a><a href="/product.html">Product</a><a href="/architecture.html">Architecture</a><a href="/security.html">Security</a><a href="/functions.html">Functions</a><a href="/roadmap.html">Roadmap</a><a href="/contributing.html">Contributing</a></nav></aside><article class="prose"><div class="eyebrow">Functions</div><h1>Invoke isolated services from committed events.</h1><p class="lede">The first functions feature will dispatch versioned events to AWS Lambda through a provider-neutral job boundary.</p><ol class="steps"><li>The application transaction changes state.</li><li>The same transaction records its event and outbox job.</li><li>A worker claims the committed job with a lease.</li><li>The provider adapter invokes Lambda asynchronously.</li><li>Trestle records acceptance, attempts and safe diagnostics.</li></ol><h2>At least once, deliberately</h2><p>Events receive stable IDs and idempotency keys. Handlers must tolerate retries. Provider acceptance is not misrepresented as handler completion.</p><h2>No in-process user code</h2><p>A local runtime is deferred until it has a separate worker process, resource limits, capabilities, secret scoping, cancellation and credible platform isolation.</p></article></div></main>
+		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="/contributing.html">Contributing</a><a href="/docs.html">Documentation</a><a href="/roadmap.html">Status</a></nav></footer>
+		<script src="/assets/js/script.js" defer></script>
+	</body>
+</html>
