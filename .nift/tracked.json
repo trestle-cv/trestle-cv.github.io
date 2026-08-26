@@ -7,6 +7,8 @@
     },
     {"name":"product","title":"Product","template":"templates/template.html"},
     {"name":"docs","title":"Documentation","template":"templates/template.html"},
+    {"name":"configuration","title":"Configuration","template":"templates/template.html"},
+    {"name":"operations","title":"Health and operations","template":"templates/template.html"},
     {"name":"architecture","title":"Architecture","template":"templates/template.html"},
     {"name":"security","title":"Security","template":"templates/template.html"},
     {"name":"functions","title":"Functions","template":"templates/template.html"},
