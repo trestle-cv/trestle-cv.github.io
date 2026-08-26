@@ -17,5 +17,26 @@
     "templates/head.html",
     "templates/template.html"
   ],
-  "reqs": []
+  "reqs": [
+    "public/admin-security.html",
+    "public/architecture.html",
+    "public/assets/css/style.css",
+    "public/assets/js/script.js",
+    "public/collections.html",
+    "public/configuration.html",
+    "public/contributing.html",
+    "public/dashboard.html",
+    "public/docs.html",
+    "public/field-types.html",
+    "public/first-run.html",
+    "public/functions.html",
+    "public/index.html",
+    "public/migrations.html",
+    "public/operations.html",
+    "public/product.html",
+    "public/roadmap.html",
+    "public/schema-design.html",
+    "public/security.html",
+    "public/sqlite.html"
+  ]
 }

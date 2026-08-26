@@ -16,5 +16,16 @@
     "templates/head.html",
     "templates/template.html"
   ],
-  "reqs": []
+  "reqs": [
+    "public/architecture.html",
+    "public/assets/css/style.css",
+    "public/assets/js/script.js",
+    "public/contributing.html",
+    "public/docs.html",
+    "public/functions.html",
+    "public/index.html",
+    "public/product.html",
+    "public/roadmap.html",
+    "public/security.html"
+  ]
 }
