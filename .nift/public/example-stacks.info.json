@@ -1,9 +1,9 @@
 {
-  "name": "job-delivery",
-  "title": "Job delivery and recovery",
+  "name": "example-stacks",
+  "title": "example-stacks",
   "template": "templates/template.html",
-  "content": "content/job-delivery.html",
-  "output": "public/job-delivery.html",
+  "content": "content/example-stacks.html",
+  "output": "public/example-stacks.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/job-delivery.html",
+    "content/example-stacks.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

@@ -1,3 +1,8 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP12 · Implemented</div><h1>Files</h1><p class="lede">Trestle stores uploaded bytes locally behind generated keys while keeping user filenames strictly as metadata.</p><p>Uploads are staged with private permissions, hashed while streaming, atomically renamed, then bound to database metadata. A failed metadata transaction removes the staged object.</p><pre><code>POST   /api/v1/files
-GET    /api/v1/files/:id
-DELETE /api/v1/files/:id</code></pre></article></div>
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Files</div><h1>Authenticated file storage</h1><p class="lede">Use one file API with generated storage keys whether objects live beneath the local data directory or in a private S3-compatible bucket.</p><h2>Upload</h2><pre><code>curl -X POST "$TRESTLE_URL/api/v1/files" \
+  -H "Authorization: Bearer $TRESTLE_TOKEN" \
+  -F "file=@avatar.png" \
+  -F "collection=profiles" \
+  -F "recordId=rec_123"</code></pre><p>The client filename is metadata, never a path. Trestle stages local writes, hashes content, commits metadata and atomically publishes the generated key.</p><h2>Download a range</h2><pre><code>curl "$TRESTLE_URL/api/v1/files/file_123" \
+  -H "Authorization: Bearer $TRESTLE_TOKEN" \
+  -H "Range: bytes=0-1048575" \
+  --output first-megabyte.bin</code></pre><h2>Delete and reconcile</h2><p>Deletion removes metadata and provider data through the authenticated API. Administrators can run orphan reconciliation from the Files dashboard after an interrupted operation. Quotas are checked before accepting a write.</p><h2>Choose a provider</h2><ul><li><strong>Local:</strong> simplest single-node deployment; include the file tree in backups.</li><li><strong>S3-compatible:</strong> private object storage with SigV4; back up objects according to provider policy because Trestle archives contain their manifest, not remote bytes.</li></ul></article></div>

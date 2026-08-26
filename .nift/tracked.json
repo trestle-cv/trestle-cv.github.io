@@ -5,72 +5,336 @@
       "title": "Open-source application backend",
       "template": "templates/template.html"
     },
-    {"name":"product","title":"Product","template":"templates/template.html"},
-    {"name":"docs","title":"Documentation","template":"templates/template.html"},
-    {"name":"collections","title":"Base collections","template":"templates/template.html"},
-    {"name":"records","title":"Records","template":"templates/template.html"},
-    {"name":"record-writes","title":"Creating and updating records","template":"templates/template.html"},
-    {"name":"batch-operations","title":"Batch operations","template":"templates/template.html"},
-    {"name":"errors","title":"API errors","template":"templates/template.html"},
-    {"name":"querying","title":"Querying records","template":"templates/template.html"},
-    {"name":"filter-language","title":"Filter language","template":"templates/template.html"},
-    {"name":"sorting-pagination","title":"Sorting and pagination","template":"templates/template.html"},
-    {"name":"relation-expansion","title":"Relation expansion","template":"templates/template.html"},
-    {"name":"api-reference","title":"HTTP API reference","template":"templates/template.html"},
-    {"name":"reference-clients","title":"Reference clients","template":"templates/template.html"},
-    {"name":"ai-agents","title":"AI-agent integration","template":"templates/template.html"},
-    {"name":"authentication","title":"Application authentication","template":"templates/template.html"},
-    {"name":"auth-collections","title":"Auth collections","template":"templates/template.html"},
-    {"name":"browser-sessions","title":"Browser sessions","template":"templates/template.html"},
-    {"name":"native-auth","title":"Mobile and native authentication","template":"templates/template.html"},
-    {"name":"recovery","title":"Verification and recovery","template":"templates/template.html"},
-    {"name":"trusted-backends","title":"Trusted backends","template":"templates/template.html"},
-    {"name":"service-accounts","title":"Service accounts","template":"templates/template.html"},
-    {"name":"personal-tokens","title":"Personal tokens","template":"templates/template.html"},
-    {"name":"secret-management","title":"Secret management","template":"templates/template.html"},
-    {"name":"access-rules","title":"Collection access rules","template":"templates/template.html"},
-    {"name":"rule-language","title":"Rule language","template":"templates/template.html"},
-    {"name":"rule-recipes","title":"Common rule recipes","template":"templates/template.html"},
-    {"name":"rule-debugging","title":"Rule debugging","template":"templates/template.html"},
-    {"name":"rules-service-accounts","title":"Rules and service accounts","template":"templates/template.html"},
-    {"name":"files","title":"Files","template":"templates/template.html"},
-    {"name":"file-transfer","title":"Upload and download files","template":"templates/template.html"},
-    {"name":"file-rules","title":"File authorization","template":"templates/template.html"},
-    {"name":"local-storage","title":"Local file storage","template":"templates/template.html"},
-    {"name":"file-limits","title":"File limits and quotas","template":"templates/template.html"},
-    {"name":"file-troubleshooting","title":"File troubleshooting","template":"templates/template.html"},
-    {"name":"s3-storage","title":"S3-compatible storage","template":"templates/template.html"},
-    {"name":"s3-providers","title":"S3 provider examples","template":"templates/template.html"},
-    {"name":"realtime","title":"Durable realtime","template":"templates/template.html"},
-    {"name":"event-schemas","title":"Event schemas","template":"templates/template.html"},
-    {"name":"aws-lambda","title":"AWS Lambda integration","template":"templates/template.html"},
-    {"name":"function-envelope","title":"Function event envelope","template":"templates/template.html"},
-    {"name":"webhooks","title":"Signed webhooks","template":"templates/template.html"},
-    {"name":"webhook-security","title":"Webhook security","template":"templates/template.html"},
-    {"name":"jobs","title":"Durable jobs","template":"templates/template.html"},
-    {"name":"job-delivery","title":"Job delivery and recovery","template":"templates/template.html"},
-    {"name":"audit","title":"Audit","template":"templates/template.html"},
-    {"name":"observability","title":"Observability","template":"templates/template.html"},
-    {"name":"field-types","title":"Field types","template":"templates/template.html"},
-    {"name":"schema-design","title":"Schema design","template":"templates/template.html"},
-    {"name":"schema-changes","title":"Schema changes","template":"templates/template.html"},
-    {"name":"physical-schema","title":"Physical collection schema","template":"templates/template.html"},
-    {"name":"backups","title":"Backups","template":"templates/template.html"},
-    {"name":"restore","title":"Restore","template":"templates/template.html"},
-    {"name":"export-import","title":"Export and import","template":"templates/template.html"},
-    {"name":"configuration","title":"Configuration","template":"templates/template.html"},
-    {"name":"operations","title":"Health and operations","template":"templates/template.html"},
-    {"name":"sqlite","title":"SQLite foundation","template":"templates/template.html"},
-    {"name":"migrations","title":"Database migrations","template":"templates/template.html"},
-    {"name":"dashboard","title":"Administration dashboard","template":"templates/template.html"},
-    {"name":"first-run","title":"First-run administration","template":"templates/template.html"},
-    {"name":"admin-security","title":"Administrator security","template":"templates/template.html"},
-    {"name":"architecture","title":"Architecture","template":"templates/template.html"},
-    {"name":"security","title":"Security","template":"templates/template.html"},
-    {"name":"functions","title":"Functions","template":"templates/template.html"},
-    {"name":"roadmap","title":"Roadmap","template":"templates/template.html"},
-    {"name":"contributing","title":"Contributing","template":"templates/template.html"},
-    {"name":"404","title":"Page not found","template":"templates/template.html"},
+    {
+      "name": "product",
+      "title": "Product",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs",
+      "title": "Documentation",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "collections",
+      "title": "Base collections",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "records",
+      "title": "Records",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "record-writes",
+      "title": "Creating and updating records",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "batch-operations",
+      "title": "Batch operations",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "errors",
+      "title": "API errors",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "querying",
+      "title": "Querying records",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "filter-language",
+      "title": "Filter language",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "sorting-pagination",
+      "title": "Sorting and pagination",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "relation-expansion",
+      "title": "Relation expansion",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "api-reference",
+      "title": "HTTP API reference",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "reference-clients",
+      "title": "Reference clients",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "ai-agents",
+      "title": "AI-agent integration",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "authentication",
+      "title": "Application authentication",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "auth-collections",
+      "title": "Auth collections",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "browser-sessions",
+      "title": "Browser sessions",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "native-auth",
+      "title": "Mobile and native authentication",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "recovery",
+      "title": "Verification and recovery",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "trusted-backends",
+      "title": "Trusted backends",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "service-accounts",
+      "title": "Service accounts",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "personal-tokens",
+      "title": "Personal tokens",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "secret-management",
+      "title": "Secret management",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "access-rules",
+      "title": "Collection access rules",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "rule-language",
+      "title": "Rule language",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "rule-recipes",
+      "title": "Common rule recipes",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "rule-debugging",
+      "title": "Rule debugging",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "rules-service-accounts",
+      "title": "Rules and service accounts",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "files",
+      "title": "Files",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "file-transfer",
+      "title": "Upload and download files",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "file-rules",
+      "title": "File authorization",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "local-storage",
+      "title": "Local file storage",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "file-limits",
+      "title": "File limits and quotas",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "file-troubleshooting",
+      "title": "File troubleshooting",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "s3-storage",
+      "title": "S3-compatible storage",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "s3-providers",
+      "title": "S3 provider examples",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "realtime",
+      "title": "Durable realtime",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "event-schemas",
+      "title": "Event schemas",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "aws-lambda",
+      "title": "AWS Lambda integration",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "function-envelope",
+      "title": "Function event envelope",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "webhooks",
+      "title": "Signed webhooks",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "webhook-security",
+      "title": "Webhook security",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "jobs",
+      "title": "Durable jobs",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "job-delivery",
+      "title": "Job delivery and recovery",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "audit",
+      "title": "Audit",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "observability",
+      "title": "Observability",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "field-types",
+      "title": "Field types",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "schema-design",
+      "title": "Schema design",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "schema-changes",
+      "title": "Schema changes",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "physical-schema",
+      "title": "Physical collection schema",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "backups",
+      "title": "Backups",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "restore",
+      "title": "Restore",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "export-import",
+      "title": "Export and import",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "configuration",
+      "title": "Configuration",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "operations",
+      "title": "Health and operations",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "sqlite",
+      "title": "SQLite foundation",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "migrations",
+      "title": "Database migrations",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "dashboard",
+      "title": "Administration dashboard",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "first-run",
+      "title": "First-run administration",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "admin-security",
+      "title": "Administrator security",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "architecture",
+      "title": "Architecture",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "security",
+      "title": "Security",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "functions",
+      "title": "Functions",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "roadmap",
+      "title": "Roadmap",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "contributing",
+      "title": "Contributing",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "404",
+      "title": "Page not found",
+      "template": "templates/template.html"
+    },
     {
       "name": "assets/css/style",
       "title": "style",
@@ -82,6 +346,11 @@
       "title": "script",
       "content-ext": ".js",
       "output-ext": ".js"
+    },
+    {
+      "name": "example-stacks",
+      "title": "example-stacks",
+      "template": "templates/template.html"
     }
   ]
 }

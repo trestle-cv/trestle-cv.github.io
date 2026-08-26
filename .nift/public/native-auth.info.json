@@ -39,6 +39,7 @@
     "public/docs.html",
     "public/errors.html",
     "public/event-schemas.html",
+    "public/example-stacks.html",
     "public/export-import.html",
     "public/field-types.html",
     "public/file-limits.html",

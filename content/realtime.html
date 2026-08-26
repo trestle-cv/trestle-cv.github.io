@@ -1,4 +1,9 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP14 · Implemented</div><h1>Durable realtime</h1><p class="lede">Every committed record mutation writes a monotonically sequenced event in the same SQLite transaction and can be consumed through Server-Sent Events.</p><h2>Connect</h2><pre><code>const events = new EventSource("/api/v1/realtime");
-events.addEventListener("record.created", event =&gt; {
-  console.log(JSON.parse(event.data));
-});</code></pre><p>The stream requires an authorized administrator session or a credential with <code>records:read</code>. Optional <code>?topic=record.updated</code> filtering happens server-side.</p><h2>Reconnect and replay</h2><p>Browsers automatically send <code>Last-Event-ID</code> after a disconnect. Trestle resumes after that durable sequence. Fifteen-second comment heartbeats keep well-configured proxies from idling the connection.</p><h2>Operational boundaries</h2><p>Each poll reads at most 100 events, the dashboard retains only its latest 200 rendered entries, and disconnect cancellation immediately stops the loop. Reverse proxies must disable response buffering for this endpoint.</p></article></div>
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Realtime</div><h1>Replayable Server-Sent Events</h1><p class="lede">Subscribe to committed record events through an authorized, ordered journal rather than an in-memory notification channel.</p><h2>Browser subscription</h2><pre><code>const stream = new EventSource(
+  `${TRESTLE_URL}/api/v1/realtime?topic=record.created`
+);
+stream.addEventListener("record.created", event => {
+  const envelope = JSON.parse(event.data);
+  console.log(envelope.sequence, envelope.recordId);
+});</code></pre><p>Native <code>EventSource</code> cannot add an Authorization header. Use same-origin cookie infrastructure or a small authenticated server proxy when bearer authentication is required.</p><h2>Resume after interruption</h2><pre><code>curl -N "$TRESTLE_URL/api/v1/realtime?topic=record.updated" \
+  -H "Authorization: Bearer $TRESTLE_TOKEN" \
+  -H "Last-Event-ID: 418"</code></pre><p>Trestle replays retained events after sequence 418, then continues live. Clients must tolerate duplicate delivery around reconnect boundaries and refetch authoritative state if their cursor predates retention.</p><h2>Operational behavior</h2><p>Slow consumers are disconnected instead of growing unbounded memory. The dashboard retains at most 200 rendered events and can pause display without altering the durable journal.</p></article></div>
