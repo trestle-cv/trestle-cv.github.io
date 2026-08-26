@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
-		<title>Observability · Trestle</title>
+		<title>AWS Lambda integration · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
@@ -43,10 +43,9 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">Operations</div><h1>Observability and diagnostics</h1><p class="lede">Operational endpoints expose bounded counts and database size without returning credentials, record bodies or session tokens.</p><pre><code>GET /system/health
-GET /system/ready
-GET /system/version
-GET /admin/v1/operations</code></pre><p>The first three endpoints are deliberately narrow. The authenticated operations summary includes collection, file, session and event counts plus the SQLite page-derived size.</p><h2>Logging</h2><p>Every HTTP request receives an <code>X-Request-ID</code> and a structured completion log. Audit facts retain the same identifier for supported mutations. Logs are operational evidence, not a substitute for backups or durable metrics.</p><h2>Retention</h2><p>Keep logs and exported audit facts according to the deployment's privacy and incident-response requirements. Avoid indefinite retention by accident.</p></article></div></main>
+                                                  </nav></aside><article class="prose"><div class="eyebrow">CP18 · Implemented</div><h1>AWS Lambda</h1><p class="lede">Trestle invokes selected Lambda functions asynchronously from committed event jobs. User code never executes in the Trestle process.</p><h2>Credentials</h2><pre><code>TRESTLE_AWS_REGION=us-east-1
+TRESTLE_AWS_ACCESS_KEY=...
+TRESTLE_AWS_SECRET_KEY=...</code></pre><p>Use a narrowly scoped IAM principal permitted to invoke only the configured function ARNs. Credentials remain process configuration and are represented in the dashboard only as configured or missing.</p><h2>Target policy</h2><p>Each target must be an AWS Lambda ARN whose embedded region matches its configured region. Trestle constructs the official regional HTTPS endpoint and signs the request with SigV4.</p><h2>Acceptance versus completion</h2><p>Lambda's <code>202 Accepted</code> confirms provider acceptance, not successful function completion. Trestle marks the invocation job delivered at acceptance. Function logs, destinations or callbacks must report application completion separately.</p><h2>Idempotency</h2><p>The envelope includes a stable invocation ID. Functions must deduplicate it because at-least-once job recovery can repeat an accepted request after an ambiguous failure.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>
