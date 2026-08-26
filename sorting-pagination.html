@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#1F2021">
+		<meta name="description" content="Trestle is a planned open-source, self-hosted application backend.">
+		<title>Sorting and pagination · Trestle</title>
+		<link rel="stylesheet" href="assets/css/style.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<header class="site-header">
+			<a class="brand" href="./" aria-label="Trestle home"><span aria-hidden="true">T</span> Trestle</a>
+			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="./product.html">Product</a><a href="./docs.html">Docs</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a></nav>
+		</header>
+		<main id="main"><div class="docs-layout"><aside><nav class="docs-nav" aria-label="Documentation"><strong>Explore</strong><a href="./docs.html">Documentation</a><a href="./collections.html">Collections</a><a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a><a href="./querying.html">Querying</a><a href="./filter-language.html">Filter language</a><a href="./sorting-pagination.html">Sorting &amp; pagination</a><a href="./relation-expansion.html">Relation expansion</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a><a href="./configuration.html">Configuration</a><a href="./operations.html">Health &amp; operations</a><a href="./sqlite.html">SQLite</a><a href="./migrations.html">Migrations</a><a href="./dashboard.html">Dashboard</a><a href="./first-run.html">First-run setup</a><a href="./admin-security.html">Admin security</a><a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a></nav></aside><article class="prose"><div class="eyebrow">Queries</div><h1>Sorting and pagination</h1><p class="lede">Every page has a deterministic order and a maximum of 100 records.</p><p>Use <code>sort=field</code> for ascending order or <code>sort=-field</code> for descending order. Trestle appends record ID as a stable tie-breaker. The default is ascending ID.</p><h2>Opaque cursor</h2><pre><code>GET /api/v1/collections/issues/records?limit=25
+→ {"items":[...],"nextCursor":"cmVjXy4uLg"}
+
+GET /api/v1/collections/issues/records?limit=25&amp;cursor=cmVjXy4uLg</code></pre><p>The first cursor contract is intentionally restricted to ascending ID order. Invalid, stale or incompatible cursors fail explicitly rather than silently changing page semantics.</p></article></div></main>
+		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
+		<script src="assets/js/script.js" defer></script>
+	</body>
+</html>
