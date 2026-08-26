@@ -1,45 +1,25 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP21 tutorial</div><h1>Build an incident tracker with Trestle</h1><p class="lede">This application was recreated from an empty data directory using only documented HTTP APIs. It exercises the same boundaries a real browser, trusted service and operator use.</p><h2>Architecture</h2><div class="stack-diagram"><span>Browser incident desk</span><span>Small same-origin Go frontend</span><span>Trestle application-user, records and SSE APIs</span><span>SQLite, local files, event journal and durable jobs</span></div><p>The frontend contains no Trestle package imports. Its Go process serves one embedded HTML file and reverse-proxies <code>/api/</code> to Trestle, giving the browser a same-origin deployment without exposing administrator credentials.</p><h2>1. Create the model</h2><p>The tracker uses an <code>incidents</code> collection plus related <code>updates</code>. Relation values are explicit record IDs; clients query the update collection by <code>incident_id</code>.</p><pre><code>{
-  "name": "incidents",
-  "fields": [
-    {"name":"title","type":"text","required":true},
-    {"name":"severity","type":"select","required":true},
-    {"name":"status","type":"select","required":true,"default":"open"},
-    {"name":"summary","type":"text","required":true},
-    {"name":"reporter_id","type":"relation","required":true},
-    {"name":"resolved_at","type":"datetime"},
-    {"name":"context","type":"json","default":{}}
-  ]
-}</code></pre><h2>2. Give reporters owner-aware access</h2><pre><code>{
-  "rules": {
-    "list": "actor.kind == \"user\"",
-    "view": "actor.kind == \"user\"",
-    "create": "actor.id == input.reporter_id",
-    "update": "actor.id == record.reporter_id",
-    "delete": "false"
-  }
-}</code></pre><p>The browser registers and signs in through <code>/api/v1/auth</code>. Administrator cookies never cross into the example application. The updates collection uses the same pattern with <code>author_id</code>.</p><h2>3. Declare and query incidents</h2><pre><code>POST /api/v1/collections/incidents/records
-Authorization: Bearer $ACCESS_TOKEN
-Idempotency-Key: incident-from-monitor-184
-
-{"values":{
-  "title":"API latency elevated",
-  "severity":"sev2",
-  "status":"open",
-  "summary":"Public API p95 crossed the threshold.",
-  "reporter_id":"usr_...",
-  "context":{"region":"ap-southeast-2"}
-}}</code></pre><pre><code>GET /api/v1/collections/updates/records?filter=incident_id%20%3D%3D%20%22rec_...%22&amp;sort=createdAt&amp;limit=100</code></pre><h2>4. Attach operational evidence</h2><p>A scoped service identity receives <code>files:read</code> and <code>records:read</code>. The operator uploads a Markdown runbook bound to the incident record, then the service downloads it through the authenticated file endpoint and verifies its bytes.</p><pre><code>curl -X POST "$TRESTLE/api/v1/files" \
-  -H "X-Trestle-CSRF: $CSRF" \
-  -b admin.cookies \
-  -F file=@latency-runbook.md \
-  -F collection=incidents \
-  -F recordId=rec_...</code></pre><h2>5. Follow the journal</h2><p>The browser uses authenticated <code>fetch()</code> streaming rather than putting a bearer token in a query string. The verifier reconnects with <code>Last-Event-ID: 0</code> and requires a replayed <code>record.created</code> event before passing.</p><pre><code>const response = await fetch("/api/v1/realtime", {
-  headers: {Authorization: `Bearer ${accessToken}`}
-});
-const reader = response.body.getReader();</code></pre><h2>6. Exercise automation honestly</h2><p>The setup creates and disables a signed webhook target without requiring live DNS. It also configures an AWS Lambda target, emits one incident event, and confirms the durable job records the expected missing-credential retry. The example deliberately ships no cloud credentials and does not misreport provider acceptance.</p><h2>7. Prove recovery</h2><p>The verifier creates a database-and-files backup, downloads it, and submits the exact archive to restore preflight. A clean operator can then stop Trestle and follow the offline restore procedure.</p><h2>Run it</h2><pre><code>go build -o trestle ./cmd/trestle
-go build -o incident-tracker ./examples/incident-tracker/cmd/app
-go build -o seed-incident-tracker ./examples/incident-tracker/cmd/seed
-
-./trestle --data-dir ./example-data
-./seed-incident-tracker -url http://127.0.0.1:8090
-./incident-tracker</code></pre><div class="callout"><strong>Expected identities</strong><p>The distributed example uses <code>admin@example.com</code> / <code>mudblood</code> for administration and <code>reporter@example.com</code> / <code>reporter7</code> for the incident desk. Replace both passwords before adapting it to a real deployment.</p></div><h2>Boundaries discovered</h2><ul><li>Relation fields currently store record IDs but do not generate target-aware foreign keys or inline expansion.</li><li>Actual webhook delivery requires resolvable public HTTPS; configuration no longer requires DNS.</li><li>Actual Lambda acceptance requires operator-supplied AWS credentials.</li><li>CP22 remains responsible for supported reverse-proxy and internet-facing deployment guidance.</li></ul></article></div>
+<div class="docs-layout">
+  <aside>@input("templates/docs-nav.html")</aside>
+  <article class="prose">
+    <div class="eyebrow">CP21 evidence</div>
+    <h1>What whole-product dogfooding taught us</h1>
+    <p class="lede">CP21 used a temporary incident-management client to exercise Trestle exclusively through its published HTTP interfaces. The harness was removed after the checkpoint because it was validation machinery, not a supported example application.</p>
+    <h2>Product paths exercised</h2>
+    <ul>
+      <li>First-run administration, application users, rotating sessions and collection access rules.</li>
+      <li>Typed collections, record writes, idempotency, querying and relation values.</li>
+      <li>Scoped service credentials and authenticated file upload and download.</li>
+      <li>Durable events, SSE replay, audit facts, jobs, webhooks and Lambda diagnostics.</li>
+      <li>Backup creation, download and restore preflight from a clean data directory.</li>
+    </ul>
+    <h2>Repairs and decisions</h2>
+    <ul>
+      <li>The false <code>Project / Default</code> selector was removed because one Trestle process currently owns one database.</li>
+      <li>Dashboard routes became refreshable, including direct collection routes.</li>
+      <li>Webhook configuration was separated from delivery-time DNS resolution without weakening SSRF checks.</li>
+      <li>Relation fields remain explicit record IDs until target-aware constraints and expansion are implemented.</li>
+      <li>Provider credentials remain operator configuration and were never bundled into the dogfood client.</li>
+    </ul>
+    <div class="callout"><strong>Repository boundary</strong><p>Future example applications should live in their own repositories and meet their own product, documentation and release quality bar. Trestle's core repository remains focused on the platform.</p></div>
+  </article>
+</div>
