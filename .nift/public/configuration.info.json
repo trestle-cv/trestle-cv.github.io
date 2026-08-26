@@ -30,6 +30,7 @@
     "public/docs.html",
     "public/errors.html",
     "public/field-types.html",
+    "public/filter-language.html",
     "public/first-run.html",
     "public/functions.html",
     "public/index.html",
@@ -37,12 +38,15 @@
     "public/operations.html",
     "public/physical-schema.html",
     "public/product.html",
+    "public/querying.html",
     "public/record-writes.html",
     "public/records.html",
+    "public/relation-expansion.html",
     "public/roadmap.html",
     "public/schema-changes.html",
     "public/schema-design.html",
     "public/security.html",
+    "public/sorting-pagination.html",
     "public/sqlite.html"
   ]
 }

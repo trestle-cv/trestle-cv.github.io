@@ -1,9 +1,9 @@
 {
-  "name": "sqlite",
-  "title": "SQLite foundation",
+  "name": "filter-language",
+  "title": "Filter language",
   "template": "templates/template.html",
-  "content": "content/sqlite.html",
-  "output": "public/sqlite.html",
+  "content": "content/filter-language.html",
+  "output": "public/filter-language.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/sqlite.html",
+    "content/filter-language.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

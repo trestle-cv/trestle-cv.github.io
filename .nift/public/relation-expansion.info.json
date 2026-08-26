@@ -1,9 +1,9 @@
 {
-  "name": "sqlite",
-  "title": "SQLite foundation",
+  "name": "relation-expansion",
+  "title": "Relation expansion",
   "template": "templates/template.html",
-  "content": "content/sqlite.html",
-  "output": "public/sqlite.html",
+  "content": "content/relation-expansion.html",
+  "output": "public/relation-expansion.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/sqlite.html",
+    "content/relation-expansion.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

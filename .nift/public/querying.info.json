@@ -1,9 +1,9 @@
 {
-  "name": "sqlite",
-  "title": "SQLite foundation",
+  "name": "querying",
+  "title": "Querying records",
   "template": "templates/template.html",
-  "content": "content/sqlite.html",
-  "output": "public/sqlite.html",
+  "content": "content/querying.html",
+  "output": "public/querying.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/sqlite.html",
+    "content/querying.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
