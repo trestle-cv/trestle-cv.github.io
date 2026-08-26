@@ -12,6 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
+    "content/assets/css/docs-nav.css",
     "content/assets/css/style.css"
   ],
   "reqs": []

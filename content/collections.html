@@ -1,10 +1,11 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP05 · Implemented metadata</div><h1>Base collections</h1><p class="lede">An authenticated administrator can now create, inspect, list, change and delete base-collection metadata through the admin API and dashboard.</p><h2>Admin API</h2><pre><code>GET    /admin/v1/collections
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Typed SQLite data</div><h1>Base collections</h1><p class="lede">An authenticated administrator can create, inspect, list, change and delete collection metadata through the admin API and dashboard.</p><h2>Create in the dashboard</h2><p>Open <strong>Collections</strong>, name the collection, and use <strong>Add field</strong> for every field the schema needs. Each row defines its name, type, required state and uniqueness. Trestle creates the whole collection in one operation.</p><h2>Admin API</h2><pre><code>GET    /admin/v1/collections
 POST   /admin/v1/collections
 GET    /admin/v1/collections/{name}
 PATCH  /admin/v1/collections/{name}
 DELETE /admin/v1/collections/{name}</code></pre><p>Reads require a live administrator session. Mutations additionally require the current session's <code>X-Trestle-CSRF</code> token and same-origin request.</p><h2>Create metadata</h2><pre><code>{
   "name": "issues",
   "fields": [
-    {"name":"title","type":"text","required":true,"unique":false}
+    {"name":"title","type":"text","required":true,"unique":false},
+    {"name":"priority","type":"number","required":false,"unique":false}
   ]
-}</code></pre><h2>Current boundary</h2><p>CP05 stores and validates schemas only. CP06 creates physical collection tables and safe schema-change machinery. Record CRUD therefore remains unavailable.</p></article></div>
+}</code></pre><h2>Keys and relations</h2><p>Every physical collection table has a generated <code>_id TEXT PRIMARY KEY</code>. SQLite foreign-key enforcement is enabled for every connection. Relation fields currently store record IDs as text; target-collection and delete/update policy metadata will be required before Trestle can generate physical foreign-key constraints for them.</p></article></div>

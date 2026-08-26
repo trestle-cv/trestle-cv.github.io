@@ -1,8 +1,8 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP07 · Implemented</div><h1>Records</h1><p class="lede">Versioned JSON records are stored in each collection's typed SQLite table and exposed through plain HTTP.</p><h2>Endpoints</h2><pre><code>GET    /api/v1/collections/:collection/records
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP07 · Implemented</div><h1>Records</h1><p class="lede">Versioned records are stored in each collection's typed SQLite table and exposed through plain HTTP.</p><h2>Dashboard editor</h2><p>Open a collection and choose <strong>New record</strong>. Trestle reads the collection schema and renders suitable controls for text, numbers, booleans, dates, email addresses, URLs and JSON. Editing a row opens the same form with its current values; raw JSON remains available through the language-neutral API when that is the better fit.</p><h2>Endpoints</h2><pre><code>GET    /api/v1/collections/:collection/records
 POST   /api/v1/collections/:collection/records
 GET    /api/v1/collections/:collection/records/:id
 PATCH  /api/v1/collections/:collection/records/:id
 DELETE /api/v1/collections/:collection/records/:id</code></pre><p>Each response includes a stable ID, positive version, created and updated timestamps, and a <code>values</code> object. Use <code>?fields=title,status</code> for value projection and <code>?limit=1..100</code> for bounded lists.</p><h2>Language-neutral HTTP</h2><pre><code>curl -X POST http://127.0.0.1:8090/api/v1/collections/issues/records \
   -H 'Content-Type: application/json' \
   -H 'Idempotency-Key: import-42' \
-  -d '{"values":{"title":"First issue"}}'</code></pre><p>Application access rules arrive at CP11. Until then these routes require an authenticated administrator session; trusted backend credentials arrive at CP10.</p></article></div>
+  -d '{"values":{"title":"First issue"}}'</code></pre></article></div>
