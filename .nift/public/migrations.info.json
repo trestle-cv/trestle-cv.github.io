@@ -60,6 +60,8 @@
     "public/rule-language.html",
     "public/rule-recipes.html",
     "public/rules-service-accounts.html",
+    "public/s3-providers.html",
+    "public/s3-storage.html",
     "public/schema-changes.html",
     "public/schema-design.html",
     "public/secret-management.html",

@@ -1,9 +1,9 @@
 {
-  "name": "file-rules",
-  "title": "File authorization",
+  "name": "s3-providers",
+  "title": "S3 provider examples",
   "template": "templates/template.html",
-  "content": "content/file-rules.html",
-  "output": "public/file-rules.html",
+  "content": "content/s3-providers.html",
+  "output": "public/s3-providers.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/file-rules.html",
+    "content/s3-providers.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
