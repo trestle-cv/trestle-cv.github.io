@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>Mobile and native authentication · Trestle</title>
+		<title>dogfood · Trestle</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
@@ -45,11 +45,51 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">Authentication</div><h1>Mobile and native clients</h1><p class="lede">Native applications use the same JSON authentication, short-lived access tokens and rotating refresh sessions as other application clients.</p><h2>Sign in</h2><pre><code>POST /api/v1/auth/login
-Content-Type: application/json
+                                                  </nav></aside><article class="prose"><div class="eyebrow">CP21 tutorial</div><h1>Build an incident tracker with Trestle</h1><p class="lede">This application was recreated from an empty data directory using only documented HTTP APIs. It exercises the same boundaries a real browser, trusted service and operator use.</p><h2>Architecture</h2><div class="stack-diagram"><span>Browser incident desk</span><span>Small same-origin Go frontend</span><span>Trestle application-user, records and SSE APIs</span><span>SQLite, local files, event journal and durable jobs</span></div><p>The frontend contains no Trestle package imports. Its Go process serves one embedded HTML file and reverse-proxies <code>/api/</code> to Trestle, giving the browser a same-origin deployment without exposing administrator credentials.</p><h2>1. Create the model</h2><p>The tracker uses an <code>incidents</code> collection plus related <code>updates</code>. Relation values are explicit record IDs; clients query the update collection by <code>incident_id</code>.</p><pre><code>{
+  "name": "incidents",
+  "fields": [
+    {"name":"title","type":"text","required":true},
+    {"name":"severity","type":"select","required":true},
+    {"name":"status","type":"select","required":true,"default":"open"},
+    {"name":"summary","type":"text","required":true},
+    {"name":"reporter_id","type":"relation","required":true},
+    {"name":"resolved_at","type":"datetime"},
+    {"name":"context","type":"json","default":{}}
+  ]
+}</code></pre><h2>2. Give reporters owner-aware access</h2><pre><code>{
+  "rules": {
+    "list": "actor.kind == \"user\"",
+    "view": "actor.kind == \"user\"",
+    "create": "actor.id == input.reporter_id",
+    "update": "actor.id == record.reporter_id",
+    "delete": "false"
+  }
+}</code></pre><p>The browser registers and signs in through <code>/api/v1/auth</code>. Administrator cookies never cross into the example application. The updates collection uses the same pattern with <code>author_id</code>.</p><h2>3. Declare and query incidents</h2><pre><code>POST /api/v1/collections/incidents/records
+Authorization: Bearer $ACCESS_TOKEN
+Idempotency-Key: incident-from-monitor-184
 
-{"email":"nick@example.com","password":"correct horse battery staple"}</code></pre><p>Send the returned access token as <code>Authorization: Bearer ...</code>. Store the refresh token in Keychain, Android Keystore or the platform's equivalent protected credential store, never ordinary preferences or logs.</p><h2>Rotate atomically</h2><ol><li>Read the current refresh token from secure storage.</li><li>Exchange it exactly once.</li><li>Persist the replacement refresh token before treating the operation as complete.</li><li>Discard the old token and update the in-memory access token.</li><li>If the exchange response is lost, sign in again rather than replaying an already-consumed token indefinitely.</li></ol><h2>Authenticated request</h2><pre><code>GET /api/v1/collections/issues/records?limit=25
-Authorization: Bearer $ACCESS_TOKEN</code></pre><h2>Offline and reconnect behavior</h2><p>Cache product data according to your own threat model, not refresh credentials. Resume record lists from cursors where valid and reconnect realtime streams with the last processed event sequence. Handle 401 by attempting one controlled refresh, then return the user to sign-in.</p><h2>Logout</h2><p>Call the application logout/revocation endpoint while online, then delete both access and refresh material locally. Server-side revocation matters because deleting a local token alone does not invalidate a copied credential.</p></article></div></main>
+{"values":{
+  "title":"API latency elevated",
+  "severity":"sev2",
+  "status":"open",
+  "summary":"Public API p95 crossed the threshold.",
+  "reporter_id":"usr_...",
+  "context":{"region":"ap-southeast-2"}
+}}</code></pre><pre><code>GET /api/v1/collections/updates/records?filter=incident_id%20%3D%3D%20%22rec_...%22&amp;sort=createdAt&amp;limit=100</code></pre><h2>4. Attach operational evidence</h2><p>A scoped service identity receives <code>files:read</code> and <code>records:read</code>. The operator uploads a Markdown runbook bound to the incident record, then the service downloads it through the authenticated file endpoint and verifies its bytes.</p><pre><code>curl -X POST "$TRESTLE/api/v1/files" \
+  -H "X-Trestle-CSRF: $CSRF" \
+  -b admin.cookies \
+  -F file=@latency-runbook.md \
+  -F collection=incidents \
+  -F recordId=rec_...</code></pre><h2>5. Follow the journal</h2><p>The browser uses authenticated <code>fetch()</code> streaming rather than putting a bearer token in a query string. The verifier reconnects with <code>Last-Event-ID: 0</code> and requires a replayed <code>record.created</code> event before passing.</p><pre><code>const response = await fetch("/api/v1/realtime", {
+  headers: {Authorization: `Bearer ${accessToken}`}
+});
+const reader = response.body.getReader();</code></pre><h2>6. Exercise automation honestly</h2><p>The setup creates and disables a signed webhook target without requiring live DNS. It also configures an AWS Lambda target, emits one incident event, and confirms the durable job records the expected missing-credential retry. The example deliberately ships no cloud credentials and does not misreport provider acceptance.</p><h2>7. Prove recovery</h2><p>The verifier creates a database-and-files backup, downloads it, and submits the exact archive to restore preflight. A clean operator can then stop Trestle and follow the offline restore procedure.</p><h2>Run it</h2><pre><code>go build -o trestle ./cmd/trestle
+go build -o incident-tracker ./examples/incident-tracker/cmd/app
+go build -o seed-incident-tracker ./examples/incident-tracker/cmd/seed
+
+./trestle --data-dir ./example-data
+./seed-incident-tracker -url http://127.0.0.1:8090
+./incident-tracker</code></pre><div class="callout"><strong>Expected identities</strong><p>The distributed example uses <code>admin@example.com</code> / <code>mudblood</code> for administration and <code>reporter@example.com</code> / <code>reporter7</code> for the incident desk. Replace both passwords before adapting it to a real deployment.</p></div><h2>Boundaries discovered</h2><ul><li>Relation fields currently store record IDs but do not generate target-aware foreign keys or inline expansion.</li><li>Actual webhook delivery requires resolvable public HTTPS; configuration no longer requires DNS.</li><li>Actual Lambda acceptance requires operator-supplied AWS credentials.</li><li>CP22 remains responsible for supported reverse-proxy and internet-facing deployment guidance.</li></ul></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

@@ -30,7 +30,7 @@
                                                       <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
                                                     </div></details>
                                                     <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">Reference clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
-                                                    <details><summary>Example stacks</summary><div><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
+                                                    <details><summary>Example stacks</summary><div><a href="./dogfood.html">Incident tracker tutorial</a><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
                                                     <details><summary>Access rules</summary><div>
                                                       <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
                                                     </div></details>
@@ -71,7 +71,7 @@ if (!timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) {
   "collection":"issues",
   "recordId":"rec_...",
   "payload":{}
-}</code></pre><p>Delivery is at least once. A non-2xx response, timeout or connection failure retries with backoff. Inspect the corresponding job for attempts and bounded diagnostics; repair the receiver before retrying a dead job.</p><h2>Local development</h2><p>Private and loopback destinations are deliberately refused. Use a temporary public HTTPS tunnel or a deployed development receiver, never weaken SSRF protections to reach localhost.</p></article></div></main>
+}</code></pre><p>Delivery is at least once. A non-2xx response, timeout or connection failure retries with backoff. Inspect the corresponding job for attempts and bounded diagnostics; repair the receiver before retrying a dead job.</p><h2>Local development</h2><p>Private and loopback destinations are deliberately refused. Use a temporary public HTTPS tunnel or a deployed development receiver, never weaken SSRF protections to reach localhost.</p><h2>Dogfood path</h2><p>CP21 saves a disabled webhook without relying on live DNS, then retains delivery-time DNS resolution and private-address refusal as security invariants. <a class="text-link" href="./dogfood.html">See the automation exercise.</a></p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>
