@@ -1,9 +1,9 @@
 {
-  "name": "security",
-  "title": "Security",
+  "name": "personal-tokens",
+  "title": "Personal tokens",
   "template": "templates/template.html",
-  "content": "content/security.html",
-  "output": "public/security.html",
+  "content": "content/personal-tokens.html",
+  "output": "public/personal-tokens.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/security.html",
+    "content/personal-tokens.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

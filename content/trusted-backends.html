@@ -1,0 +1,2 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">CP10 · Implemented</div><h1>Trusted backends</h1><p class="lede">Any language that can send HTTP can use a scoped service credential.</p><pre><code>curl -H "Authorization: Bearer $TRESTLE_TOKEN" \
+  http://127.0.0.1:8090/api/v1/collections/issues/records</code></pre><p>Bearer identities do not use administrator cookies or CSRF tokens. Every use is scope checked, updates last-used metadata and records attributable audit activity.</p></article></div>

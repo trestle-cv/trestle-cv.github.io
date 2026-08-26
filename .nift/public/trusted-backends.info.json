@@ -1,9 +1,9 @@
 {
-  "name": "security",
-  "title": "Security",
+  "name": "trusted-backends",
+  "title": "Trusted backends",
   "template": "templates/template.html",
-  "content": "content/security.html",
-  "output": "public/security.html",
+  "content": "content/trusted-backends.html",
+  "output": "public/trusted-backends.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/security.html",
+    "content/trusted-backends.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

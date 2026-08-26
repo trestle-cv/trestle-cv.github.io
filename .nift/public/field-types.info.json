@@ -40,6 +40,7 @@
     "public/migrations.html",
     "public/native-auth.html",
     "public/operations.html",
+    "public/personal-tokens.html",
     "public/physical-schema.html",
     "public/product.html",
     "public/querying.html",
@@ -50,8 +51,11 @@
     "public/roadmap.html",
     "public/schema-changes.html",
     "public/schema-design.html",
+    "public/secret-management.html",
     "public/security.html",
+    "public/service-accounts.html",
     "public/sorting-pagination.html",
-    "public/sqlite.html"
+    "public/sqlite.html",
+    "public/trusted-backends.html"
   ]
 }
