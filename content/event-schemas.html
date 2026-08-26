@@ -1,0 +1,8 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Realtime contract</div><h1>Event schemas</h1><p class="lede">The envelope is stable and version-independent from the payload topic.</p><pre><code>{
+  "sequence": 42,
+  "occurredAt": "2026-08-27T...Z",
+  "topic": "record.updated",
+  "collection": "issues",
+  "recordId": "rec_...",
+  "payload": {"version": 3, "values": {}}
+}</code></pre><p>Current record topics are <code>record.created</code>, <code>record.updated</code> and <code>record.deleted</code>. Consumers must use the sequence for replay position and treat unknown payload fields as forward-compatible additions.</p><h2>Authorization</h2><p>Possessing an event ID is never authorization. Every new SSE connection re-enters the ordinary identity boundary. Applications should reconnect after credential rotation or policy changes.</p></article></div>

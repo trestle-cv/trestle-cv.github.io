@@ -1,9 +1,9 @@
 {
-  "name": "relation-expansion",
-  "title": "Relation expansion",
+  "name": "event-schemas",
+  "title": "Event schemas",
   "template": "templates/template.html",
-  "content": "content/relation-expansion.html",
-  "output": "public/relation-expansion.html",
+  "content": "content/event-schemas.html",
+  "output": "public/event-schemas.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/relation-expansion.html",
+    "content/event-schemas.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

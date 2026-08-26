@@ -1,9 +1,9 @@
 {
-  "name": "relation-expansion",
-  "title": "Relation expansion",
+  "name": "realtime",
+  "title": "Durable realtime",
   "template": "templates/template.html",
-  "content": "content/relation-expansion.html",
-  "output": "public/relation-expansion.html",
+  "content": "content/realtime.html",
+  "output": "public/realtime.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/relation-expansion.html",
+    "content/realtime.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
