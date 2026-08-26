@@ -1,9 +1,9 @@
 {
-  "name": "schema-changes",
-  "title": "Schema changes",
+  "name": "webhook-security",
+  "title": "Webhook security",
   "template": "templates/template.html",
-  "content": "content/schema-changes.html",
-  "output": "public/schema-changes.html",
+  "content": "content/webhook-security.html",
+  "output": "public/webhook-security.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/schema-changes.html",
+    "content/webhook-security.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

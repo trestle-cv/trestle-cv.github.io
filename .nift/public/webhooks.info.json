@@ -1,9 +1,9 @@
 {
-  "name": "schema-changes",
-  "title": "Schema changes",
+  "name": "webhooks",
+  "title": "Signed webhooks",
   "template": "templates/template.html",
-  "content": "content/schema-changes.html",
-  "output": "public/schema-changes.html",
+  "content": "content/webhooks.html",
+  "output": "public/webhooks.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/schema-changes.html",
+    "content/webhooks.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

@@ -75,6 +75,8 @@
     "public/service-accounts.html",
     "public/sorting-pagination.html",
     "public/sqlite.html",
-    "public/trusted-backends.html"
+    "public/trusted-backends.html",
+    "public/webhook-security.html",
+    "public/webhooks.html"
   ]
 }
