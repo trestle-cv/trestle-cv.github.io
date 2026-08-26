@@ -1,0 +1,21 @@
+{
+  "name": "dashboard",
+  "title": "Administration dashboard",
+  "template": "templates/template.html",
+  "content": "content/dashboard.html",
+  "output": "public/dashboard.html",
+  "minify": false,
+  "minify-version": 0,
+  "pagination": false,
+  "pagination-items-per-page": 0,
+  "pagination-template": "",
+  "pagination-separator": "",
+  "pagination-pages": 0,
+  "dependencies": [
+    "content/dashboard.html",
+    "templates/docs-nav.html",
+    "templates/head.html",
+    "templates/template.html"
+  ],
+  "reqs": []
+}
