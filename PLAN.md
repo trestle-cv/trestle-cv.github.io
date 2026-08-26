@@ -19,22 +19,22 @@ a visitor to decide whether Trestle fits their project.
 
 ## Initial information architecture
 
-1. Home — concise value proposition, current status, architecture shape, and
+1. Home - concise value proposition, current status, architecture shape, and
    links to source/docs.
-2. Product — collections, auth, files, realtime, administration, backups, and
+2. Product - collections, auth, files, realtime, administration, backups, and
    integrations, separated into available/planned states.
-3. Why Trestle — self-hosting, single-binary operation, SQLite-first clarity,
+3. Why Trestle - self-hosting, single-binary operation, SQLite-first clarity,
    vanilla dashboard, and language-neutral API; no competitor disparagement.
-4. Documentation — install, first project, collections, records, auth/rules,
+4. Documentation - install, first project, collections, records, auth/rules,
    files, realtime, service accounts, administration, backup/restore, and API.
-5. Architecture — transaction/event model, embedded frontend, storage adapters,
+5. Architecture - transaction/event model, embedded frontend, storage adapters,
    single-node boundary, and explicit non-goals.
-6. Functions — transactional outbox, AWS Lambda first, idempotency, scoped
+6. Functions - transactional outbox, AWS Lambda first, idempotency, scoped
    callbacks, operations, and deferred local runtime.
-7. Security — trust model and implemented controls, with a reporting path when
+7. Security - trust model and implemented controls, with a reporting path when
    one exists. Do not convert design intentions into claims.
-8. Roadmap — phase status linked to evidence and releases.
-9. Releases/install — supported archives, checksums, configuration, proxy/TLS,
+8. Roadmap - phase status linked to evidence and releases.
+9. Releases/install - supported archives, checksums, configuration, proxy/TLS,
    upgrades, and rollback once artifacts exist.
 
 ## Delivery checkpoints

@@ -351,6 +351,11 @@
       "name": "example-stacks",
       "title": "example-stacks",
       "template": "templates/template.html"
+    },
+    {
+      "name": "dogfood",
+      "title": "dogfood",
+      "template": "templates/template.html"
     }
   ]
 }

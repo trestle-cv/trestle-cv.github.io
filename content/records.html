@@ -5,4 +5,4 @@ PATCH  /api/v1/collections/:collection/records/:id
 DELETE /api/v1/collections/:collection/records/:id</code></pre><p>Each response includes a stable ID, positive version, created and updated timestamps, and a <code>values</code> object. Use <code>?fields=title,status</code> for value projection and <code>?limit=1..100</code> for bounded lists.</p><h2>Language-neutral HTTP</h2><pre><code>curl -X POST http://127.0.0.1:8090/api/v1/collections/issues/records \
   -H 'Content-Type: application/json' \
   -H 'Idempotency-Key: import-42' \
-  -d '{"values":{"title":"First issue"}}'</code></pre></article></div>
+  -d '{"values":{"title":"First issue"}}'</code></pre><h2>Dogfood path</h2><p>The CP21 incident tracker creates incidents through application-user rules and queries related timeline entries explicitly by <code>incident_id</code>. <a class="text-link" href="@pathto('dogfood')">Follow the complete incident tracker tutorial.</a></p></article></div>

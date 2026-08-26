@@ -1,9 +1,9 @@
 {
-  "name": "security",
-  "title": "Security",
+  "name": "dogfood",
+  "title": "dogfood",
   "template": "templates/template.html",
-  "content": "content/security.html",
-  "output": "public/security.html",
+  "content": "content/dogfood.html",
+  "output": "public/dogfood.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/security.html",
+    "content/dogfood.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

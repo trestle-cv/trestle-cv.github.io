@@ -293,7 +293,7 @@ https://nift.dev/docs.html
 
 When unfamiliar with the project, prioritise:
 
-1. Getting started — https://nift.dev/docs/getting-started.html
+1. Getting started - https://nift.dev/docs/getting-started.html
 2. the three-primitives/template-language material;
 3. paths and tracked files, especially `@pathto`;
 4. project structure;
