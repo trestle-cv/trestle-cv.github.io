@@ -40,6 +40,8 @@
     {"name":"s3-providers","title":"S3 provider examples","template":"templates/template.html"},
     {"name":"realtime","title":"Durable realtime","template":"templates/template.html"},
     {"name":"event-schemas","title":"Event schemas","template":"templates/template.html"},
+    {"name":"audit","title":"Audit","template":"templates/template.html"},
+    {"name":"observability","title":"Observability","template":"templates/template.html"},
     {"name":"field-types","title":"Field types","template":"templates/template.html"},
     {"name":"schema-design","title":"Schema design","template":"templates/template.html"},
     {"name":"schema-changes","title":"Schema changes","template":"templates/template.html"},
