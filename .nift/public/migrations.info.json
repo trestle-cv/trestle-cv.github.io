@@ -1,0 +1,21 @@
+{
+  "name": "migrations",
+  "title": "Database migrations",
+  "template": "templates/template.html",
+  "content": "content/migrations.html",
+  "output": "public/migrations.html",
+  "minify": false,
+  "minify-version": 0,
+  "pagination": false,
+  "pagination-items-per-page": 0,
+  "pagination-template": "",
+  "pagination-separator": "",
+  "pagination-pages": 0,
+  "dependencies": [
+    "content/migrations.html",
+    "templates/docs-nav.html",
+    "templates/head.html",
+    "templates/template.html"
+  ],
+  "reqs": []
+}
