@@ -1,9 +1,9 @@
 {
-  "name": "auth-collections",
-  "title": "Auth collections",
+  "name": "incident-desk",
+  "title": "Incident Desk",
   "template": "templates/template.html",
-  "content": "content/auth-collections.html",
-  "output": "public/auth-collections.html",
+  "content": "content/incident-desk.html",
+  "output": "public/incident-desk.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/auth-collections.html",
+    "content/incident-desk.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
@@ -24,6 +24,7 @@
     "public/api-reference.html",
     "public/architecture.html",
     "public/assets/css/style.css",
+    "public/assets/images/incident-desk.svg",
     "public/assets/js/script.js",
     "public/audit.html",
     "public/auth-collections.html",

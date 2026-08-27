@@ -22,9 +22,10 @@
     "public/assets/js/script.js",
     "public/contributing.html",
     "public/docs.html",
-    "public/functions.html",
+    "public/incident-desk.html",
     "public/index.html",
     "public/product.html",
+    "public/quickstart.html",
     "public/roadmap.html",
     "public/security.html"
   ]

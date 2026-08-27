@@ -1,9 +1,9 @@
 {
-  "name": "auth-collections",
-  "title": "Auth collections",
+  "name": "quickstart",
+  "title": "Five-minute quickstart",
   "template": "templates/template.html",
-  "content": "content/auth-collections.html",
-  "output": "public/auth-collections.html",
+  "content": "content/quickstart.html",
+  "output": "public/quickstart.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/auth-collections.html",
+    "content/quickstart.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

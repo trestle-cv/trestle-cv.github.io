@@ -416,6 +416,22 @@
       "name": "stability",
       "title": "Stability",
       "template": "templates/template.html"
+    },
+    {
+      "name": "quickstart",
+      "title": "Five-minute quickstart",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "incident-desk",
+      "title": "Incident Desk",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "assets/images/incident-desk",
+      "title": "Incident Desk product preview",
+      "content-ext": ".svg",
+      "output-ext": ".svg"
     }
   ]
 }

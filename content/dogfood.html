@@ -3,7 +3,7 @@
   <article class="prose">
     <div class="eyebrow">CP21 evidence</div>
     <h1>What whole-product dogfooding taught us</h1>
-    <p class="lede">CP21 used a temporary incident-management client to exercise Trestle exclusively through its published HTTP interfaces. The harness was removed after the checkpoint because it was validation machinery, not a supported example application.</p>
+    <p class="lede">CP21 used a temporary incident-management client to exercise Trestle exclusively through its published HTTP interfaces. Its findings now inform Incident Desk, a separate supported example repository with a proper product surface and trust-boundary documentation.</p>
     <h2>Product paths exercised</h2>
     <ul>
       <li>First-run administration, application users, rotating sessions and collection access rules.</li>
@@ -21,5 +21,6 @@
       <li>Provider credentials remain operator configuration and were never bundled into the dogfood client.</li>
     </ul>
     <div class="callout"><strong>Repository boundary</strong><p>Future example applications should live in their own repositories and meet their own product, documentation and release quality bar. Trestle's core repository remains focused on the platform.</p></div>
+    <p><a class="button" href="@pathto('incident-desk')">Explore Incident Desk</a></p>
   </article>
 </div>
