@@ -15,40 +15,63 @@
 			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
 			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="./product.html">Product</a><a href="./docs.html">Docs</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a></nav>
 		</header>
-		<main id="main"><div class="docs-layout"><aside><nav class="docs-nav" aria-label="Documentation">
-                                                    <strong>Explore</strong>
-                                                    <a class="docs-home" href="./docs.html">Documentation</a>
-                                                    <details><summary>Data model</summary><div>
-                                                      <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
-                                                      <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
-                                                    </div></details>
-                                                    <details><summary>Queries</summary><div>
-                                                      <a href="./querying.html">Querying</a><a href="./filter-language.html">Filter language</a><a href="./sorting-pagination.html">Sorting &amp; pagination</a><a href="./relation-expansion.html">Relation expansion</a>
-                                                    </div></details>
-                                                    <details><summary>Authentication</summary><div>
-                                                      <a href="./authentication.html">Authentication</a><a href="./auth-collections.html">Auth collections</a><a href="./browser-sessions.html">Browser sessions</a><a href="./native-auth.html">Native clients</a><a href="./recovery.html">Recovery</a>
-                                                      <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
-                                                    </div></details>
-                                                    <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">Reference clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
-                                                    <details><summary>Example stacks</summary><div><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
-                                                    <details><summary>Access rules</summary><div>
-                                                      <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
-                                                    </div></details>
-                                                    <details><summary>Files</summary><div>
-                                                      <a href="./files.html">Files overview</a><a href="./file-transfer.html">Upload &amp; download</a><a href="./file-rules.html">File authorization</a><a href="./local-storage.html">Local storage</a><a href="./s3-storage.html">S3-compatible storage</a><a href="./s3-providers.html">S3 providers</a><a href="./file-limits.html">File limits</a><a href="./file-troubleshooting.html">Troubleshooting</a>
-                                                    </div></details>
-                                                    <details><summary>Realtime</summary><div><a href="./realtime.html">Realtime overview</a><a href="./event-schemas.html">Event schemas</a></div></details>
-                                                    <details><summary>Automation</summary><div><a href="./jobs.html">Durable jobs</a><a href="./job-delivery.html">Delivery &amp; recovery</a><a href="./webhooks.html">Webhooks</a><a href="./webhook-security.html">Webhook security</a><a href="./aws-lambda.html">AWS Lambda</a><a href="./function-envelope.html">Function envelope</a></div></details>
-                                                    <details><summary>Operations</summary><div>
-                                                      <a href="./backups.html">Backups</a><a href="./restore.html">Restore</a><a href="./export-import.html">Export &amp; import</a><a href="./configuration.html">Configuration</a><a href="./operations.html">Health &amp; operations</a><a href="./audit.html">Audit</a><a href="./observability.html">Observability</a><a href="./sqlite.html">SQLite</a><a href="./migrations.html">Migrations</a><a href="./dashboard.html">Dashboard</a><a href="./first-run.html">First-run setup</a><a href="./admin-security.html">Admin security</a>
-                                                    </div></details>
-                                                    <details><summary>Deployment</summary><div>
-                                                      <a href="./install.html">Install</a><a href="./releases.html">Binary releases</a><a href="./caddy.html">HTTPS with Caddy</a><a href="./nginx.html">HTTPS with nginx</a><a href="./system-service.html">System service</a><a href="./windows.html">Windows</a><a href="./containers.html">Containers</a><a href="./updating.html">Updating</a><a href="./rollback.html">Rollback</a><a href="./deployment-troubleshooting.html">Troubleshooting</a>
-                                                    </div></details>
-                                                    <details><summary>Project</summary><div>
-                                                      <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
-                                                    </div></details>
-                                                  </nav></aside><article class="prose"><div class="eyebrow">Reliability · CP23 evidence</div><h1>Battle tested, with the boundaries visible.</h1><p class="lede">Trestle treats hardening as an attempt to falsify explicit guarantees. This page records what each campaign attacked, what passed, and what remains outside the evidence.</p><div class="callout"><strong>Evidence, not perfection</strong><p>A green campaign establishes behavior for the workloads and failure classes exercised. It is not a security certification and does not manufacture years of field exposure.</p></div><h2>Evidence status</h2><table><thead><tr><th>Campaign</th><th>Status</th><th>Evidence</th></tr></thead><tbody><tr><td>23.1 Contracts and threat model</td><td>Complete</td><td>Trust boundaries, proxy spoof tests, redacted diagnostics, six release targets, checksum-verified update and rollback.</td></tr><tr><td>23.2 Input fuzzing</td><td>Pending</td><td>Not yet claimed.</td></tr><tr><td>23.3 Concurrency and failure injection</td><td>Pending</td><td>Not yet claimed.</td></tr><tr><td>23.4 Migration and upgrade matrix</td><td>Pending</td><td>Not yet claimed.</td></tr><tr><td>23.5 Recovery drills</td><td>Pending</td><td>Not yet claimed.</td></tr></tbody></table><h2>23.1 - Baseline contracts</h2><p>The initial campaign mapped public HTTP, administrator sessions, bearer identities, SQLite, object storage, automation egress, release downloads and backup archives as separate trust boundaries. Tests prove that untrusted forwarded headers do not become trusted client identity, support bundles exclude secrets, and release replacement verifies the selected archive checksum before atomic installation.</p><p>The updater preserves one previous binary for explicit rollback and does not read or write Trestle instance data. This establishes release-file behavior, not database downgrade compatibility; restoration and rollback drills belong to 23.5.</p><h2>How to read this page</h2><p>Trestle separates input, concurrency, migration, recovery, security, load, interface and field evidence. A result in one category does not silently become a claim in another. Findings become retained regression tests, and this page changes only when the corresponding evidence has run.</p></article></div></main>
+		<main id="main"><div class="docs-layout">
+                  <aside><nav class="docs-nav" aria-label="Documentation">
+                           <strong>Explore</strong>
+                           <a class="docs-home" href="./docs.html">Documentation</a>
+                           <details><summary>Data model</summary><div>
+                             <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                             <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
+                           </div></details>
+                           <details><summary>Queries</summary><div>
+                             <a href="./querying.html">Querying</a><a href="./filter-language.html">Filter language</a><a href="./sorting-pagination.html">Sorting &amp; pagination</a><a href="./relation-expansion.html">Relation expansion</a>
+                           </div></details>
+                           <details><summary>Authentication</summary><div>
+                             <a href="./authentication.html">Authentication</a><a href="./auth-collections.html">Auth collections</a><a href="./browser-sessions.html">Browser sessions</a><a href="./native-auth.html">Native clients</a><a href="./recovery.html">Recovery</a>
+                             <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
+                           </div></details>
+                           <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">Reference clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
+                           <details><summary>Example stacks</summary><div><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
+                           <details><summary>Access rules</summary><div>
+                             <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
+                           </div></details>
+                           <details><summary>Files</summary><div>
+                             <a href="./files.html">Files overview</a><a href="./file-transfer.html">Upload &amp; download</a><a href="./file-rules.html">File authorization</a><a href="./local-storage.html">Local storage</a><a href="./s3-storage.html">S3-compatible storage</a><a href="./s3-providers.html">S3 providers</a><a href="./file-limits.html">File limits</a><a href="./file-troubleshooting.html">Troubleshooting</a>
+                           </div></details>
+                           <details><summary>Realtime</summary><div><a href="./realtime.html">Realtime overview</a><a href="./event-schemas.html">Event schemas</a></div></details>
+                           <details><summary>Automation</summary><div><a href="./jobs.html">Durable jobs</a><a href="./job-delivery.html">Delivery &amp; recovery</a><a href="./webhooks.html">Webhooks</a><a href="./webhook-security.html">Webhook security</a><a href="./aws-lambda.html">AWS Lambda</a><a href="./function-envelope.html">Function envelope</a></div></details>
+                           <details><summary>Operations</summary><div>
+                             <a href="./backups.html">Backups</a><a href="./restore.html">Restore</a><a href="./export-import.html">Export &amp; import</a><a href="./configuration.html">Configuration</a><a href="./operations.html">Health &amp; operations</a><a href="./audit.html">Audit</a><a href="./observability.html">Observability</a><a href="./sqlite.html">SQLite</a><a href="./migrations.html">Migrations</a><a href="./dashboard.html">Dashboard</a><a href="./first-run.html">First-run setup</a><a href="./admin-security.html">Admin security</a>
+                           </div></details>
+                           <details><summary>Deployment</summary><div>
+                             <a href="./install.html">Install</a><a href="./releases.html">Binary releases</a><a href="./caddy.html">HTTPS with Caddy</a><a href="./nginx.html">HTTPS with nginx</a><a href="./system-service.html">System service</a><a href="./windows.html">Windows</a><a href="./containers.html">Containers</a><a href="./updating.html">Updating</a><a href="./rollback.html">Rollback</a><a href="./deployment-troubleshooting.html">Troubleshooting</a>
+                           </div></details>
+                           <details><summary>Project</summary><div>
+                             <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
+                           </div></details>
+                         </nav></aside>
+                  <article class="prose">
+                  <div class="eyebrow">Reliability · CP23 evidence</div>
+                  <h1>Battle tested, with the boundaries visible.</h1>
+                  <p class="lede">Trestle treats hardening as an attempt to falsify explicit guarantees. This page records what each campaign attacked, what passed, and what remains outside the evidence.</p>
+                  <div class="callout"><strong>Evidence, not perfection</strong><p>A green campaign establishes behavior for the workloads and failure classes exercised. It is not a security certification and does not manufacture years of field exposure.</p></div>
+                  <h2>Evidence status</h2>
+                  <table><thead><tr><th>Campaign</th><th>Status</th><th>Evidence</th></tr></thead><tbody>
+                  <tr><td>23.1 Contracts and threat model</td><td>Complete</td><td>Trust boundaries, proxy spoof tests, redacted diagnostics, six release targets, checksum-verified update and rollback.</td></tr>
+                  <tr><td>23.2 Input fuzzing</td><td>Complete</td><td>348,376 generated executions across filters, rules, webhook URLs and Lambda targets without panic or invariant failure.</td></tr>
+                  <tr><td>23.3 Concurrency and failure injection</td><td>Pending</td><td>Not yet claimed.</td></tr>
+                  <tr><td>23.4 Migration and upgrade matrix</td><td>Pending</td><td>Not yet claimed.</td></tr>
+                  <tr><td>23.5 Recovery drills</td><td>Pending</td><td>Not yet claimed.</td></tr>
+                  </tbody></table>
+                  <h2>23.1 - Baseline contracts</h2>
+                  <p>The initial campaign mapped public HTTP, administrator sessions, bearer identities, SQLite, object storage, automation egress, release downloads and backup archives as separate trust boundaries. Tests prove that untrusted forwarded headers do not become trusted client identity, support bundles exclude secrets, and release replacement verifies the selected archive checksum before atomic installation.</p>
+                  <p>The updater preserves one previous binary for explicit rollback and does not read or write Trestle instance data. This establishes release-file behavior, not database downgrade compatibility; restoration and rollback drills belong to 23.5.</p>
+                  <h2>23.2 - Adversarial input mutation</h2>
+                  <p>Four retained Go fuzz targets attack the typed filter parser/compiler, access-rule validator/evaluator, webhook target URLs and Lambda target validation. The campaign included valid seeds, injection-shaped values, private and credential-bearing URLs, malformed ARNs, oversized expressions and generated mutations.</p>
+                  <p>Across 348,376 executions, accepted filters retained one SQL placeholder per bound argument, invalid rules never authorized, accepted webhook URLs retained the HTTPS/no-credentials contract, and target validators returned without panic. This is scoped mutation evidence, not proof over every input and not an authorization penetration test.</p>
+                  <h2>How to read this page</h2>
+                  <p>Trestle separates input, concurrency, migration, recovery, security, load, interface and field evidence. A result in one category does not silently become a claim in another. Findings become retained regression tests, and this page changes only when the corresponding evidence has run.</p>
+                  </article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>
