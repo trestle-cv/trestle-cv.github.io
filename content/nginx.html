@@ -1,0 +1,10 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Reverse proxy</div><h1>HTTPS with nginx</h1><p class="lede">Terminate TLS in nginx, bind Trestle to loopback and declare only nginx's immediate address as trusted.</p><pre><code>location / {
+  proxy_pass http://127.0.0.1:8090;
+  proxy_http_version 1.1;
+  proxy_set_header Host $host;
+  proxy_set_header X-Forwarded-Proto $scheme;
+  proxy_set_header X-Forwarded-For $remote_addr;
+  proxy_buffering off;
+  client_max_body_size 257m;
+  proxy_read_timeout 1h;
+}</code></pre><pre><code>TRESTLE_TRUSTED_PROXIES=127.0.0.1/32</code></pre><h2>Why these directives matter</h2><ul><li>Replacing <code>X-Forwarded-For</code> prevents a direct client from supplying a fake chain.</li><li><code>X-Forwarded-Proto</code> allows Trestle to issue Secure administrator cookies only through the trusted proxy.</li><li>Disabled buffering and the long read timeout support realtime SSE.</li><li>The upload ceiling must cover multipart overhead; Trestle still applies its own quota and endpoint limits.</li><li>Preserved <code>Host</code> keeps origin enforcement correct.</li></ul><p>Run health, login, upload, SSE and webhook-delivery smoke tests after every nginx change.</p></article></div>

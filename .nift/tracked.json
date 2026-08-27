@@ -356,6 +356,56 @@
       "name": "dogfood",
       "title": "dogfood",
       "template": "templates/template.html"
+    },
+    {
+      "name": "install",
+      "title": "install",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "releases",
+      "title": "releases",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "caddy",
+      "title": "caddy",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "nginx",
+      "title": "nginx",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "system-service",
+      "title": "system-service",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "windows",
+      "title": "windows",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "containers",
+      "title": "containers",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "updating",
+      "title": "updating",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "rollback",
+      "title": "rollback",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "deployment-troubleshooting",
+      "title": "deployment-troubleshooting",
+      "template": "templates/template.html"
     }
   ]
 }
