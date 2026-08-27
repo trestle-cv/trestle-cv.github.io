@@ -93,6 +93,7 @@
     "public/service-accounts.html",
     "public/sorting-pagination.html",
     "public/sqlite.html",
+    "public/stability.html",
     "public/system-service.html",
     "public/trusted-backends.html",
     "public/updating.html",

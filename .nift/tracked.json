@@ -411,6 +411,11 @@
       "name": "battle-tested",
       "title": "battle-tested",
       "template": "templates/template.html"
+    },
+    {
+      "name": "stability",
+      "title": "Stability",
+      "template": "templates/template.html"
     }
   ]
 }

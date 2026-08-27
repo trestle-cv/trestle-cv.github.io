@@ -1,9 +1,9 @@
 {
-  "name": "records",
-  "title": "Records",
+  "name": "stability",
+  "title": "Stability",
   "template": "templates/template.html",
-  "content": "content/records.html",
-  "output": "public/records.html",
+  "content": "content/stability.html",
+  "output": "public/stability.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/records.html",
+    "content/stability.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
@@ -41,7 +41,6 @@
     "public/dashboard.html",
     "public/deployment-troubleshooting.html",
     "public/docs.html",
-    "public/dogfood.html",
     "public/errors.html",
     "public/event-schemas.html",
     "public/example-stacks.html",

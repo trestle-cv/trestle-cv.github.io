@@ -16,6 +16,7 @@
 <tr><td>23.7 Load and resource bounds</td><td>Complete</td><td>4,800 concurrent reads, explicit page/batch rejection and ten TCP slow-header trials; bounded responses and no retained goroutines.</td></tr>
 <tr><td>23.8 Browser quality</td><td>Complete</td><td>Retained accessibility, keyboard, responsive, strict-CSP and embedded asset-budget checks.</td></tr>
 <tr><td>23.9 Contract truth</td><td>Complete</td><td>Production configuration, module checksums, stale claims and all 80 generated documentation pages audited.</td></tr>
+<tr><td>23.10 Release candidate</td><td>Complete</td><td>Complete retained matrix, six verified archives, install, update, rollback and clean quickstart.</td></tr>
 </tbody></table>
 <h2>23.1 - Baseline contracts</h2>
 <p>The initial campaign mapped public HTTP, administrator sessions, bearer identities, SQLite, object storage, automation egress, release downloads and backup archives as separate trust boundaries. Tests prove that untrusted forwarded headers do not become trusted client identity, support bundles exclude secrets, and release replacement verifies the selected archive checksum before atomic installation.</p>
@@ -44,6 +45,9 @@
 <h2>23.9 - Documentation must match the executable</h2>
 <p>The retained contract audit extracts every production <code>TRESTLE_*</code> configuration key from source and requires it to appear in the README or public documentation. It rejects stale hardening status, prohibited comparison wording and em dashes, verifies the recorded Go module graph, and resolves local links across all 80 generated HTML pages and 84 public files.</p>
 <p>The audit corrected stale pre-hardening status and upgrade guidance before this checkpoint closed. It proves consistency with this commit, not that a future implementation change can skip review; the script exists so those changes fail visibly.</p>
+<h2>23.10 - One release-candidate gate</h2>
+<p>The final gate ran normal and race-enabled Go tests, vet, browser and contract audits, migration and recovery drills, authorization abuse, bounded load, concurrency stress, four fuzz targets, six cross-platform packages, checksum and archive verification, user installation, executable update and rollback, and a clean local launch.</p>
+<p>Every available gate passed. Docker was unavailable in the execution environment, so trusted-proxy unit tests ran ten times instead of repeating the containerized Caddy/nginx smoke test from CP22. Completing this matrix creates a release candidate; it is not a stable tag, independent audit or substitute for field history.</p>
 <h2>How to read this page</h2>
 <p>Trestle separates input, concurrency, migration, recovery, security, load, interface and field evidence. A result in one category does not silently become a claim in another. Findings become retained regression tests, and this page changes only when the corresponding evidence has run.</p>
 </article></div>
