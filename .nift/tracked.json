@@ -406,6 +406,11 @@
       "name": "deployment-troubleshooting",
       "title": "deployment-troubleshooting",
       "template": "templates/template.html"
+    },
+    {
+      "name": "battle-tested",
+      "title": "battle-tested",
+      "template": "templates/template.html"
     }
   ]
 }

@@ -1,9 +1,9 @@
 {
-  "name": "reference-clients",
-  "title": "Reference clients",
+  "name": "battle-tested",
+  "title": "battle-tested",
   "template": "templates/template.html",
-  "content": "content/reference-clients.html",
-  "output": "public/reference-clients.html",
+  "content": "content/battle-tested.html",
+  "output": "public/battle-tested.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/reference-clients.html",
+    "content/battle-tested.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
