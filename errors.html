@@ -54,7 +54,7 @@
   "message":"The request could not be applied.",
   "requestId":"req_2f",
   "fields":[{"path":"values.title","code":"required"}]
-}}</code></pre><h2>Core statuses</h2><ul><li><code>400</code> malformed input or invalid limits.</li><li><code>401/403</code> missing identity or insufficient authority.</li><li><code>404</code> collection or record not found.</li><li><code>409</code> uniqueness, schema, or idempotency conflict.</li><li><code>412/428</code> stale or missing optimistic version.</li><li><code>422</code> field validation failure.</li></ul><p>Use the response's request ID to correlate the failure with structured server logs.</p></article></div></main>
+}}</code></pre><h2>Core statuses</h2><ul><li><code>400</code> malformed input or invalid limits.</li><li><code>401/403</code> missing identity or insufficient authority.</li><li><code>404</code> collection or record not found.</li><li><code>409</code> uniqueness, schema, or idempotency conflict.</li><li><code>412/428</code> stale or missing optimistic version.</li><li><code>422</code> field validation failure.</li></ul><p>Use the response's request ID to correlate the failure with structured server logs.</p><h2>Provider storage</h2><p>Constraint failures are normalized into the same stable error envelopes on both providers: uniqueness, foreign-key, check and serialization errors map to consistent codes without leaking SQL or connection details.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

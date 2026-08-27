@@ -59,7 +59,7 @@
   fields: 'title,status,priority',
   limit: '25'
 });
-const page = await trestle.get(`/api/v1/collections/issues/records?${params}`);</code></pre><h2>Next page</h2><p>When <code>nextCursor</code> is present, pass it unchanged as <code>cursor</code>. Do not decode it or combine it with a different filter/sort contract. List pages are capped at 100 records; use repeated cursor requests rather than asking for an unbounded response.</p></article></div></main>
+const page = await trestle.get(`/api/v1/collections/issues/records?${params}`);</code></pre><h2>Next page</h2><p>When <code>nextCursor</code> is present, pass it unchanged as <code>cursor</code>. Do not decode it or combine it with a different filter/sort contract. List pages are capped at 100 records; use repeated cursor requests rather than asking for an unbounded response.</p><h2>Provider storage</h2><p>Filter expressions compile to parameterized predicates whose boolean, numeric and text values are bound with each provider's native types. The same filter string produces the same ordering and membership on SQLite and PostgreSQL; user input never reaches SQL as text.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>

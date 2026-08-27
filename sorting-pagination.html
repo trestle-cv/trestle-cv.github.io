@@ -52,7 +52,7 @@
                                                   </nav></aside><article class="prose"><div class="eyebrow">Queries</div><h1>Sorting and pagination</h1><p class="lede">Every page has a deterministic order and a maximum of 100 records.</p><p>Use <code>sort=field</code> for ascending order or <code>sort=-field</code> for descending order. Trestle appends record ID as a stable tie-breaker. The default is ascending ID.</p><h2>Opaque cursor</h2><pre><code>GET /api/v1/collections/issues/records?limit=25
 → {"items":[...],"nextCursor":"cmVjXy4uLg"}
 
-GET /api/v1/collections/issues/records?limit=25&amp;cursor=cmVjXy4uLg</code></pre><p>The first cursor contract is intentionally restricted to ascending ID order. Invalid, stale or incompatible cursors fail explicitly rather than silently changing page semantics.</p></article></div></main>
+GET /api/v1/collections/issues/records?limit=25&amp;cursor=cmVjXy4uLg</code></pre><p>The first cursor contract is intentionally restricted to ascending ID order. Invalid, stale or incompatible cursors fail explicitly rather than silently changing page semantics.</p><h2>Provider storage</h2><p>Sorting, cursor pagination and limit bounds are provider-neutral: opaque cursors encode the last ID, and page semantics are identical on SQLite and PostgreSQL. The cursor contract is deliberately restricted to ascending ID order.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
 	</body>
