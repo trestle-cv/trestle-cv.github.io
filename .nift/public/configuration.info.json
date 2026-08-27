@@ -39,6 +39,7 @@
     "public/containers.html",
     "public/contributing.html",
     "public/dashboard.html",
+    "public/database-architecture.html",
     "public/database-support.html",
     "public/deployment-troubleshooting.html",
     "public/docs.html",

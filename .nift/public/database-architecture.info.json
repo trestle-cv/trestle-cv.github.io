@@ -1,9 +1,9 @@
 {
-  "name": "filter-language",
-  "title": "Filter language",
+  "name": "database-architecture",
+  "title": "database-architecture",
   "template": "templates/template.html",
-  "content": "content/filter-language.html",
-  "output": "public/filter-language.html",
+  "content": "content/database-architecture.html",
+  "output": "public/database-architecture.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/filter-language.html",
+    "content/database-architecture.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

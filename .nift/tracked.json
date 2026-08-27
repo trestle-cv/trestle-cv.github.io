@@ -442,6 +442,11 @@
       "name": "postgres-configuration",
       "title": "postgres-configuration",
       "template": "templates/template.html"
+    },
+    {
+      "name": "database-architecture",
+      "title": "database-architecture",
+      "template": "templates/template.html"
     }
   ]
 }
