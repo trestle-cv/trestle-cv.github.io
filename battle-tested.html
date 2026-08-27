@@ -60,7 +60,7 @@
                   <tr><td>23.1 Contracts and threat model</td><td>Complete</td><td>Trust boundaries, proxy spoof tests, redacted diagnostics, six release targets, checksum-verified update and rollback.</td></tr>
                   <tr><td>23.2 Input fuzzing</td><td>Complete</td><td>348,376 generated executions across filters, rules, webhook URLs and Lambda targets without panic or invariant failure.</td></tr>
                   <tr><td>23.3 Concurrency and failure injection</td><td>Complete</td><td>64 contended jobs executed once; expired leases recovered; 20 race-enabled repetitions passed across queue, store and record packages.</td></tr>
-                  <tr><td>23.4 Migration and upgrade matrix</td><td>Pending</td><td>Not yet claimed.</td></tr>
+                  <tr><td>23.4 Migration and upgrade matrix</td><td>Complete</td><td>All 14 schema starting points upgraded five times with preserved data, complete history and SQLite integrity; injected failure rolled back.</td></tr>
                   <tr><td>23.5 Recovery drills</td><td>Pending</td><td>Not yet claimed.</td></tr>
                   </tbody></table>
                   <h2>23.1 - Baseline contracts</h2>
@@ -72,6 +72,9 @@
                   <h2>23.3 - Concurrency, interruption and restart</h2>
                   <p>Eight workers contended for 64 durable SQLite jobs. Every job reached <code>succeeded</code> with exactly one recorded attempt and one executor call. A separately seeded <code>running</code> job with an expired lease modeled process interruption; the next worker returned it to pending, claimed it and completed its second attempt.</p>
                   <p>The queue, store and full record workflow then ran 20 times under Go's race detector. This attacks duplicate claims, shared handler state, SQLite serialization, optimistic mutations and restart recovery under the schedulers exercised here. It cannot enumerate every interleaving, kernel, filesystem or power-loss boundary.</p>
+                  <h2>23.4 - Every retained schema boundary</h2>
+                  <p>The migration matrix constructs a database at every retained schema state from version 0 through version 13, seeds durable data wherever the system table exists, and reopens it through Trestle's production initializer. Each path must reach the current version with all 13 migration records, the probe unchanged and <code>PRAGMA integrity_check</code> reporting <code>ok</code>.</p>
+                  <p>All 14 paths passed five repetitions. A deliberately invalid version-7 migration starting from version 6 created a table and then failed inside one transaction; the table disappeared, the database remained at version 6 and prior data survived. A version-999 database remains explicitly refused. These are schema-fixture results; final release-binary and cross-platform upgrade compatibility remains part of the complete CP23 matrix.</p>
                   <h2>How to read this page</h2>
                   <p>Trestle separates input, concurrency, migration, recovery, security, load, interface and field evidence. A result in one category does not silently become a claim in another. Findings become retained regression tests, and this page changes only when the corresponding evidence has run.</p>
                   </article></div></main>
