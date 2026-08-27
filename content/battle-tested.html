@@ -12,6 +12,7 @@
 <tr><td>23.3 Concurrency and failure injection</td><td>Complete</td><td>64 contended jobs executed once; expired leases recovered; 20 race-enabled repetitions passed across queue, store and record packages.</td></tr>
 <tr><td>23.4 Migration and upgrade matrix</td><td>Complete</td><td>All 14 schema starting points upgraded five times with preserved data, complete history and SQLite integrity; injected failure rolled back.</td></tr>
 <tr><td>23.5 Recovery drills</td><td>Complete</td><td>Five database/file round trips plus corrupt, truncated, incomplete, future-schema, traversal and occupied-target failures; no partial target published.</td></tr>
+<tr><td>23.6 Authorization abuse</td><td>Complete</td><td>Cross-owner and token/scope confusion matrix repeated ten times plus race suites; one individual row-rule bypass found and repaired.</td></tr>
 </tbody></table>
 <h2>23.1 - Baseline contracts</h2>
 <p>The initial campaign mapped public HTTP, administrator sessions, bearer identities, SQLite, object storage, automation egress, release downloads and backup archives as separate trust boundaries. Tests prove that untrusted forwarded headers do not become trusted client identity, support bundles exclude secrets, and release replacement verifies the selected archive checksum before atomic installation.</p>
@@ -28,6 +29,9 @@
 <h2>23.5 - Restore what the backup claims to protect</h2>
 <p>A real authenticated backup containing a seeded SQLite row and local file object was restored into a new owner-only data directory five times. Trestle reopened the restored database through its production initializer, verified SQLite integrity, and recovered both probes byte-for-byte.</p>
 <p>The restore boundary then received traversal and backslash paths, a missing database, a corrupt database, a future schema, a truncated ZIP and an already occupied target. Every case failed before the staged directory was atomically published. The release updater's update -> rollback drill separately restored the prior executable without opening instance data. Local objects are covered; S3 recovery remains the operator's provider-level backup/versioning responsibility.</p>
+<h2>23.6 - Attack authority across interfaces</h2>
+<p>The composed abuse matrix creates two application users, scoped service identities, independent owner rows and per-operation collection rules. It attacks filtered lists, direct record lookup, cross-owner update/delete, forged ownership on create, refresh-token use as an access token, read-scope mutation and browser-versus-bearer mutation semantics.</p>
+<p>The first run found a real authorization defect: an individual owner rule was evaluated but a false result did not stop view/update/delete when the record ID was known. The shared decision point now returns the same 404 as an absent record while list rules retain SQL filtering. Ten repaired matrix repetitions and the race-enabled identity, rules, records, files and server suites passed. This is an engineering abuse corpus, not an independent penetration test.</p>
 <h2>How to read this page</h2>
 <p>Trestle separates input, concurrency, migration, recovery, security, load, interface and field evidence. A result in one category does not silently become a claim in another. Findings become retained regression tests, and this page changes only when the corresponding evidence has run.</p>
 </article></div>
