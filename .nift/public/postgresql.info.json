@@ -1,9 +1,9 @@
 {
-  "name": "configuration",
-  "title": "Configuration",
+  "name": "postgresql",
+  "title": "postgresql",
   "template": "templates/template.html",
-  "content": "content/configuration.html",
-  "output": "public/configuration.html",
+  "content": "content/postgresql.html",
+  "output": "public/postgresql.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/configuration.html",
+    "content/postgresql.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

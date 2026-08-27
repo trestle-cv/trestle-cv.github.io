@@ -447,6 +447,11 @@
       "name": "database-architecture",
       "title": "database-architecture",
       "template": "templates/template.html"
+    },
+    {
+      "name": "postgresql",
+      "title": "postgresql",
+      "template": "templates/template.html"
     }
   ]
 }
