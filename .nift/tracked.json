@@ -432,6 +432,11 @@
       "title": "Incident Desk product preview",
       "content-ext": ".svg",
       "output-ext": ".svg"
+    },
+    {
+      "name": "database-support",
+      "title": "database-support",
+      "template": "templates/template.html"
     }
   ]
 }

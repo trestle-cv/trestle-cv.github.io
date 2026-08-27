@@ -1,9 +1,9 @@
 {
-  "name": "reference-clients",
-  "title": "Reference clients",
+  "name": "database-support",
+  "title": "database-support",
   "template": "templates/template.html",
-  "content": "content/reference-clients.html",
-  "output": "public/reference-clients.html",
+  "content": "content/database-support.html",
+  "output": "public/database-support.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/reference-clients.html",
+    "content/database-support.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
