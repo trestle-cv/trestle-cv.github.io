@@ -69,6 +69,7 @@
     "public/operations.html",
     "public/personal-tokens.html",
     "public/physical-schema.html",
+    "public/postgres-configuration.html",
     "public/product.html",
     "public/querying.html",
     "public/quickstart.html",

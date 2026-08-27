@@ -1,9 +1,9 @@
 {
-  "name": "rule-language",
-  "title": "Rule language",
+  "name": "postgres-configuration",
+  "title": "postgres-configuration",
   "template": "templates/template.html",
-  "content": "content/rule-language.html",
-  "output": "public/rule-language.html",
+  "content": "content/postgres-configuration.html",
+  "output": "public/postgres-configuration.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/rule-language.html",
+    "content/postgres-configuration.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

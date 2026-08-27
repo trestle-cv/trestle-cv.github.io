@@ -437,6 +437,11 @@
       "name": "database-support",
       "title": "database-support",
       "template": "templates/template.html"
+    },
+    {
+      "name": "postgres-configuration",
+      "title": "postgres-configuration",
+      "template": "templates/template.html"
     }
   ]
 }
