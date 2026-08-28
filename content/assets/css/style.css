@@ -5,3 +5,14 @@
 .nav-toggle,.docs-nav-toggle{position:relative;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:10px;background:transparent}.nav-toggle span,.docs-nav-toggle span{position:absolute;left:11px;right:11px;height:1px;background:var(--text);transition:transform .16s ease,top .16s ease}.nav-toggle span:first-child,.docs-nav-toggle span:first-child{top:16px}.nav-toggle span:last-child,.docs-nav-toggle span:last-child{top:26px}.nav-toggle[aria-expanded="true"] span:first-child,.docs-nav-toggle[aria-expanded="true"] span:first-child{top:21px;transform:rotate(45deg)}.nav-toggle[aria-expanded="true"] span:last-child,.docs-nav-toggle[aria-expanded="true"] span:last-child{top:21px;transform:rotate(-45deg)}.docs-nav-toggle{display:none;margin:0 0 18px auto}@media(max-width:760px){.site-header{padding-inline:20px}.site-nav{top:64px}.docs-nav-toggle{display:block}.docs-nav{display:none;padding-bottom:1.5rem;border-bottom:1px solid var(--line)}.docs-nav.mobile-open{display:grid}.docs-navigation{width:100%}}
 
 @input("content/assets/css/docs-nav.css")
+
+@media(max-width:760px){
+	.docs-layout{display:block}
+	.docs-layout>aside{position:fixed;inset:72px 0 0;z-index:9;display:none;max-height:none;overflow-y:auto;padding:72px 24px 48px;background:var(--bg)}
+	body.docs-open{overflow:hidden}
+	body.docs-open .docs-layout>aside{display:block}
+	.docs-nav{display:none!important;padding:0;border:0}
+	.docs-nav.mobile-open{display:grid!important}
+	body.docs-open .docs-layout>.prose{display:none}
+	.docs-nav-toggle{position:fixed;z-index:11;top:86px;right:20px;margin:0}
+}

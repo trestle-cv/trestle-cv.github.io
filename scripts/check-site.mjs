@@ -20,4 +20,11 @@ for(const file of html){
   }
 }
 if(missing.length)throw new Error(`missing local links:\n${missing.join("\n")}`);
+const siteCSS=fs.readFileSync(path.join(root,"assets/css/style.css"),"utf8");
+const siteJS=fs.readFileSync(path.join(root,"assets/js/script.js"),"utf8");
+for(const [source,needle,label] of [
+  [siteCSS,"body.docs-open .docs-layout>aside{display:block}","full-screen mobile docs drawer"],
+  [siteCSS,".docs-nav{display:none!important", "closed mobile docs navigation"],
+  [siteJS,'classList.toggle("docs-open",open)',"mobile docs state"],
+])if(!source.includes(needle))throw new Error(`missing ${label}`);
 console.log(`checked ${html.length} HTML pages and ${files.length} files`);
