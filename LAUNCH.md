@@ -17,9 +17,9 @@ There is now a separate Incident Desk example that uses only published HTTP APIs
 I would value feedback from self-hosters on installation, backups, proxy guidance and the operational model more than feature requests at this stage.
 
 - Project: https://github.com/trestle-dev/trestle
-- Five-minute quickstart: https://trestle.dev/quickstart.html
+- Five-minute quickstart: https://trestle.cv/quickstart.html
 - Incident Desk example: https://github.com/trestle-dev/trestle-example
-- Security and deployment boundaries: https://trestle.dev/security.html
+- Security and deployment boundaries: https://trestle.cv/security.html
 
 ## Material to attach
 
