@@ -1,5 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
+import {execFileSync} from "node:child_process";
+import {fileURLToPath} from "node:url";
 
 const root=path.resolve(process.argv[2]||"public");
 const files=[];
@@ -28,4 +30,7 @@ for(const [source,needle,label] of [
   [siteCSS,".docs-nav{display:none!important", "closed mobile docs navigation"],
   [siteJS,'classList.toggle("docs-open",open)',"mobile docs state"],
 ])if(!source.includes(needle))throw new Error(`missing ${label}`);
+// Run the deterministic syntax-highlighter regression against the Nift source.
+const highlightTest = fileURLToPath(new URL("./test-highlight.mjs", import.meta.url));
+execFileSync(process.execPath, [highlightTest], {stdio: "inherit"});
 console.log(`checked ${html.length} HTML pages and ${files.length} files`);
