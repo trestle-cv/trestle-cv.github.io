@@ -50,7 +50,7 @@
                                        <details><summary>Project</summary><div>
                                          <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                        </div></details>
-                                     </nav></div><article class="docs-content"><p class="eyebrow">Docs · Deployment</p><h1>Deploy Trestle on a company subdomain</h1><p class="docs-lede">This guide deploys one Trestle instance for a team behind a company hostname such as <code>trestle.company.com</code>. It is self-contained: you do not need to install Cortex, Warden or Watchpost to use it. Trestle, Cortex, Warden and Watchpost can be deployed together on sibling subdomains, and every project also works independently. Sharing a parent domain creates no implicit trust or shared authentication — credentials, cookies, databases, service accounts and authorization remain separate per application. Use one distinct hostname per application (for example <code>trestle.company.com</code> rather than <code>company.com/trestle</code>), because independent subdomains simplify proxying, cookie scope, origins, upgrades and operational isolation.</p>
+                                     </nav></div><article class="docs-content"><p class="eyebrow">Docs · Deployment</p><h1>Deploy Trestle on a company subdomain</h1><p class="docs-lede">This guide deploys one Trestle instance for a team behind a company hostname such as <code>trestle.company.com</code>. It is self-contained: you do not need to install Cortex, Warden or Watchpost to use it. Trestle, Cortex, Warden and Watchpost can be deployed together on sibling subdomains, and every project also works independently. Sharing a parent domain creates no implicit trust or shared authentication - credentials, cookies, databases, service accounts and authorization remain separate per application. Use one distinct hostname per application (for example <code>trestle.company.com</code> rather than <code>company.com/trestle</code>), because independent subdomains simplify proxying, cookie scope, origins, upgrades and operational isolation.</p>
                   <div class="callout"><strong>Ecosystem map.</strong><span><code>trestle.company.com</code> is the backend platform, <code>cortex.company.com</code> the coding agent, <code>warden.company.com</code> the browser IDE and agent, and <code>watchpost.company.com</code> the monitoring control plane. Deploy only the projects you need.</span></div>
                   <h2>Recommended topology</h2>
                   <pre><code>Internet or company network
@@ -78,7 +78,7 @@ Value: 203.0.113.10</code></pre>
                   <pre><code>Type: CNAME
 Name: trestle
 Value: apps.company.com</code></pre>
-                  <p>DNS only maps the hostname. It does not select the application port, provide HTTPS, or secure the service — Caddy or nginx performs hostname routing and TLS termination. Private deployments do not require public DNS: split-horizon DNS, internal DNS and VPN-only hostnames are valid and often preferable.</p>
+                  <p>DNS only maps the hostname. It does not select the application port, provide HTTPS, or secure the service - Caddy or nginx performs hostname routing and TLS termination. Private deployments do not require public DNS: split-horizon DNS, internal DNS and VPN-only hostnames are valid and often preferable.</p>
                   <h2>3. Install the Trestle binary</h2>
                   <p>Place the binary at a stable absolute path:</p>
                   <pre><code>mkdir -p /opt/trestle
@@ -151,11 +151,11 @@ loginctl enable-linger "$USER"</code></pre>
 trestle service logs</code></pre>
                   <p><code>status</code> reports enabled/running state, PID, version, listen address and a live health check of <code>/system/health</code>. Back up the data directory and database regularly, and expect a restart after an upgrade or configuration change to pick up the new build.</p>
                   <h2>14. Troubleshoot</h2>
-                  <ul><li><strong>DNS</strong> — the hostname resolves but nothing loads: confirm the A/AAAA or CNAME points at the proxy host, and use internal DNS for VPN-only names.</li>
-                  <li><strong>TLS</strong> — certificate warnings: automatic HTTPS needs public DNS and reachable ACME paths; internal deployments need a company PKI/internal CA.</li>
-                  <li><strong>Proxy</strong> — requests loop or authentication fails: the proxy must replace forwarding headers and <code>TRESTLE_TRUSTED_PROXIES</code> must list only the actual loopback proxy peer.</li>
-                  <li><strong>Realtime</strong> — SSE events appear only at the end: disable proxy buffering so the realtime stream flows.</li>
-                  <li><strong>Database</strong> — <code>/system/health</code> degrades: confirm <code>TRESTLE_DATABASE_URL</code> connectivity and PostgreSQL initialization before the service starts.</li>
+                  <ul><li><strong>DNS</strong> - the hostname resolves but nothing loads: confirm the A/AAAA or CNAME points at the proxy host, and use internal DNS for VPN-only names.</li>
+                  <li><strong>TLS</strong> - certificate warnings: automatic HTTPS needs public DNS and reachable ACME paths; internal deployments need a company PKI/internal CA.</li>
+                  <li><strong>Proxy</strong> - requests loop or authentication fails: the proxy must replace forwarding headers and <code>TRESTLE_TRUSTED_PROXIES</code> must list only the actual loopback proxy peer.</li>
+                  <li><strong>Realtime</strong> - SSE events appear only at the end: disable proxy buffering so the realtime stream flows.</li>
+                  <li><strong>Database</strong> - <code>/system/health</code> degrades: confirm <code>TRESTLE_DATABASE_URL</code> connectivity and PostgreSQL initialization before the service starts.</li>
                   </ul></article></main></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="assets/js/script.js" defer></script>
