@@ -1,9 +1,9 @@
 {
-  "name": "batch-operations",
-  "title": "Batch operations",
+  "name": "company-deployment",
+  "title": "Company subdomain deployment",
   "template": "templates/template.html",
-  "content": "content/batch-operations.html",
-  "output": "public/batch-operations.html",
+  "content": "content/company-deployment.html",
+  "output": "public/company-deployment.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/batch-operations.html",
+    "content/company-deployment.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

@@ -408,6 +408,11 @@
       "template": "templates/template.html"
     },
     {
+      "name": "company-deployment",
+      "title": "Company subdomain deployment",
+      "template": "templates/template.html"
+    },
+    {
       "name": "battle-tested",
       "title": "battle-tested",
       "template": "templates/template.html"
