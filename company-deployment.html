@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#1F2021">
+		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
+		<title>Company subdomain deployment · Trestle</title>
+		<link rel="stylesheet" href="assets/css/style.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<header class="site-header">
+			<a class="brand" href="./" aria-label="Trestle home"><span aria-hidden="true">T</span> Trestle</a>
+			<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
+			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="./product.html">Product</a><a href="./quickstart.html">Quickstart</a><a href="./incident-desk.html">Example</a><a href="./docs.html">Docs</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a></nav>
+		</header>
+		<main id="main"><main class="docs"><div class="docs-navigation"><button class="docs-nav-toggle" type="button" aria-label="Open documentation navigation" aria-expanded="false" aria-controls="docs-nav"><span></span><span></span></button><nav id="docs-nav" class="docs-nav" aria-label="Documentation">
+                                       <strong>Explore</strong>
+                                       <a class="docs-home" href="./docs.html">Documentation</a>
+                                       <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
+                                       <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
+                                       <details><summary>Data model</summary><div>
+                                         <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                                         <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
+                                       </div></details>
+                                       <details><summary>Queries</summary><div>
+                                         <a href="./querying.html">Querying</a><a href="./filter-language.html">Filter language</a><a href="./sorting-pagination.html">Sorting &amp; pagination</a><a href="./relation-expansion.html">Relation expansion</a>
+                                       </div></details>
+                                       <details><summary>Authentication</summary><div>
+                                         <a href="./authentication.html">Authentication</a><a href="./auth-collections.html">Auth collections</a><a href="./browser-sessions.html">Browser sessions</a><a href="./native-auth.html">Native clients</a><a href="./recovery.html">Recovery</a>
+                                         <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
+                                       </div></details>
+                                       <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">Reference clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
+                                       <details><summary>Example stacks</summary><div><a href="./incident-desk.html">Incident Desk</a><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
+                                       <details><summary>Access rules</summary><div>
+                                         <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
+                                       </div></details>
+                                       <details><summary>Files</summary><div>
+                                         <a href="./files.html">Files overview</a><a href="./file-transfer.html">Upload &amp; download</a><a href="./file-rules.html">File authorization</a><a href="./local-storage.html">Local storage</a><a href="./s3-storage.html">S3-compatible storage</a><a href="./s3-providers.html">S3 providers</a><a href="./file-limits.html">File limits</a><a href="./file-troubleshooting.html">Troubleshooting</a>
+                                       </div></details>
+                                       <details><summary>Realtime</summary><div><a href="./realtime.html">Realtime overview</a><a href="./event-schemas.html">Event schemas</a></div></details>
+                                       <details><summary>Automation</summary><div><a href="./jobs.html">Durable jobs</a><a href="./job-delivery.html">Delivery &amp; recovery</a><a href="./webhooks.html">Webhooks</a><a href="./webhook-security.html">Webhook security</a><a href="./aws-lambda.html">AWS Lambda</a><a href="./function-envelope.html">Function envelope</a></div></details>
+                                       <details><summary>Operations</summary><div>
+                                         <a href="./backups.html">Backups</a><a href="./restore.html">Restore</a><a href="./export-import.html">Export &amp; import</a><a href="./configuration.html">Configuration</a><a href="./operations.html">Health &amp; operations</a><a href="./audit.html">Audit</a><a href="./observability.html">Observability</a><a href="./dashboard.html">Dashboard</a><a href="./first-run.html">First-run setup</a><a href="./admin-security.html">Admin security</a>
+                                       </div></details>
+                                       <details><summary>Deployment</summary><div>
+                                         <a href="./install.html">Install</a><a href="./releases.html">Binary releases</a><a href="./stability.html">Stability</a><a href="./caddy.html">HTTPS with Caddy</a><a href="./nginx.html">HTTPS with nginx</a><a href="./system-service.html">System service</a><a href="./company-deployment.html">Company subdomain deployment</a><a href="./windows.html">Windows</a><a href="./containers.html">Containers</a><a href="./updating.html">Updating</a><a href="./rollback.html">Rollback</a><a href="./deployment-troubleshooting.html">Troubleshooting</a>
+                                       </div></details>
+                                       <details><summary>Project</summary><div>
+                                         <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
+                                       </div></details>
+                                     </nav></div><article class="docs-content"><p class="eyebrow">Docs · Deployment</p><h1>Deploy Trestle on a company subdomain</h1><p class="docs-lede">This guide deploys one Trestle instance for a team behind a company hostname such as <code>trestle.company.com</code>. It is self-contained: you do not need to install Cortex, Warden or Watchpost to use it. Trestle, Cortex, Warden and Watchpost can be deployed together on sibling subdomains, and every project also works independently. Sharing a parent domain creates no implicit trust or shared authentication — credentials, cookies, databases, service accounts and authorization remain separate per application. Use one distinct hostname per application (for example <code>trestle.company.com</code> rather than <code>company.com/trestle</code>), because independent subdomains simplify proxying, cookie scope, origins, upgrades and operational isolation.</p>
+                  <div class="callout"><strong>Ecosystem map.</strong><span><code>trestle.company.com</code> is the backend platform, <code>cortex.company.com</code> the coding agent, <code>warden.company.com</code> the browser IDE and agent, and <code>watchpost.company.com</code> the monitoring control plane. Deploy only the projects you need.</span></div>
+                  <h2>Recommended topology</h2>
+                  <pre><code>Internet or company network
+        |
+        v
+DNS hostname (trestle.company.com)
+        |
+        v
+Caddy or nginx with HTTPS (TLS termination, hostname routing)
+        |
+        v
+127.0.0.1:8090
+        |
+        v
+systemd user service (trestle.service)</code></pre>
+                  <p>Trestle listens on loopback by default. The reverse proxy owns the externally reachable hostname and TLS termination; Trestle stays bound to <code>127.0.0.1</code>.</p>
+                  <h2>1. Choose the hostname</h2>
+                  <p>Pick a stable internal or public name. <code>trestle.company.com</code> is used throughout this guide.</p>
+                  <h2>2. Create the DNS record</h2>
+                  <p>With a fixed public IP, create an A record (and an AAAA record with the IPv6 address where applicable):</p>
+                  <pre><code>Type: A
+Name: trestle
+Value: 203.0.113.10</code></pre>
+                  <p>When the hostname should point at another hostname instead, use a CNAME:</p>
+                  <pre><code>Type: CNAME
+Name: trestle
+Value: apps.company.com</code></pre>
+                  <p>DNS only maps the hostname. It does not select the application port, provide HTTPS, or secure the service — Caddy or nginx performs hostname routing and TLS termination. Private deployments do not require public DNS: split-horizon DNS, internal DNS and VPN-only hostnames are valid and often preferable.</p>
+                  <h2>3. Install the Trestle binary</h2>
+                  <p>Place the binary at a stable absolute path:</p>
+                  <pre><code>mkdir -p /opt/trestle
+install -m 0755 trestle /opt/trestle/trestle</code></pre>
+                  <p>The recorded unit contains an absolute executable path; moving or deleting it breaks the service until you reinstall.</p>
+                  <h2>4. Install the service unit</h2>
+                  <p>Keep the listener on loopback and point the service at a durable data directory and a protected <code>TRESTLE_*</code> environment file:</p>
+                  <pre><code>trestle service install \
+  --listen 127.0.0.1:8090 \
+  --data-dir /var/lib/trestle \
+  --env-file /etc/trestle/trestle.env</code></pre>
+                  <p>The environment file is loaded as an owner-only <code>EnvironmentFile</code>; it must be owned by the service user with restrictive permissions. Configure the external origin via <code>TRESTLE_PUBLIC_URL</code> in that file where applicable, and trust only the loopback proxy peer with <code>TRESTLE_TRUSTED_PROXIES=127.0.0.1/32</code>.</p>
+                  <h2>5. Keep the listener on loopback</h2>
+                  <p><code>--listen 127.0.0.1:8090</code> keeps Trestle private; only the reverse proxy on the same host reaches it. Browser sessions and API authentication remain mandatory even behind the proxy.</p>
+                  <h2>6. Database and storage configuration</h2>
+                  <p>Choose SQLite for a single-node deployment (the default, with its data under the data directory) or PostgreSQL with <code>TRESTLE_DATABASE_PROVIDER=postgres</code> and <code>TRESTLE_DATABASE_URL</code>. Object storage is local by default; switch to S3-compatible storage with <code>TRESTLE_STORAGE_BACKEND=s3</code> and the <code>TRESTLE_S3_*</code> (and where applicable <code>TRESTLE_AWS_*</code>) settings in the environment file. First-run picks the provider and creates the administrator before serving traffic.</p>
+                  <h2>7. Configure Caddy</h2>
+                  <pre><code>trestle.company.com {
+    reverse_proxy 127.0.0.1:8090 {
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+    request_body {
+        max_size 500MB
+    }
+}</code></pre>
+                  <p>Trestle's realtime stream (<code>/api/v1/realtime</code>) uses Server-Sent Events; do not buffer it (Caddy proxies streaming responses natively). Set the body limit large enough for configured uploads while retaining Trestle's own per-object and per-file limits. Automatic HTTPS requires working public DNS and a reachable ACME challenge path; private networks should use an internal certificate or company PKI.</p>
+                  <h2>8. Configure nginx as an alternative</h2>
+                  <pre><code>server {
+    listen 80;
+    server_name trestle.company.com;
+    return 301 https://trestle.company.com$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name trestle.company.com;
+
+    ssl_certificate     /etc/letsencrypt/live/trestle.company.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/trestle.company.com/privkey.pem;
+
+    client_max_body_size 500m;
+
+    location / {
+        proxy_pass http://127.0.0.1:8090;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_buffering off;
+        proxy_read_timeout 3600s;
+        proxy_send_timeout 3600s;
+    }
+}</code></pre>
+                  <p>Obtain the certificate with Certbot or your company PKI before starting nginx. The proxy deliberately replaces <code>X-Forwarded-*</code> from <code>$remote_addr</code> rather than trusting a client-supplied header. <code>proxy_buffering off</code> keeps the realtime SSE stream flowing, and the long timeouts accommodate long-running batch and job operations.</p>
+                  <h2>9. Obtain and verify HTTPS</h2>
+                  <pre><code>curl -I https://trestle.company.com</code></pre>
+                  <p>Confirm the certificate is issued for the hostname and the TLS handshake completes.</p>
+                  <h2>10. Verify the public health endpoint</h2>
+                  <pre><code>curl -s https://trestle.company.com/system/health</code></pre>
+                  <p>Expect a JSON health response. <code>/system/health</code> stays healthy only while the database is reachable; <code>/system/ready</code> returns 503 until the system is ready to serve.</p>
+                  <h2>11. Open the application and complete first-run setup</h2>
+                  <p>Open <code>https://trestle.company.com</code> and complete first-run administration: select the database provider, run migrations, and create the first administrator. This happens once; subsequent starts serve traffic immediately.</p>
+                  <h2>12. Configure lingering for unattended boot</h2>
+                  <pre><code>loginctl show-user "$USER" -p Linger
+loginctl enable-linger "$USER"</code></pre>
+                  <p>Trestle never enables lingering automatically. Enable it only when the service must run after logout or start before login; it changes what the host runs without a login session.</p>
+                  <h2>13. Verify service status and logs</h2>
+                  <pre><code>trestle service status
+trestle service logs</code></pre>
+                  <p><code>status</code> reports enabled/running state, PID, version, listen address and a live health check of <code>/system/health</code>. Back up the data directory and database regularly, and expect a restart after an upgrade or configuration change to pick up the new build.</p>
+                  <h2>14. Troubleshoot</h2>
+                  <ul><li><strong>DNS</strong> — the hostname resolves but nothing loads: confirm the A/AAAA or CNAME points at the proxy host, and use internal DNS for VPN-only names.</li>
+                  <li><strong>TLS</strong> — certificate warnings: automatic HTTPS needs public DNS and reachable ACME paths; internal deployments need a company PKI/internal CA.</li>
+                  <li><strong>Proxy</strong> — requests loop or authentication fails: the proxy must replace forwarding headers and <code>TRESTLE_TRUSTED_PROXIES</code> must list only the actual loopback proxy peer.</li>
+                  <li><strong>Realtime</strong> — SSE events appear only at the end: disable proxy buffering so the realtime stream flows.</li>
+                  <li><strong>Database</strong> — <code>/system/health</code> degrades: confirm <code>TRESTLE_DATABASE_URL</code> connectivity and PostgreSQL initialization before the service starts.</li>
+                  </ul></article></main></main>
+		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
+		<script src="assets/js/script.js" defer></script>
+	</body>
+</html>
