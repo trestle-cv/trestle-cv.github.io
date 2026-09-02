@@ -51,7 +51,7 @@
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
                                                   </nav></div></aside><article class="prose"><div class="eyebrow">Reverse proxy</div><h1>HTTPS with nginx</h1><p class="lede">Terminate TLS in nginx, bind Trestle to loopback and declare only nginx's immediate address as trusted.</p><pre><code>location / {
-  proxy_pass http://127.0.0.1:8090;
+  proxy_pass http://127.0.0.1:7333;
   proxy_http_version 1.1;
   proxy_set_header Host $host;
   proxy_set_header X-Forwarded-Proto $scheme;
