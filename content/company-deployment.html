@@ -10,7 +10,7 @@ DNS hostname (trestle.company.com)
 Caddy or nginx with HTTPS (TLS termination, hostname routing)
         |
         v
-127.0.0.1:8090
+127.0.0.1:7333
         |
         v
 systemd user service (trestle.service)</code></pre>
@@ -35,17 +35,17 @@ install -m 0755 trestle /opt/trestle/trestle</code></pre>
 <h2>4. Install the service unit</h2>
 <p>Keep the listener on loopback and point the service at a durable data directory and a protected <code>TRESTLE_*</code> environment file:</p>
 <pre><code>trestle service install \
-  --listen 127.0.0.1:8090 \
+  --host 127.0.0.1 --port 7333 \
   --data-dir /var/lib/trestle \
   --env-file /etc/trestle/trestle.env</code></pre>
 <p>The environment file is loaded as an owner-only <code>EnvironmentFile</code>; it must be owned by the service user with restrictive permissions. Configure the external origin via <code>TRESTLE_PUBLIC_URL</code> in that file where applicable, and trust only the loopback proxy peer with <code>TRESTLE_TRUSTED_PROXIES=127.0.0.1/32</code>.</p>
 <h2>5. Keep the listener on loopback</h2>
-<p><code>--listen 127.0.0.1:8090</code> keeps Trestle private; only the reverse proxy on the same host reaches it. Browser sessions and API authentication remain mandatory even behind the proxy.</p>
+<p>Installing with <code>--host 127.0.0.1 --port 7333</code> keeps Trestle private; only the reverse proxy on the same host reaches it. The legacy <code>--listen 127.0.0.1:7333</code> single-address form is also supported. Browser sessions and API authentication remain mandatory even behind the proxy.</p>
 <h2>6. Database and storage configuration</h2>
 <p>Choose SQLite for a single-node deployment (the default, with its data under the data directory) or PostgreSQL with <code>TRESTLE_DATABASE_PROVIDER=postgres</code> and <code>TRESTLE_DATABASE_URL</code>. Object storage is local by default; switch to S3-compatible storage with <code>TRESTLE_STORAGE_BACKEND=s3</code> and the <code>TRESTLE_S3_*</code> (and where applicable <code>TRESTLE_AWS_*</code>) settings in the environment file. First-run picks the provider and creates the administrator before serving traffic.</p>
 <h2>7. Configure Caddy</h2>
 <pre><code>trestle.company.com {
-    reverse_proxy 127.0.0.1:8090 {
+    reverse_proxy 127.0.0.1:7333 {
         header_up X-Forwarded-For {remote_host}
         header_up X-Forwarded-Proto {scheme}
     }
@@ -71,7 +71,7 @@ server {
     client_max_body_size 500m;
 
     location / {
-        proxy_pass http://127.0.0.1:8090;
+        proxy_pass http://127.0.0.1:7333;
         proxy_http_version 1.1;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $remote_addr;

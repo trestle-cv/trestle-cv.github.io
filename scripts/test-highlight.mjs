@@ -43,7 +43,7 @@ check("install.sh URL has no tok-comment",
   has("comment", "curl -fsSL https://trestle.cv/install.sh | sh"), false);
 // 2. Other URL schemes.
 check("http:// URL has no tok-comment",
-  has("comment", "curl -fsSL http://127.0.0.1:8090/ | sh"), false);
+  has("comment", "curl -fsSL http://127.0.0.1:7333/ | sh"), false);
 check("file:// URL has no tok-comment",
   has("comment", "curl -fsSL file:///tmp/a | sh"), false);
 // 3. Real comments still highlight.

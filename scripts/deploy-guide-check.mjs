@@ -13,7 +13,7 @@ const generated = fs.existsSync(path.join(here, '..', 'public', 'company-deploym
 const hostname = 'trestle.company.com';
 const health = '/system/health';
 
-for (const needle of [hostname, 'Caddy', 'nginx', health, '127.0.0.1:8090', 'independently', 'TRESTLE_TRUSTED_PROXIES', 'TRESTLE_DATABASE_PROVIDER', '--env-file']) {
+for (const needle of [hostname, 'Caddy', 'nginx', health, '127.0.0.1:7333', 'independently', 'TRESTLE_TRUSTED_PROXIES', 'TRESTLE_DATABASE_PROVIDER', '--env-file']) {
   if (!source.includes(needle)) throw new Error(`deployment guide is missing ${needle}`);
 }
 if (!source.includes('Type: A') || !source.includes('Type: CNAME')) {

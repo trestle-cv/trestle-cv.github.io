@@ -1,5 +1,5 @@
 <div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Reverse proxy</div><h1>HTTPS with nginx</h1><p class="lede">Terminate TLS in nginx, bind Trestle to loopback and declare only nginx's immediate address as trusted.</p><pre><code>location / {
-  proxy_pass http://127.0.0.1:8090;
+  proxy_pass http://127.0.0.1:7333;
   proxy_http_version 1.1;
   proxy_set_header Host $host;
   proxy_set_header X-Forwarded-Proto $scheme;
