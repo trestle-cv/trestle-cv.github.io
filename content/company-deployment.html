@@ -90,10 +90,11 @@ server {
 <p>Expect a JSON health response. <code>/system/health</code> stays healthy only while the database is reachable; <code>/system/ready</code> returns 503 until the system is ready to serve.</p>
 <h2>11. Open the application and complete first-run setup</h2>
 <p>Open <code>https://trestle.company.com</code> and complete first-run administration: select the database provider, run migrations, and create the first administrator. This happens once; subsequent starts serve traffic immediately.</p>
-<h2>12. Configure lingering for unattended boot</h2>
-<pre><code>loginctl show-user "$USER" -p Linger
-loginctl enable-linger "$USER"</code></pre>
-<p>Trestle never enables lingering automatically. Enable it only when the service must run after logout or start before login; it changes what the host runs without a login session.</p>
+<h2>12. Confirm boot enablement</h2>
+ <p>The machine service starts at boot without any login (systemd system unit, <code>WantedBy=multi-user.target</code>); no systemd lingering is required. Confirm enablement structurally:</p>
+ <pre><code>systemctl is-enabled trestle.service
+ grep -q 'WantedBy=multi-user.target' /etc/systemd/system/trestle.service</code></pre>
+ <p>Trestle never enables lingering because it does not use user units.</p>
 <h2>13. Verify service status and logs</h2>
 <pre><code>trestle service status
 trestle service logs</code></pre>

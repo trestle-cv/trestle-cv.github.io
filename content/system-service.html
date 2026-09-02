@@ -1,46 +1,27 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Operations</div><h1>Run as a system service</h1><p class="lede">Manage Trestle as a per-OS-user systemd service with <code>trestle service</code>, or use a dedicated-account system-wide unit as an advanced alternative.</p>
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Operations</div><h1>Run as a system service</h1><p class="lede">Manage Trestle as a systemd <strong>system</strong> service with <code>trestle service</code>, running under a dedicated unprivileged account that boots independently of any user login.</p>
 
-<h2>Per-user service (supported)</h2><p>Run Trestle in the foreground with <code>trestle</code> or <code>trestle serve</code>. To keep it running without a terminal, install a per-user systemd unit:</p>
-<pre><code>trestle service install                 # optional --listen, --data-dir, --env-file
-trestle service start
-trestle service stop
-trestle service restart
+<h2>Machine service (supported)</h2><p>Run Trestle in the foreground with <code>trestle</code> or <code>trestle serve</code>. To keep it running unattended and boot-safely on a systemd host, install the machine service. The first install requires root and creates the dedicated unprivileged <code>trestle</code> account (<code>nologin</code>, no home), the <code>/var/lib/trestle</code> data directory, the unit, and (optionally) the protected <code>/etc/trestle/trestle.env</code> configuration file:</p>
+<pre><code>sudo trestle service install            # optional --listen, --data-dir, --env-file
+sudo trestle service start
+sudo trestle service stop
+sudo trestle service restart
 trestle service status
 trestle service logs
 trestle service logs --follow
-trestle service uninstall</code></pre>
-<p>The user unit is written to <code>~/.config/systemd/user/trestle.service</code> and managed with <code>systemctl --user</code> and <code>journalctl --user-unit trestle.service</code>. <code>status</code> reports enabled/running state, PID, version, listen address and a live health check of the public <code>GET /system/health</code> endpoint, and exits nonzero when the service is failed or missing. Uninstall preserves Trestle data and configuration.</p>
-<p><code>service install</code> refuses empty, relative or transient executable paths, writes the unit atomically with a versioned integrity header, and never overwrites or removes a foreign or hand-modified unit. It records <code>--listen</code> and <code>--data-dir</code> (default <code>./data</code> made absolute, created owner-only).</p><p>Install is a transaction. Trestle preserves the prior managed unit bytes and inspects the prior systemd enablement and activity before mutating anything. Only exactly-recreatable states are accepted - enablement <code>enabled</code>, <code>enabled-runtime</code>, <code>disabled</code> and activity <code>active</code>, <code>inactive</code> - and masked, static, linked, generated, transient, failed, reloading and other non-restorable states are refused before any file or lifecycle change; unmask or stop the service first. On a failure, rollback restores the prior unit bytes and reproduces the exact prior enablement and activity states, distinguishing persistent from runtime enablement so runtime-only enablement is restored without leaving a persistent link; a failed fresh install is stopped and disabled while the unit is still loaded, then removed and systemd is reloaded.</p><p>A byte-identical unit already enabled and active is a genuine no-op; an unchanged unit that is inactive or disabled receives only the lifecycle steps needed, and a changed configuration reloads systemd and restarts the service. Installation never enables user lingering automatically; the service survives logout only when your user manager is allowed to run without a session (<code>loginctl enable-linger "$USER"</code>). The unit records the executable's current absolute path, so moving or deleting the binary breaks the service until you reinstall. Because a user service does not inherit your shell environment, provide the remaining <code>TRESTLE_*</code> configuration (PostgreSQL <code>TRESTLE_DATABASE_URL</code>, S3/AWS credentials, trusted proxies, timeouts) through a protected environment file:</p>
-<pre><code>install -m 0600 /dev/null /absolute/protected/trestle.env
-# edit with: TRESTLE_LISTEN=127.0.0.1:8090, TRESTLE_DATABASE_URL=..., TRESTLE_S3_*=...
-trestle service install --env-file /absolute/protected/trestle.env</code></pre>
-<p>The environment file must be an absolute, regular, non-symlink file with exactly <code>0600</code> permissions, owned by the invoking user. Secret values are never copied into the unit or printed. The recorded environment file is revalidated before <code>start</code>, <code>restart</code> and <code>status</code>; <code>stop</code>, <code>logs</code> and <code>uninstall</code> remain available even if it is missing. Changing the file takes effect on <code>trestle service restart</code>.</p>
-<p>The generated unit applies baseline hardening: <code>UMask=0077</code>, <code>NoNewPrivileges</code>, <code>PrivateTmp</code>, <code>ProtectSystem=strict</code>, <code>ProtectHome=read-only</code> and <code>ReadWritePaths</code> scoped to the data directory. Repeated installs preserve the installed listen, data directory and environment file unless a flag is given explicitly; a repeat install restarts the service so changed configuration takes effect. System-wide mode (<code>trestle service install --system</code>) is a documented follow-up and is not yet supported.</p>
+sudo trestle service uninstall</code></pre>
+<p>The system unit is written to <code>/etc/systemd/system/trestle.service</code> and managed with <code>systemctl</code> and <code>journalctl --unit trestle.service</code>. It starts at boot with <code>WantedBy=multi-user.target</code> and does not depend on any user login or on systemd lingering. The binary is installed at <code>/usr/local/bin/trestle</code>. <code>status</code> reports enabled/running state, PID, version, listen address and a live health check of the public <code>GET /system/health</code> endpoint, and exits nonzero when the service is failed or missing. Uninstall removes the service registration and preserves Trestle data and configuration.</p>
+<p><code>service install</code> refuses empty, relative or transient executable paths, writes the unit atomically with a versioned SHA-256 integrity header, and never overwrites or removes a foreign or hand-modified unit. It records <code>--listen</code> and <code>--data-dir</code> (default <code>/var/lib/trestle</code>, created owner-only).</p><p>Install is a transaction. Trestle preserves the prior managed unit bytes and inspects the prior systemd enablement and activity before mutating anything. Only exactly-recreatable states are accepted - enablement <code>enabled</code>, <code>enabled-runtime</code>, <code>disabled</code> and activity <code>active</code>, <code>inactive</code> - and masked, static, linked, generated, transient, failed, reloading and other non-restorable states are refused before any file or lifecycle change; unmask or stop the service first. On a failure, rollback restores the prior unit bytes and reproduces the exact prior enablement and activity states, distinguishing persistent from runtime enablement so runtime-only enablement is restored without leaving a persistent link; a failed fresh install is stopped and disabled while the unit is still loaded, then removed and systemd is reloaded.</p><p>A changed binary with an unchanged unit is recognised as a changed installation and the service is restarted. A byte-identical unit and binary already enabled and active is a genuine no-op. The complete lifecycle family matches the ecosystem convention: <code>service install|uninstall|start|stop|restart|status|enable|disable|logs|update|rollback</code>. <code>service update ARTIFACT SHA256</code> replaces the binary with a checksum-verified artifact, preserves the prior running/stopped state and enablement, and retains rollback metadata; <code>service rollback</code> restores the previous version and its operational state. Because the machine service does not inherit your shell environment, provide the remaining <code>TRESTLE_*</code> configuration (PostgreSQL <code>TRESTLE_DATABASE_URL</code>, S3/AWS credentials, trusted proxies, timeouts) through a root-owned environment file:</p>
+<pre><code>sudo install -m 0600 /dev/null /etc/trestle/trestle.env
+# edit as root with: TRESTLE_LISTEN=127.0.0.1:8090, TRESTLE_DATABASE_URL=..., TRESTLE_S3_*=...
+sudo trestle service install --env-file /etc/trestle/trestle.env</code></pre>
+<p>The machine configuration file must be an absolute, regular, non-symlink file with exactly <code>0600</code> permissions, owned by <code>root:root</code>; systemd reads it via <code>EnvironmentFile=</code> before the process drops to <code>User=trestle</code>, so the service account cannot rewrite its own machine configuration. Secret values are never copied into the unit or printed. The recorded environment file is revalidated before <code>start</code>, <code>restart</code> and <code>status</code>; <code>stop</code>, <code>logs</code> and <code>uninstall</code> remain available even if it is missing. Changing the file takes effect on <code>trestle service restart</code>.</p>
+<p>The generated unit applies baseline hardening: <code>NoNewPrivileges</code>, <code>PrivateTmp</code>, <code>ProtectSystem=strict</code>, <code>ProtectHome=true</code> and <code>ReadWritePaths</code> scoped to <code>/var/lib/trestle</code>. Repeated installs preserve the installed listen, data directory and environment file unless a flag is given explicitly; a repeat install restarts the service so changed configuration takes effect.</p>
 
-<h2>Persistence and lingering</h2><p>Once installed, the service runs independently of the terminal that launched it: closing the terminal does not stop it. A systemd user service is tied to your OS user's user manager, so it normally starts when that user manager starts (for example at your first login after boot). Unattended boot or continuing to run after you log out may require lingering for your user:</p>
-<pre><code>loginctl show-user "$USER" -p Linger
-loginctl enable-linger "$USER"   # explicit host-level choice</code></pre>
-<p>Enable lingering deliberately: it keeps your user's services running without a login session and changes what runs unattended. The unit records the absolute path of the <code>trestle</code> executable at install time; moving or deleting that binary will break the service.</p>
+<h2>Boot and recovery</h2><p>The machine service starts at boot without any user login (systemd system unit, <code>WantedBy=multi-user.target</code>); no systemd lingering is required. Confirm enablement structurally:</p>
+<pre><code>systemctl is-enabled trestle.service
+grep -q 'WantedBy=multi-user.target' /etc/systemd/system/trestle.service</code></pre>
+<p>The unit records the absolute path of the <code>trestle</code> executable at install time; moving or deleting that binary breaks the service until you reinstall.</p>
 
-<h2>Advanced: dedicated-account system-wide unit</h2><p>For a machine-wide deployment, create a dedicated unprivileged account, place an owner-only environment file and run the unit below as an alternative to the per-user service. Keep it explicit and maintain it yourself.</p>
-<pre><code>[Unit]
-Description=Trestle
-After=network-online.target
-
-[Service]
-User=trestle
-Group=trestle
-EnvironmentFile=/etc/trestle/trestle.env
-ExecStart=/usr/local/bin/trestle --listen 127.0.0.1:8090 --data-dir /var/lib/trestle
-Restart=on-failure
-NoNewPrivileges=true
-PrivateTmp=true
-ProtectSystem=strict
-ReadWritePaths=/var/lib/trestle
-
-[Install]
-WantedBy=multi-user.target</code></pre><pre><code>TRESTLE_LISTEN=127.0.0.1:8090
-TRESTLE_DATA_DIR=/var/lib/trestle
-TRESTLE_TRUSTED_PROXIES=127.0.0.1/32</code></pre><p>Make the environment file mode <code>0600</code> and the data directory mode <code>0700</code> and owned by the service account. Trestle normalizes its data-directory permissions at startup, but the service manager and parent directories remain operator responsibilities.</p>
+<h2>External paths and the service account</h2><p>The <code>trestle</code> account reads and writes <code>/var/lib/trestle</code> (the SQLite database, uploaded files, backups and the webhook signing key). PostgreSQL and S3 are remote and carry no local filesystem requirement. Development-only path overrides that refer outside <code>/var/lib/trestle</code> (such as <code>TRESTLE_STATIC_DIR</code>) are blocked by <code>ProtectSystem=strict</code>/<code>ProtectHome=true</code>; if one is configured, startup fails with a diagnostic rather than silently running a degraded dashboard.</p>
 
 <h2>Shutdown</h2><p><code>SIGTERM</code> marks readiness false, stops background workers and drains HTTP work within the configured shutdown timeout.</p></article></div>
