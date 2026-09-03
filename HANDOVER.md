@@ -1,5 +1,14 @@
 # Trestle website handover
 
+## Frontend asset ownership
+
+Nift tracks and builds HTML pages only. CSS, JavaScript, images, icons and other
+static assets are canonical in the generated web root (`public/`, `web/dist/`
+or the repository's embedded-public directory). Edit those files directly.
+Do not recreate asset copies under `content/`, do not add asset entries to
+`.nift/tracked.json`, and do not let a Nift build overwrite them. After changing
+HTML templates or content, run Nift and verify that direct assets are unchanged.
+
 This repository is the public website for Trestle, an open-source, self-hosted
 application backend in the product-definition stage. The source branch is a Nift
 project; the nested `public/` repository is the generated deployment output.
@@ -16,8 +25,8 @@ working software.
 ## Repository workflow
 
 1. Inspect both repository statuses before editing and preserve unrelated work.
-2. Edit Nift sources (`content/`, `templates/`, assets, and configuration), not
-   generated HTML as the source of truth.
+2. Edit page sources in `content/` and `templates/`; edit static assets
+   directly under `public/`.
 3. Build with the repository-compatible Nift executable and run `nift status`.
 4. Inspect generated links, metadata, responsive layouts, and diffs.
 5. Commit the nested `public/` repository first.

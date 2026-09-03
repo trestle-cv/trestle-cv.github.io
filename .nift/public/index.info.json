@@ -18,9 +18,6 @@
   ],
   "reqs": [
     "public/architecture.html",
-    "public/assets/css/style.css",
-    "public/assets/images/incident-desk.svg",
-    "public/assets/js/script.js",
     "public/contributing.html",
     "public/docs.html",
     "public/example-stacks.html",

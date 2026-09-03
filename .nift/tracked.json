@@ -336,18 +336,6 @@
       "template": "templates/template.html"
     },
     {
-      "name": "assets/css/style",
-      "title": "style",
-      "content-ext": ".css",
-      "output-ext": ".css"
-    },
-    {
-      "name": "assets/js/script",
-      "title": "script",
-      "content-ext": ".js",
-      "output-ext": ".js"
-    },
-    {
       "name": "example-stacks",
       "title": "example-stacks",
       "template": "templates/template.html"
@@ -418,6 +406,11 @@
       "template": "templates/template.html"
     },
     {
+      "name": "docs/battle-tested",
+      "title": "Battle tested",
+      "template": "templates/template.html"
+    },
+    {
       "name": "stability",
       "title": "Stability",
       "template": "templates/template.html"
@@ -431,12 +424,6 @@
       "name": "incident-desk",
       "title": "Incident Desk",
       "template": "templates/template.html"
-    },
-    {
-      "name": "assets/images/incident-desk",
-      "title": "Incident Desk product preview",
-      "content-ext": ".svg",
-      "output-ext": ".svg"
     },
     {
       "name": "database-support",

@@ -1,9 +1,9 @@
 {
-  "name": "contributing",
-  "title": "Contributing",
+  "name": "docs/battle-tested",
+  "title": "Battle tested",
   "template": "templates/template.html",
-  "content": "content/contributing.html",
-  "output": "public/contributing.html",
+  "content": "content/docs/battle-tested.html",
+  "output": "public/docs/battle-tested.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,8 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/contributing.html",
+    "content/battle-tested.html",
+    "content/docs/battle-tested.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
