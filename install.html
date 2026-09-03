@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>install · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -59,6 +60,6 @@ curl -fsSL https://trestle.cv/download.sh | sh -s -- --output ./some-name</code>
 curl -fsSL https://trestle.cv/install.sh | sh -s -- --version v0.1.0-rc.1</code></pre><p>Pre-release builds must be selected explicitly by version. The unversioned <code>latest</code> commands select the stable <code>v0.1.1</code> release and intentionally ignore prereleases; pin a prerelease only when you specifically want to test an upcoming release.</p><h2>System-wide install</h2><pre><code>curl -fsSL https://trestle.cv/install.sh | sudo sh -s -- --system
 /usr/local/bin/trestle version</code></pre><p><code>--system</code> is explicit and requires root. Running the ordinary per-user mode as root is refused. Do not describe <code>download.sh</code> as installation; it only places a verified executable in the current directory.</p><h2>Verified by default</h2><p>Install, download and update all verify the selected archive against the release <code>SHA256SUMS</code> (with <code>sha256sum</code>, falling back to <code>shasum -a 256</code> on macOS) and fail closed when the checksum file is unavailable, the archive has no exact entry, the entry is malformed, or the archive is corrupted.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

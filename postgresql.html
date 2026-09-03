@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>postgresql · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -52,6 +53,6 @@
                                                     </div></details>
                                                   </nav></div></aside><article class="prose"><div class="eyebrow">Persistence</div><h1>PostgreSQL system schema</h1><p class="lede">Trestle maps one logical 13-version schema to reviewed PostgreSQL DDL while preserving the external HTTP contract.</p><h2>Type mapping</h2><table><thead><tr><th>Logical value</th><th>SQLite</th><th>PostgreSQL</th></tr></thead><tbody><tr><td>Stable IDs and timestamps</td><td><code>TEXT</code></td><td><code>TEXT</code></td></tr><tr><td>Hashes and ciphertext</td><td><code>BLOB</code></td><td><code>BYTEA</code></td></tr><tr><td>Boolean metadata</td><td>Checked integer</td><td><code>BOOLEAN</code></td></tr><tr><td>Event/audit sequence</td><td>Integer autoincrement</td><td><code>BIGSERIAL</code></td></tr><tr><td>File sizes</td><td>Integer</td><td><code>BIGINT</code></td></tr></tbody></table><h2>Migration ownership</h2><p>A PostgreSQL advisory lock serializes migration startup. Trestle reads the validated <code>_trestle_schema_migrations</code> history, refuses a future version and applies each remaining version in its own transaction. Failed DDL and its migration record roll back together.</p><p>On both providers the migration history table is authoritative. SQLite's <code>PRAGMA user_version</code> is only a compatibility mirror: a valid history may restore an absent mirror, but history is never reconstructed from a nonzero marker, and disagreement or damaged/non-contiguous history fails closed.</p><h2>Readiness</h2><p>The service does not become ready until the connection succeeds, migrations finish and the database identity marker matches <code>postgres</code>. Connection failures are bounded by the configured whole-second startup timeout, enforced at the driver level for every pool connection.</p><h2>Supported versions</h2><p>This page documents the Trestle system schema on PostgreSQL. PG05-PG11 added collection, record, query, access-rule, file, events, jobs, backup/restore and cross-provider migration parity, so dynamic collection tables, typed records, automation and recovery are exercised against PostgreSQL. The supported-version window is PostgreSQL 16, 17 and 18, proven by the CI matrix; the migration history remains authoritative on both providers.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

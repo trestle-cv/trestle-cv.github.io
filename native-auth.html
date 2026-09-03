@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>Mobile and native authentication · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -56,6 +57,6 @@ Content-Type: application/json
 {"email":"nick@example.com","password":"correct horse battery staple"}</code></pre><p>Send the returned access token as <code>Authorization: Bearer ...</code>. Store the refresh token in Keychain, Android Keystore or the platform's equivalent protected credential store, never ordinary preferences or logs.</p><h2>Rotate atomically</h2><ol><li>Read the current refresh token from secure storage.</li><li>Exchange it exactly once.</li><li>Persist the replacement refresh token before treating the operation as complete.</li><li>Discard the old token and update the in-memory access token.</li><li>If the exchange response is lost, sign in again rather than replaying an already-consumed token indefinitely.</li></ol><h2>Authenticated request</h2><pre><code>GET /api/v1/collections/issues/records?limit=25
 Authorization: Bearer $ACCESS_TOKEN</code></pre><h2>Offline and reconnect behavior</h2><p>Cache product data according to your own threat model, not refresh credentials. Resume record lists from cursors where valid and reconnect realtime streams with the last processed event sequence. Handle 401 by attempting one controlled refresh, then return the user to sign-in.</p><h2>Logout</h2><p>Call the application logout/revocation endpoint while online, then delete both access and refresh material locally. Server-side revocation matters because deleting a local token alone does not invalidate a copied credential.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

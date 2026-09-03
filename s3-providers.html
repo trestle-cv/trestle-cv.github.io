@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>S3 provider examples · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -52,6 +53,6 @@
                                                     </div></details>
                                                   </nav></div></aside><article class="prose"><div class="eyebrow">Object storage</div><h1>Provider examples</h1><p class="lede">Use any service that accepts path-style S3 requests and AWS Signature Version 4.</p><h2>AWS S3</h2><p>Use the regional HTTPS endpoint, the bucket's region and a narrowly scoped IAM principal. Block public access at the account and bucket levels.</p><h2>MinIO and self-hosted services</h2><p>Use an HTTPS reverse proxy in production. Loopback HTTP is accepted for local development. Ensure the proxy preserves request paths and does not rewrite signed headers.</p><h2>CORS</h2><p>Trestle proxies authenticated downloads and uploads, so the bucket ordinarily needs no browser CORS policy. Add CORS only if a later signed-delivery mode deliberately exposes provider URLs.</p><h2>Failure checks</h2><p>Verify DNS, TLS trust, region, clock synchronization, bucket spelling and credentials. Provider errors are reduced to safe diagnostics; response bodies and secrets are not returned to the browser.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

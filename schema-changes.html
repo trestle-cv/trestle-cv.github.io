@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>Schema changes · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -54,6 +55,6 @@
 {"name":"due_at","type":"datetime","required":false}</code></pre><h2>Changes requiring acknowledgement</h2><p>Removing a field, changing its type, or making it required returns <code>409 schema_acknowledgement_required</code>. Repeat the reviewed request with:</p><pre><code>X-Trestle-Acknowledge-Schema: true</code></pre><p>Acknowledgement permits the attempt; it does not override physical constraints. Incompatible existing data still rejects the rebuild and leaves the old schema and rows intact.</p><h2>Example migration strategy</h2><ol><li>Add <code>status_v2</code> as optional.</li><li>Backfill it in bounded 1,000-record batches.</li><li>Verify every record has a valid value.</li><li>Change <code>status_v2</code> to required and acknowledge the rebuild.</li><li>Move clients to the new field.</li><li>Remove the old <code>status</code> field in a later reviewed change.</li></ol><h2>Rebuild sequence</h2><ol><li>Create a temporary strict table with the requested schema.</li><li>Copy metadata columns and fields whose stable IDs remain.</li><li>Let the database validate required, type, uniqueness and JSON constraints.</li><li>Drop the old table and atomically rename the validated replacement.</li><li>Commit metadata and physical schema together.</li></ol><h2>Back up before destructive changes</h2><pre><code># Create and download a current backup from the Backups dashboard
 # then run restore preflight before changing production schema.</code></pre><p>Renaming a field while retaining its internal field ID preserves its column and data. Recreating a similarly named field is not the same operation.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>Functions · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -69,6 +70,6 @@ Callback scopes: records:read,records:write</code></pre><h2>Delivery path</h2><o
   await markHandled(event.eventId);
 };</code></pre><p>Invocation is at least once. Use the stable event ID as an idempotency key. A 202 response means AWS accepted the event, not that the handler completed successfully.</p><h2>Credentials and callbacks</h2><p>AWS credentials stay in Trestle process configuration and are never exposed in the dashboard. Callback credentials must be narrower than an administrator session and limited to the scopes the handler needs.</p><h2>Why no local scripts?</h2><p>Trestle does not execute arbitrary user code inside the server process. A credible local runtime would require a separate worker boundary, resource limits, capabilities, secret isolation and cancellation rather than an unsafe convenience hook.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

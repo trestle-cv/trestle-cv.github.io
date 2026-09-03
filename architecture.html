@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>Architecture · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -57,6 +58,6 @@
   enqueue webhook / Lambda jobs
 COMMIT</code></pre><p>If any required write fails, the transaction rolls back. A worker never observes an outbox job for a record change that did not commit.</p><h2>Database providers</h2><p>SQLite embeds storage beneath the owner-only data directory. PostgreSQL uses an external server with explicit URL, TLS and pool configuration. Provider adapters deliberately use different SQL and locking primitives while preserving one observable HTTP contract. The provider suite runs against PostgreSQL 16, 17 and 18 in both normal and race-enabled CI.</p><h2>Storage boundaries</h2><p>The configured database owns schema metadata, record tables, identities, sessions, events, jobs, audit facts and file metadata. File bytes use generated keys beneath the local data directory or a private S3-compatible bucket. Client filenames never select storage paths.</p><h2>Concurrency and recovery</h2><p>Optimistic record versions reject stale mutations. Jobs use provider-appropriate atomic claims, finite leases and expired-lease recovery. SSE consumers resume from sequence IDs. Backups use a native SQLite snapshot where applicable plus a portable logical archive for both providers.</p><h2>Authority boundaries</h2><div class="table-wrap"><table><thead><tr><th>Surface</th><th>Credential</th><th>Purpose</th></tr></thead><tbody><tr><td>Dashboard/admin API</td><td>Cookie session + CSRF</td><td>Deployment administration</td></tr><tr><td>Application API</td><td>User access token</td><td>Rule-constrained product traffic</td></tr><tr><td>Trusted automation</td><td>Scoped service/personal token</td><td>Server and operator workloads</td></tr><tr><td>Outbound delivery</td><td>HMAC or AWS SigV4</td><td>Webhook and Lambda integration</td></tr></tbody></table></div><h2>Scaling boundary</h2><p>The current consistency model assumes one Trestle process owns writes, jobs and event ordering. Run clients and downstream workers horizontally if needed, but do not point multiple Trestle processes at the same SQLite or PostgreSQL database.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

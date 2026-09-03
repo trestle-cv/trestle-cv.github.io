@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>Audit · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -53,6 +54,6 @@
                                                   </nav></div></aside><article class="prose"><div class="eyebrow">CP15 · Implemented</div><h1>Audit</h1><p class="lede">Trestle records append-oriented facts for administrative and security-relevant operations with action, target, outcome, request correlation and structurally redacted detail.</p><h2>Inspect and export</h2><pre><code>GET /admin/v1/audit
 GET /admin/v1/audit?action=record.update</code></pre><p>The dashboard presents a bounded 200-row timeline and exports the same authorized JSON representation. Request IDs correlate a fact with structured server logs.</p><h2>Redaction</h2><p>Detail keys containing password, secret or token are replaced before persistence. Application code should still avoid placing unnecessary sensitive material in diagnostics.</p><div class="callout"><strong>Integrity boundary</strong><p>Audit rows share the operator-owned SQLite database. They improve attribution and incident reconstruction but are not tamper-proof against a host administrator. Export them to independently controlled storage when that threat matters.</p></div><h2>Provider storage</h2><p>Audit facts, filtering, export and redaction behave identically on both providers. The operations summary reports provider facts on both engines: SQLite reports page-based size and PostgreSQL reports <code>pg_database_size(current_database())</code>.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

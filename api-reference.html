@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>HTTP API reference · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -55,6 +56,6 @@ GET /api/v1/capabilities
 GET /admin/v1/api/schema</code></pre><p>Capabilities return the API version, implemented feature identifiers and machine-readable limits. Authenticated schema inspection returns collection fields without record data or credentials.</p><h2>Curl first</h2><pre><code>curl "$TRESTLE_URL/api/v1/collections/issues/records?limit=25" \
   -H "Authorization: Bearer $TRESTLE_TOKEN"</code></pre><p>Every structured error can carry the response's <code>X-Request-ID</code> for correlation. Clients must branch on error codes, not prose.</p><h2>OpenAPI boundary</h2><p>The downloadable OpenAPI 3.1 document covers the stable public route families and security schemes. Tutorial prose remains separate because operational decisions cannot be generated from schemas alone.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

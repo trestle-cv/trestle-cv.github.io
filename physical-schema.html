@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>Physical collection schema · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -56,6 +57,6 @@ _created_at  TEXT NOT NULL
 _updated_at  TEXT NOT NULL
 f_ab12...    &lt;provider field type&gt;</code></pre><p>Field columns use stable internal IDs rather than user-provided names. Renaming <code>due_date</code> to <code>due_at</code> can therefore preserve the same physical column.</p><h2>Type mapping</h2><div class="table-wrap"><table><thead><tr><th>Logical field</th><th>SQLite</th><th>PostgreSQL</th></tr></thead><tbody><tr><td>text, email, url, select, relation, datetime</td><td><code>TEXT</code></td><td><code>TEXT</code></td></tr><tr><td>number</td><td><code>REAL</code> with a numeric <code>typeof</code> check</td><td><code>DOUBLE PRECISION</code></td></tr><tr><td>boolean</td><td><code>INTEGER</code> with <code>IN (0,1)</code> check</td><td><code>BOOLEAN</code></td></tr><tr><td>json</td><td><code>TEXT</code> with <code>json_valid</code> check</td><td><code>TEXT</code></td></tr></tbody></table></div><p>SQLite tables are declared <code>STRICT</code>; PostgreSQL uses native types. Both reject the same incompatible schema changes, so existing metadata and rows survive a failed change on either provider.</p><h2>Constraints and errors</h2><p>Required and unique metadata becomes physical <code>NOT NULL</code> and <code>UNIQUE</code> constraints. Application validation provides stable field errors first; the database remains the final integrity boundary under races or malformed clients.</p><h2>Deletion and recovery</h2><p>Deleting a collection drops its physical table and metadata in one transaction. This is intentionally destructive. Create a tested backup before deleting production data.</p><h2>Relations</h2><p>Relation fields store record IDs and can be checked by application logic and access rules. They do not yet declare a target collection or delete/update action, so Trestle does not currently generate a physical foreign key for them.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>Collection access rules · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -59,6 +60,6 @@
 }</code></pre><p>Set these values in <strong>Settings → Collection access rules</strong>, save, then use the simulator with representative actors and record values. List rules authorize the operation; returned rows are still constrained by the rule’s record-aware predicate where applicable.</p><h2>Public catalogue</h2><pre><code>{"list":"true","view":"true","create":"false","update":"false","delete":"false"}</code></pre><h2>Service-managed records</h2><pre><code>{"list":"actor.kind = 'service'","view":"actor.kind = 'service'",
  "create":"actor.kind = 'service'","update":"actor.kind = 'service'","delete":"false"}</code></pre><p>A service must also possess the matching bearer scope. Rules can narrow a scope but cannot manufacture one.</p><h2>Failure behavior</h2><p>Individual view/update/delete denials avoid revealing whether a record exists. UI state is never an authorization boundary, and simulator output is diagnostic rather than a substitute for a real request test.</p><h2>Provider storage</h2><p>Rules are stored in collection metadata and evaluated server-side before any provider detail is exposed; the same authorization decision results on SQLite and the PostgreSQL provider. A denied record is indistinguishable from a missing record, and rule simulation is administrator-only.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

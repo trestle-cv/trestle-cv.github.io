@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>postgres-configuration · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -54,6 +55,6 @@
 export TRESTLE_DATABASE_URL='postgres://trestle:secret@db.internal/trestle?sslmode=verify-full'
 ./trestle</code></pre><p>Explicit startup configuration takes precedence and makes browser database controls read-only.</p><h2>Pool and connection controls</h2><div class="table-wrap"><table><thead><tr><th>Setting</th><th>Default</th><th>Boundary</th></tr></thead><tbody><tr><td>Maximum open</td><td>10</td><td>1-500</td></tr><tr><td>Maximum idle</td><td>2</td><td>0 to maximum open</td></tr><tr><td>Connect timeout</td><td>10s</td><td>Whole seconds, more than zero, at most 1m</td></tr><tr><td>Connection lifetime</td><td>30m</td><td>0 to 24h</td></tr></tbody></table></div><p>The connect timeout is injected as the driver's <code>connect_timeout</code> into every PostgreSQL connection configuration, including the first-run connection test, so a silently unreachable server cannot stall startup or setup indefinitely. It must be a whole number of seconds because the driver cannot represent sub-second precision; Trestle rejects such values rather than rounding them.</p><h2>TLS and secrets</h2><p>Remote connections cannot use <code>sslmode=disable</code>. Stored setup state is atomically replaced at mode <code>0600</code>; URLs are not returned by APIs or included in diagnostics. Prefer an operator secret manager for production.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

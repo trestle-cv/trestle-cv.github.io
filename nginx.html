@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>nginx · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -61,6 +62,6 @@
   proxy_read_timeout 1h;
 }</code></pre><pre><code>TRESTLE_TRUSTED_PROXIES=127.0.0.1/32</code></pre><h2>Why these directives matter</h2><ul><li>Replacing <code>X-Forwarded-For</code> prevents a direct client from supplying a fake chain.</li><li><code>X-Forwarded-Proto</code> allows Trestle to issue Secure administrator cookies only through the trusted proxy.</li><li>Disabled buffering and the long read timeout support realtime SSE.</li><li>The upload ceiling must cover multipart overhead; Trestle still applies its own quota and endpoint limits.</li><li>Preserved <code>Host</code> keeps origin enforcement correct.</li></ul><p>Run health, login, upload, SSE and webhook-delivery smoke tests after every nginx change.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

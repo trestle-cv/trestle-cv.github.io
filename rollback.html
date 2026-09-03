@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>rollback · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -52,6 +53,6 @@
                                                     </div></details>
                                                   </nav></div></aside><article class="prose"><div class="eyebrow">Recovery</div><h1>Rollback</h1><p class="lede">Binary rollback is safe only when the older release supports the current schema. When a migration has crossed that boundary, restore the matching pre-upgrade archive instead.</p><h2>Binary-only rollback</h2><pre><code>curl -fsSL https://trestle.cv/update.sh | sh -s -- --rollback</code></pre><ol><li>Stop the failed release.</li><li>Confirm the older version accepts the current schema.</li><li>Restore the retained executable and start once.</li><li>Verify version, readiness and critical workflows.</li></ol><h2>Data rollback</h2><ol><li>Stop Trestle and preserve the failed data directory for investigation.</li><li>Run restore preflight against the pre-upgrade archive.</li><li>Restore offline into a new owner-only directory.</li><li>Start the matching older binary against that directory.</li></ol><div class="callout"><strong>Never improvise SQLite rollback</strong><p>Do not copy only <code>trestle.db</code> from a live WAL deployment or mix a database from one backup with local files from another.</p></div></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

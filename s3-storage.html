@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>S3-compatible storage · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -57,6 +58,6 @@ TRESTLE_S3_BUCKET=trestle
 TRESTLE_S3_ACCESS_KEY=...
 TRESTLE_S3_SECRET_KEY=...</code></pre><p>Non-loopback endpoints must use HTTPS. Credentials are startup-only secrets: the dashboard status endpoint returns the provider and quota, never keys. Trestle signs requests with AWS Signature Version 4 and uses path-style bucket URLs for broad compatible-service support.</p><h2>Object lifecycle</h2><p>Uploads are bounded and hashed in private staging first, then sent to object storage before metadata commits. A failed metadata association removes the uploaded object. Deletion removes the object before committing the metadata transaction; cleanup compares provider keys with database metadata.</p><h2>Permissions</h2><p>Grant only object read, write, delete and list permissions for the configured bucket. Do not make the bucket public. Downloads continue through Trestle so collection authorization remains authoritative.</p><h2>Migration and backup</h2><p>Changing providers does not migrate existing objects automatically. Copy objects and verify the database manifest before switching. A database backup alone is incomplete: retain a matching bucket snapshot or versioned object copy.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

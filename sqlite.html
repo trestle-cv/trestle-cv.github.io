@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>SQLite foundation · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -52,6 +53,6 @@
                                                     </div></details>
                                                   </nav></div></aside><article class="prose"><div class="eyebrow">Persistence</div><h1>SQLite foundation</h1><p class="lede">One Trestle process owns one SQLite database at <code>&lt;data-dir&gt;/trestle.db</code>, giving transactions, ordering and backup a clear owner.</p><h2>Migration authority</h2><p>The <code>_trestle_schema_migrations</code> history table is the source of truth for the applied schema version. <code>PRAGMA user_version</code> is only a compatibility mirror: a valid history restores an absent mirror, but history is never reconstructed from a nonzero marker, and disagreement or damaged history fails closed instead of guessing.</p><h2>Startup contract</h2><ul><li>The data directory is created with owner-only permissions.</li><li>Foreign keys are enabled and verified before readiness.</li><li>A finite five-second busy timeout avoids unbounded lock waits.</li><li>WAL mode is requested for supported local filesystems.</li><li>A database from a newer Trestle schema version is refused.</li></ul><h2>Inspect safely</h2><pre><code>sqlite3 ./data/trestle.db "PRAGMA foreign_keys; PRAGMA journal_mode;"</code></pre><p>Prefer the Trestle API for writes. Direct SQL can bypass validation, audit, events and job creation even when the database accepts it.</p><h2>Connection ownership</h2><p>The store serializes database access through one owned connection. That keeps migration and transaction behavior deterministic while the product is explicitly single-node.</p><h2>Backup</h2><p>Use the Backups dashboard or administrative backup API rather than copying a live database file. Trestle uses SQLite's consistent backup mechanism, records history and packages local file objects with a manifest.</p><h2>Unsupported layouts</h2><p>Network filesystems and multiple Trestle processes sharing one database are unsupported. Replicate backup artifacts or downstream data, not the live SQLite file.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

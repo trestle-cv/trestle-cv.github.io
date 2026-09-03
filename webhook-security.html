@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>Webhook security · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -52,6 +53,6 @@
                                                     </div></details>
                                                   </nav></div></aside><article class="prose"><div class="eyebrow">Webhook boundary</div><h1>Webhook security and debugging</h1><p class="lede">Trestle refuses destinations that resolve to loopback, private, unspecified or link-local addresses and refuses redirects.</p><p>Targets must use HTTPS. DNS is resolved again at delivery time to reduce rebinding risk. Responses are drained only to a 64 KiB bound, delivery has a finite timeout, and provider errors are truncated in job state.</p><h2>Secrets</h2><p>Signing secrets are shown once and encrypted at rest with an owner-only key beneath the Trestle data directory. They are never returned by list or diagnostic endpoints.</p><h2>Debugging</h2><p>Inspect the corresponding job for attempts and the bounded last error. A dead job should be repaired before retry. Disable a target to stop new deliveries; already queued work rechecks enabled state before sending.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

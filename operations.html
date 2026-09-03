@@ -5,8 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
-		<title>Health and operations · Trestle</title>
-		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Trestle</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171918'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' fill='%239fd67b'%3ET%3C/text%3E%3C/svg%3E">
+		<link rel="stylesheet" href="/assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -55,6 +56,6 @@
 readinessProbe:
   httpGet: {path: /system/ready, port: 7333}</code></pre><p>A process can be healthy while readiness returns <code>503 not_ready</code>, for example during migration failure or database initialization problems.</p><h2>Authenticated operations summary</h2><p><code>/admin/v1/operations</code> reports the configured provider, bounded object counts and an audit boundary note. Database size is reported for both providers: SQLite uses page-based size and PostgreSQL uses <code>pg_database_size(current_database())</code>.</p><h2>Request IDs</h2><pre><code>curl -i "$TRESTLE_URL/system/ready" -H "X-Request-ID: deploy-check-42"</code></pre><p>Every response receives an <code>X-Request-ID</code>. Reuse it across your frontend, domain service and Trestle call so audit facts and structured logs can be correlated without logging credentials or request bodies.</p><h2>Shutdown</h2><p><code>SIGINT</code> and <code>SIGTERM</code> remove readiness, stop accepting new work and allow in-flight requests to finish within the configured timeout. Job workers run under the same shutdown context and recover expired leases after restart.</p><div class="callout"><strong>Pre-release boundary</strong><p>CP22 provides verified archives and proxy guidance. Trestle remains pre-release until CP23 completes the stable-release hardening campaign.</p></div></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="assets/js/script.js" defer></script>
+		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>
