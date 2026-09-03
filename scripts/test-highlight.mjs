@@ -3,12 +3,12 @@
 // The generic highlighter must not treat a URL scheme ("https://", "http://",
 // "file://") as a JavaScript comment, while genuine "// comments" and shell
 // "# comments" must still receive tok-comment and shell keywords must keep
-// tok-keyword. This drives the real highlightCode() from the Nift source.
+// tok-keyword. This drives the real highlightCode() from the public asset.
 import {readFile} from "node:fs/promises";
 import vm from "node:vm";
 
 const source = await readFile(
-  new URL("../content/assets/js/script.js", import.meta.url),
+  new URL("../public/assets/js/script.js", import.meta.url),
   "utf8"
 );
 const sandbox = {
