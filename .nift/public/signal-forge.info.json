@@ -1,9 +1,9 @@
 {
-  "name": "function-envelope",
-  "title": "Function event envelope",
+  "name": "signal-forge",
+  "title": "Signal Forge",
   "template": "templates/template.html",
-  "content": "content/function-envelope.html",
-  "output": "public/function-envelope.html",
+  "content": "content/signal-forge.html",
+  "output": "public/signal-forge.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/function-envelope.html",
+    "content/signal-forge.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

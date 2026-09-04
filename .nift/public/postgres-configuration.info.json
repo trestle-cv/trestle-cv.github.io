@@ -96,6 +96,7 @@
     "public/secret-management.html",
     "public/security.html",
     "public/service-accounts.html",
+    "public/signal-forge.html",
     "public/sorting-pagination.html",
     "public/sqlite.html",
     "public/stability.html",
