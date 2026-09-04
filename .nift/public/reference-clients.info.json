@@ -1,6 +1,6 @@
 {
   "name": "reference-clients",
-  "title": "Reference clients",
+  "title": "API clients",
   "template": "templates/template.html",
   "content": "content/reference-clients.html",
   "output": "public/reference-clients.html",

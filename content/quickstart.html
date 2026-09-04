@@ -1,11 +1,64 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Five-minute quickstart</div><h1>From executable to first record.</h1><p class="lede">Run one Trestle process with SQLite or PostgreSQL, create the first administrator, define a typed collection and write through the HTTP API.</p><div class="quick-steps"><section><h2>Install and start</h2><p>Choose how you want the verified executable delivered. Both options fetch the release archive and its <code>SHA256SUMS</code> and verify the archive before writing anything.</p><p><strong>Download into this directory</strong> changes nothing outside the current directory - ideal for portable folders and testing:</p><pre><code>mkdir my-trestle
+<div class="docs-layout">
+  <aside>@input("templates/docs-nav.html")</aside>
+  <article class="prose">
+    <div class="eyebrow">Five-minute quickstart</div>
+    <h1>From executable to first record.</h1>
+    <p class="lede">Run one Trestle process with SQLite or PostgreSQL, create the first administrator, define a typed collection and write through the HTTP API.</p>
+    <div class="quick-steps">
+      <section><h2>Install and start</h2><p>Choose how you want the verified executable delivered. Both options fetch the release archive and its <code>SHA256SUMS</code> and verify the archive before writing anything.</p><p><strong>Download into this directory</strong> changes nothing outside the current directory - ideal for portable folders and testing:</p><pre><code>mkdir my-trestle
 cd my-trestle
 curl -fsSL https://trestle.cv/download.sh | sh
 ./trestle</code></pre><p><strong>Install on this user account</strong> writes to <code>~/.local/bin</code>:</p><pre><code>curl -fsSL https://trestle.cv/install.sh | sh
-~/.local/bin/trestle</code></pre><p>Trestle listens on <code>127.0.0.1:7333</code> and creates its data directory on first start.</p></section><section><h2>Choose SQLite or PostgreSQL</h2><p>Open <code>http://127.0.0.1:7333</code>. SQLite is embedded and can continue directly to administrator creation. For PostgreSQL, select PostgreSQL, enter a connection URL for an empty PostgreSQL 16-18 database, and choose <strong>Test and use PostgreSQL</strong>. Trestle validates the server, persists the owner-only bootstrap configuration, and asks you to restart before credentials are shown.</p><pre><code>postgres://trestle:CHANGE_ME@127.0.0.1:5432/trestle?sslmode=require</code></pre><p>After restart, reload the dashboard and create the administrator. Competing setup requests produce exactly one administrator on either provider.</p></section><section><h2>Define a collection</h2><p>In Collections, create <code>notes</code> with required text fields named <code>title</code> and <code>body</code>. Trestle materializes provider-appropriate physical storage while keeping display names out of SQL identifiers.</p></section><section><h2>Create a scoped credential</h2><p>In Integrations, create a service credential with <code>records:read</code> and <code>records:write</code>. Copy the secret once.</p></section><section><h2>Write and query</h2><pre><code>curl http://127.0.0.1:7333/api/v1/collections/notes/records \
+~/.local/bin/trestle</code></pre><p>Trestle listens on <code>127.0.0.1:7333</code> and creates its data directory on first start.</p></section>
+      <section><h2>Choose SQLite or PostgreSQL</h2><p>Open <code>http://127.0.0.1:7333</code>. SQLite is embedded and can continue directly to administrator creation. For PostgreSQL, select PostgreSQL, enter a connection URL for an empty PostgreSQL 16-18 database, and choose <strong>Test and use PostgreSQL</strong>. Trestle validates the server, persists the owner-only bootstrap configuration, and asks you to restart before credentials are shown.</p><pre><code>postgres://trestle:CHANGE_ME@127.0.0.1:5432/trestle?sslmode=require</code></pre><p>After restart, reload the dashboard and create the administrator. Competing setup requests produce exactly one administrator on either provider.</p></section>
+      <section><h2>Define a collection</h2><p>In Collections, create <code>notes</code> with required text fields named <code>title</code> and <code>body</code>. Trestle materializes provider-appropriate physical storage while keeping display names out of SQL identifiers.</p></section>
+      <section><h2>Create a scoped credential</h2><p>In Integrations, create a service credential with <code>records:read</code> and <code>records:write</code>. Copy the secret once. This quickstart uses it from your own local console. In a real browser application, use an application-user access token instead and keep service credentials on a trusted server.</p></section>
+      <section><h2>Write and query with curl</h2><pre><code>curl http://127.0.0.1:7333/api/v1/collections/notes/records \
   -H 'Authorization: Bearer YOUR_TOKEN' \
   -H 'Content-Type: application/json' \
   -d '{"values":{"title":"First note","body":"Trestle is ready."}}'
 
 curl 'http://127.0.0.1:7333/api/v1/collections/notes/records?limit=25' \
-  -H 'Authorization: Bearer YOUR_TOKEN'</code></pre></section></div><div class="callout"><strong>Before exposing Trestle</strong><p>Terminate TLS, configure trusted proxies explicitly, protect SQLite files or PostgreSQL credentials, create a tested backup, and review the <a href="@pathto('security')">security boundary</a>.</p></div><p><a class="button" href="@pathto('postgresql')">PostgreSQL deployment guide</a> <a class="button secondary" href="@pathto('incident-desk')">Build the complete example</a></p></article></div>
+  -H 'Authorization: Bearer YOUR_TOKEN'</code></pre><p>The create body wraps your fields in <code>values</code>. The list response wraps records in <code>items</code> and returns an opaque <code>nextCursor</code> when another page is available.</p></section>
+      <section><h2>Do the same with JavaScript</h2><p>Open the Trestle dashboard at <code>http://127.0.0.1:7333</code>, then run this in its developer console so the request remains same-origin. Replace the token with the copy-once service credential from the previous step.</p><pre><code>const baseURL = location.origin;
+const token = "YOUR_TOKEN";
+
+async function request(path, options = {}) {
+  const response = await fetch(`${baseURL}${path}`, {
+    ...options,
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+      ...options.headers,
+    },
+  });
+  const body = await response.json();
+  if (!response.ok) {
+    throw new Error(body.error?.message ?? "Trestle request failed");
+  }
+  return body;
+}
+
+const note = await request(
+  "/api/v1/collections/notes/records",
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      values: { title: "First note", body: "Trestle is ready." },
+    }),
+  },
+);
+
+const query = new URLSearchParams({ limit: "25", sort: "-createdAt" });
+const page = await request(
+  `/api/v1/collections/notes/records?${query}`,
+);
+
+console.log(note.id, page.items);</code></pre><p>The helper adds the bearer credential consistently and turns non-success responses into JavaScript errors. <code>URLSearchParams</code> safely encodes list options. The returned record includes its ID, version, timestamps and <code>values</code>.</p></section>
+    </div>
+    <div class="callout"><strong>Before exposing Trestle</strong><p>Terminate TLS, configure trusted proxies explicitly, protect SQLite files or PostgreSQL credentials, create a tested backup, and review the <a href="@pathto('security')">security boundary</a>.</p></div>
+    <p>For a deployed browser application, put the frontend and Trestle API behind one public origin or route requests through a same-origin backend. Do not copy a service credential into shipped frontend code.</p>
+    <p><a class="button" href="@pathto('records')">Build out record operations</a> <a class="button secondary" href="@pathto('authentication')">Add application login</a> <a class="button secondary" href="@pathto('reference-clients')">Use another client</a></p>
+  </article>
+</div>

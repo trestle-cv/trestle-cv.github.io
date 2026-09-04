@@ -1,11 +1,85 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Typed collections</div><h1>Base collections</h1><p class="lede">An authenticated administrator can create, inspect, list, change and delete collection metadata through the admin API and dashboard.</p><h2>Create in the dashboard</h2><p>Open <strong>Collections</strong>, name the collection, and use <strong>Add field</strong> for every field the schema needs. Each row defines its name, type, required state and uniqueness. Trestle creates the whole collection in one operation. The unfinished draft is kept in the browser while you visit other dashboard sections or reload the page, and is cleared only after successful creation.</p><h2>Admin API</h2><pre><code>GET    /admin/v1/collections
+<div class="docs-layout">
+  <aside>@input("templates/docs-nav.html")</aside>
+  <article class="prose">
+    <div class="eyebrow">Typed collections</div>
+    <h1>Base collections</h1>
+    <p class="lede">An authenticated administrator can create, inspect, list, change and delete collection metadata through the admin API and dashboard. Application clients then work with the records stored by that schema.</p>
+    <h2>Create in the dashboard</h2>
+    <p>Open <strong>Collections</strong>, name the collection, and use <strong>Add field</strong> for every field the schema needs. Each row defines its name, type, required state and uniqueness. Trestle creates the whole collection in one operation. The unfinished draft is kept in the browser while you visit other dashboard sections or reload the page, and is cleared only after successful creation.</p>
+    <h2>Admin API</h2>
+    <pre><code>GET    /admin/v1/collections
 POST   /admin/v1/collections
 GET    /admin/v1/collections/{name}
 PATCH  /admin/v1/collections/{name}
-DELETE /admin/v1/collections/{name}</code></pre><p>Reads require a live administrator session. Mutations additionally require the current session's <code>X-Trestle-CSRF</code> token and same-origin request.</p><h2>Create metadata</h2><pre><code>{
+DELETE /admin/v1/collections/{name}</code></pre>
+    <p>Reads require a live administrator session. Mutations additionally require the current session's <code>X-Trestle-CSRF</code> token and same-origin request.</p>
+    <h2>Read collection metadata with fetch</h2>
+    <p>The administrator cookie is <code>HttpOnly</code>, so browser JavaScript cannot read it. Use <code>credentials: "same-origin"</code> and let the browser attach it. This example belongs in a same-origin administration tool, not in a public application frontend.</p>
+    <pre><code>async function listCollections() {
+  const response = await fetch("/admin/v1/collections", {
+    credentials: "same-origin",
+    headers: { Accept: "application/json" },
+  });
+
+  const body = await response.json();
+  if (!response.ok) {
+    throw new Error(body.error?.message ?? "Could not load collections");
+  }
+
+  return body.items;
+}
+
+const collections = await listCollections();
+for (const collection of collections) {
+  console.log(collection.name, collection.kind);
+}</code></pre>
+    <p>The list response is an object with an <code>items</code> array. Checking <code>response.ok</code> before using it keeps authorization and server errors from being mistaken for valid collection data.</p>
+    <h2>Create a collection with fetch</h2>
+    <p>First read the current administrator session. That response rotates and returns the CSRF token required by the next mutation. Send the token in the header and keep the cookie attached with <code>credentials</code>.</p>
+    <pre><code>async function createIssuesCollection() {
+  const sessionResponse = await fetch("/admin/v1/session", {
+    credentials: "same-origin",
+    headers: { Accept: "application/json" },
+  });
+  const session = await sessionResponse.json();
+
+  if (!sessionResponse.ok || !session.authenticated) {
+    throw new Error("Administrator sign-in required");
+  }
+
+  const response = await fetch("/admin/v1/collections", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "X-Trestle-CSRF": session.csrfToken,
+    },
+    body: JSON.stringify({
+      name: "issues",
+      fields: [
+        { name: "title", type: "text", required: true, unique: false },
+        { name: "priority", type: "number", required: false, unique: false },
+      ],
+    }),
+  });
+
+  const body = await response.json();
+  if (!response.ok) {
+    throw new Error(body.error?.message ?? "Could not create collection");
+  }
+  return body;
+}</code></pre>
+    <p>Do not put administrator credentials, cookies or CSRF tokens into application code. Normal web applications should receive an application-user token or use a narrowly scoped service credential from a trusted backend, then call the records API described on the <a href="@pathto('records')">Records page</a>.</p>
+    <h2>Create metadata</h2>
+    <pre><code>{
   "name": "issues",
   "fields": [
     {"name":"title","type":"text","required":true,"unique":false},
     {"name":"priority","type":"number","required":false,"unique":false}
   ]
-}</code></pre><h2>Keys and relations</h2><p>Every physical collection table has a generated <code>_id TEXT PRIMARY KEY</code>. SQLite foreign-key enforcement is enabled for every connection. Relation fields currently store record IDs as text; target-collection and delete/update policy metadata will be required before Trestle can generate physical foreign-key constraints for them.</p></article></div>
+}</code></pre>
+    <h2>Keys and relations</h2>
+    <p>Every physical collection table has a generated <code>_id TEXT PRIMARY KEY</code>. SQLite foreign-key enforcement is enabled for every connection. Relation fields currently store record IDs as text; target-collection and delete/update policy metadata will be required before Trestle can generate physical foreign-key constraints for them.</p>
+  </article>
+</div>

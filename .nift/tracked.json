@@ -67,7 +67,7 @@
     },
     {
       "name": "reference-clients",
-      "title": "Reference clients",
+      "title": "API clients",
       "template": "templates/template.html"
     },
     {
