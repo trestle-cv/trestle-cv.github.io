@@ -6,28 +6,17 @@
     <p class="lede">Trestle speaks ordinary JSON over HTTP. Use native fetch directly, start from the small TypeScript reference client, or call the same routes from any server language.</p>
     <div class="callout"><strong>Choose the credential for the caller</strong><p>Browser code should use a short-lived application-user access token. Trusted servers can use a narrowly scoped service credential. Administrator cookies and service secrets do not belong in public JavaScript.</p></div>
     <h2>Browser fetch</h2>
-    <p>Modern browsers provide <code>fetch</code> without another dependency. Serve the frontend and Trestle routes from one origin, then a small request helper is often enough for an application that uses only a few routes.</p>
-    <pre><code>async function request(path, options = {}) {
-  const response = await fetch(new URL(path, location.origin), {
-    ...options,
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-      ...options.headers,
-    },
-  });
-
-  const body = response.status === 204 ? null : await response.json();
-  if (!response.ok) {
-    throw new Error(body?.error?.message ?? `HTTP ${response.status}`);
-  }
-  return body;
-}
-
-const page = await request(
+    <p>Modern browsers provide <code>fetch</code> without another dependency. Serve the frontend and Trestle routes from one origin, then call the route directly.</p>
+    <pre><code>const response = await fetch(
   "/api/v1/collections/issues/records?limit=25",
-);</code></pre>
-    <p>This keeps the HTTP boundary visible and leaves retry, cancellation and UI policy under your control. Pass an <code>AbortSignal</code> through <code>options</code> when a screen should cancel stale requests. Server-side JavaScript can use the same helper with a private Trestle base URL loaded from configuration.</p>
+  { headers: { Authorization: `Bearer ${token}` } },
+);
+
+if (!response.ok) throw new Error("Could not load issues");
+const page = await response.json();
+
+console.log(page.items);</code></pre>
+    <p>Use an application-user access token in browser code. Server-side JavaScript can make the same request with a private Trestle URL and a scoped service credential.</p>
     <h2>TypeScript reference client</h2>
     <p>The repository includes <code>clients/typescript/trestle.ts</code>, a deliberately small typed wrapper over fetch. Copy or adapt it when you want record envelopes and errors typed without adopting a large SDK.</p>
     <pre><code>const trestle = new TrestleClient(

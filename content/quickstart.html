@@ -20,42 +20,34 @@ curl -fsSL https://trestle.cv/download.sh | sh
 
 curl 'http://127.0.0.1:7333/api/v1/collections/notes/records?limit=25' \
   -H 'Authorization: Bearer YOUR_TOKEN'</code></pre><p>The create body wraps your fields in <code>values</code>. The list response wraps records in <code>items</code> and returns an opaque <code>nextCursor</code> when another page is available.</p></section>
-      <section><h2>Do the same with JavaScript</h2><p>Open the Trestle dashboard at <code>http://127.0.0.1:7333</code>, then run this in its developer console so the request remains same-origin. Replace the token with the copy-once service credential from the previous step.</p><pre><code>const baseURL = location.origin;
-const token = "YOUR_TOKEN";
+      <section><h2>Do the same with JavaScript</h2><p>Open the Trestle dashboard at <code>http://127.0.0.1:7333</code>, then run this in its developer console. Replace the token with the credential from the previous step.</p><pre><code>const token = "YOUR_TOKEN";
 
-async function request(path, options = {}) {
-  const response = await fetch(`${baseURL}${path}`, {
-    ...options,
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-      ...options.headers,
-    },
-  });
-  const body = await response.json();
-  if (!response.ok) {
-    throw new Error(body.error?.message ?? "Trestle request failed");
-  }
-  return body;
-}
-
-const note = await request(
+const createResponse = await fetch(
   "/api/v1/collections/notes/records",
   {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       values: { title: "First note", body: "Trestle is ready." },
     }),
   },
 );
 
-const query = new URLSearchParams({ limit: "25", sort: "-createdAt" });
-const page = await request(
-  `/api/v1/collections/notes/records?${query}`,
+if (!createResponse.ok) throw new Error("Could not create note");
+const note = await createResponse.json();
+
+const listResponse = await fetch(
+  "/api/v1/collections/notes/records?limit=25",
+  { headers: { Authorization: `Bearer ${token}` } },
 );
 
-console.log(note.id, page.items);</code></pre><p>The helper adds the bearer credential consistently and turns non-success responses into JavaScript errors. <code>URLSearchParams</code> safely encodes list options. The returned record includes its ID, version, timestamps and <code>values</code>.</p></section>
+if (!listResponse.ok) throw new Error("Could not load notes");
+const page = await listResponse.json();
+
+console.log(note.id, page.items);</code></pre><p><code>fetch</code> sends the same HTTP requests as the curl examples. A created record includes its ID, version, timestamps and <code>values</code>; a list returns records in <code>items</code>.</p></section>
     </div>
     <div class="callout"><strong>Before exposing Trestle</strong><p>Terminate TLS, configure trusted proxies explicitly, protect SQLite files or PostgreSQL credentials, create a tested backup, and review the <a href="@pathto('security')">security boundary</a>.</p></div>
     <p>For a deployed browser application, put the frontend and Trestle API behind one public origin or route requests through a same-origin backend. Do not copy a service credential into shipped frontend code.</p>
