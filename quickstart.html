@@ -16,52 +16,105 @@
 			<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
 			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="./product.html">Product</a><a href="./quickstart.html">Quickstart</a><a href="examples/dogfood.html">Examples</a><a href="./docs.html">Docs</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a></nav>
 		</header>
-		<main id="main"><div class="docs-layout"><aside><div class="docs-navigation"><button class="docs-nav-toggle" type="button" aria-label="Open documentation navigation" aria-expanded="false" aria-controls="docs-nav"><span></span><span></span></button><nav id="docs-nav" class="docs-nav" aria-label="Documentation">
-                                                    <strong>Explore</strong>
-                                                    <a class="docs-home" href="./docs.html">Documentation</a>
-                                                    <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
-                                                    <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
-                                                    <details><summary>Data model</summary><div>
-                                                      <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
-                                                      <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
-                                                    </div></details>
-                                                    <details><summary>Queries</summary><div>
-                                                      <a href="./querying.html">Querying</a><a href="./filter-language.html">Filter language</a><a href="./sorting-pagination.html">Sorting &amp; pagination</a><a href="./relation-expansion.html">Relation expansion</a>
-                                                    </div></details>
-                                                    <details><summary>Authentication</summary><div>
-                                                      <a href="./authentication.html">Authentication</a><a href="./auth-collections.html">Auth collections</a><a href="./browser-sessions.html">Browser sessions</a><a href="./native-auth.html">Native clients</a><a href="./recovery.html">Recovery</a>
-                                                      <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
-                                                    </div></details>
-                                                    <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">Reference clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
-                                                    <details><summary>Example stacks</summary><div><a href="examples/dogfood.html">Dogfood examples</a><a href="./incident-desk.html">Incident Desk</a><a href="./signal-forge.html">Signal Forge</a><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
-                                                    <details><summary>Access rules</summary><div>
-                                                      <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
-                                                    </div></details>
-                                                    <details><summary>Files</summary><div>
-                                                      <a href="./files.html">Files overview</a><a href="./file-transfer.html">Upload &amp; download</a><a href="./file-rules.html">File authorization</a><a href="./local-storage.html">Local storage</a><a href="./s3-storage.html">S3-compatible storage</a><a href="./s3-providers.html">S3 providers</a><a href="./file-limits.html">File limits</a><a href="./file-troubleshooting.html">Troubleshooting</a>
-                                                    </div></details>
-                                                    <details><summary>Realtime</summary><div><a href="./realtime.html">Realtime overview</a><a href="./event-schemas.html">Event schemas</a></div></details>
-                                                    <details><summary>Automation</summary><div><a href="./jobs.html">Durable jobs</a><a href="./job-delivery.html">Delivery &amp; recovery</a><a href="./webhooks.html">Webhooks</a><a href="./webhook-security.html">Webhook security</a><a href="./aws-lambda.html">AWS Lambda</a><a href="./function-envelope.html">Function envelope</a></div></details>
-                                                    <details><summary>Operations</summary><div>
-                                                      <a href="./backups.html">Backups</a><a href="./restore.html">Restore</a><a href="./export-import.html">Export &amp; import</a><a href="./configuration.html">Configuration</a><a href="./operations.html">Health &amp; operations</a><a href="./audit.html">Audit</a><a href="./observability.html">Observability</a><a href="./dashboard.html">Dashboard</a><a href="./first-run.html">First-run setup</a><a href="./admin-security.html">Admin security</a>
-                                                    </div></details>
-                                                    <details><summary>Deployment</summary><div>
-                                                      <a href="./install.html">Install</a><a href="./releases.html">Binary releases</a><a href="./stability.html">Stability</a><a href="./caddy.html">HTTPS with Caddy</a><a href="./nginx.html">HTTPS with nginx</a><a href="./system-service.html">System service</a><a href="./company-deployment.html">Company subdomain deployment</a><a href="./windows.html">Windows</a><a href="./containers.html">Containers</a><a href="./updating.html">Updating</a><a href="./rollback.html">Rollback</a><a href="./deployment-troubleshooting.html">Troubleshooting</a>
-                                                    </div></details>
-                                                    <details><summary>Project</summary><div>
-                                                      <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
-                                                    </div></details>
-                                                  </nav></div></aside><article class="prose"><div class="eyebrow">Five-minute quickstart</div><h1>From executable to first record.</h1><p class="lede">Run one Trestle process with SQLite or PostgreSQL, create the first administrator, define a typed collection and write through the HTTP API.</p><div class="quick-steps"><section><h2>Install and start</h2><p>Choose how you want the verified executable delivered. Both options fetch the release archive and its <code>SHA256SUMS</code> and verify the archive before writing anything.</p><p><strong>Download into this directory</strong> changes nothing outside the current directory - ideal for portable folders and testing:</p><pre><code>mkdir my-trestle
+		<main id="main"><div class="docs-layout">
+                    <aside><div class="docs-navigation"><button class="docs-nav-toggle" type="button" aria-label="Open documentation navigation" aria-expanded="false" aria-controls="docs-nav"><span></span><span></span></button><nav id="docs-nav" class="docs-nav" aria-label="Documentation">
+                             <strong>Explore</strong>
+                             <a class="docs-home" href="./docs.html">Documentation</a>
+                             <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
+                             <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
+                             <details><summary>Data model</summary><div>
+                               <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                               <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
+                             </div></details>
+                             <details><summary>Queries</summary><div>
+                               <a href="./querying.html">Querying</a><a href="./filter-language.html">Filter language</a><a href="./sorting-pagination.html">Sorting &amp; pagination</a><a href="./relation-expansion.html">Relation expansion</a>
+                             </div></details>
+                             <details><summary>Authentication</summary><div>
+                               <a href="./authentication.html">Authentication</a><a href="./auth-collections.html">Auth collections</a><a href="./browser-sessions.html">Browser sessions</a><a href="./native-auth.html">Native clients</a><a href="./recovery.html">Recovery</a>
+                               <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
+                             </div></details>
+                             <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">API clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
+                             <details><summary>Example stacks</summary><div><a href="examples/dogfood.html">Dogfood examples</a><a href="./incident-desk.html">Incident Desk</a><a href="./signal-forge.html">Signal Forge</a><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
+                             <details><summary>Access rules</summary><div>
+                               <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
+                             </div></details>
+                             <details><summary>Files</summary><div>
+                               <a href="./files.html">Files overview</a><a href="./file-transfer.html">Upload &amp; download</a><a href="./file-rules.html">File authorization</a><a href="./local-storage.html">Local storage</a><a href="./s3-storage.html">S3-compatible storage</a><a href="./s3-providers.html">S3 providers</a><a href="./file-limits.html">File limits</a><a href="./file-troubleshooting.html">Troubleshooting</a>
+                             </div></details>
+                             <details><summary>Realtime</summary><div><a href="./realtime.html">Realtime overview</a><a href="./event-schemas.html">Event schemas</a></div></details>
+                             <details><summary>Automation</summary><div><a href="./jobs.html">Durable jobs</a><a href="./job-delivery.html">Delivery &amp; recovery</a><a href="./webhooks.html">Webhooks</a><a href="./webhook-security.html">Webhook security</a><a href="./aws-lambda.html">AWS Lambda</a><a href="./function-envelope.html">Function envelope</a></div></details>
+                             <details><summary>Operations</summary><div>
+                               <a href="./backups.html">Backups</a><a href="./restore.html">Restore</a><a href="./export-import.html">Export &amp; import</a><a href="./configuration.html">Configuration</a><a href="./operations.html">Health &amp; operations</a><a href="./audit.html">Audit</a><a href="./observability.html">Observability</a><a href="./dashboard.html">Dashboard</a><a href="./first-run.html">First-run setup</a><a href="./admin-security.html">Admin security</a>
+                             </div></details>
+                             <details><summary>Deployment</summary><div>
+                               <a href="./install.html">Install</a><a href="./releases.html">Binary releases</a><a href="./stability.html">Stability</a><a href="./caddy.html">HTTPS with Caddy</a><a href="./nginx.html">HTTPS with nginx</a><a href="./system-service.html">System service</a><a href="./company-deployment.html">Company subdomain deployment</a><a href="./windows.html">Windows</a><a href="./containers.html">Containers</a><a href="./updating.html">Updating</a><a href="./rollback.html">Rollback</a><a href="./deployment-troubleshooting.html">Troubleshooting</a>
+                             </div></details>
+                             <details><summary>Project</summary><div>
+                               <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
+                             </div></details>
+                           </nav></div></aside>
+                    <article class="prose">
+                      <div class="eyebrow">Five-minute quickstart</div>
+                      <h1>From executable to first record.</h1>
+                      <p class="lede">Run one Trestle process with SQLite or PostgreSQL, create the first administrator, define a typed collection and write through the HTTP API.</p>
+                      <div class="quick-steps">
+                        <section><h2>Install and start</h2><p>Choose how you want the verified executable delivered. Both options fetch the release archive and its <code>SHA256SUMS</code> and verify the archive before writing anything.</p><p><strong>Download into this directory</strong> changes nothing outside the current directory - ideal for portable folders and testing:</p><pre><code>mkdir my-trestle
 cd my-trestle
 curl -fsSL https://trestle.cv/download.sh | sh
 ./trestle</code></pre><p><strong>Install on this user account</strong> writes to <code>~/.local/bin</code>:</p><pre><code>curl -fsSL https://trestle.cv/install.sh | sh
-~/.local/bin/trestle</code></pre><p>Trestle listens on <code>127.0.0.1:7333</code> and creates its data directory on first start.</p></section><section><h2>Choose SQLite or PostgreSQL</h2><p>Open <code>http://127.0.0.1:7333</code>. SQLite is embedded and can continue directly to administrator creation. For PostgreSQL, select PostgreSQL, enter a connection URL for an empty PostgreSQL 16-18 database, and choose <strong>Test and use PostgreSQL</strong>. Trestle validates the server, persists the owner-only bootstrap configuration, and asks you to restart before credentials are shown.</p><pre><code>postgres://trestle:CHANGE_ME@127.0.0.1:5432/trestle?sslmode=require</code></pre><p>After restart, reload the dashboard and create the administrator. Competing setup requests produce exactly one administrator on either provider.</p></section><section><h2>Define a collection</h2><p>In Collections, create <code>notes</code> with required text fields named <code>title</code> and <code>body</code>. Trestle materializes provider-appropriate physical storage while keeping display names out of SQL identifiers.</p></section><section><h2>Create a scoped credential</h2><p>In Integrations, create a service credential with <code>records:read</code> and <code>records:write</code>. Copy the secret once.</p></section><section><h2>Write and query</h2><pre><code>curl http://127.0.0.1:7333/api/v1/collections/notes/records \
+~/.local/bin/trestle</code></pre><p>Trestle listens on <code>127.0.0.1:7333</code> and creates its data directory on first start.</p></section>
+                        <section><h2>Choose SQLite or PostgreSQL</h2><p>Open <code>http://127.0.0.1:7333</code>. SQLite is embedded and can continue directly to administrator creation. For PostgreSQL, select PostgreSQL, enter a connection URL for an empty PostgreSQL 16-18 database, and choose <strong>Test and use PostgreSQL</strong>. Trestle validates the server, persists the owner-only bootstrap configuration, and asks you to restart before credentials are shown.</p><pre><code>postgres://trestle:CHANGE_ME@127.0.0.1:5432/trestle?sslmode=require</code></pre><p>After restart, reload the dashboard and create the administrator. Competing setup requests produce exactly one administrator on either provider.</p></section>
+                        <section><h2>Define a collection</h2><p>In Collections, create <code>notes</code> with required text fields named <code>title</code> and <code>body</code>. Trestle materializes provider-appropriate physical storage while keeping display names out of SQL identifiers.</p></section>
+                        <section><h2>Create a scoped credential</h2><p>In Integrations, create a service credential with <code>records:read</code> and <code>records:write</code>. Copy the secret once. This quickstart uses it from your own local console. In a real browser application, use an application-user access token instead and keep service credentials on a trusted server.</p></section>
+                        <section><h2>Write and query with curl</h2><pre><code>curl http://127.0.0.1:7333/api/v1/collections/notes/records \
   -H 'Authorization: Bearer YOUR_TOKEN' \
   -H 'Content-Type: application/json' \
   -d '{"values":{"title":"First note","body":"Trestle is ready."}}'
 
 curl 'http://127.0.0.1:7333/api/v1/collections/notes/records?limit=25' \
-  -H 'Authorization: Bearer YOUR_TOKEN'</code></pre></section></div><div class="callout"><strong>Before exposing Trestle</strong><p>Terminate TLS, configure trusted proxies explicitly, protect SQLite files or PostgreSQL credentials, create a tested backup, and review the <a href="./security.html">security boundary</a>.</p></div><p><a class="button" href="./postgresql.html">PostgreSQL deployment guide</a> <a class="button secondary" href="./incident-desk.html">Build the complete example</a></p></article></div></main>
+  -H 'Authorization: Bearer YOUR_TOKEN'</code></pre><p>The create body wraps your fields in <code>values</code>. The list response wraps records in <code>items</code> and returns an opaque <code>nextCursor</code> when another page is available.</p></section>
+                        <section><h2>Do the same with JavaScript</h2><p>Open the Trestle dashboard at <code>http://127.0.0.1:7333</code>, then run this in its developer console so the request remains same-origin. Replace the token with the copy-once service credential from the previous step.</p><pre><code>const baseURL = location.origin;
+const token = "YOUR_TOKEN";
+
+async function request(path, options = {}) {
+  const response = await fetch(`${baseURL}${path}`, {
+    ...options,
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+      ...options.headers,
+    },
+  });
+  const body = await response.json();
+  if (!response.ok) {
+    throw new Error(body.error?.message ?? "Trestle request failed");
+  }
+  return body;
+}
+
+const note = await request(
+  "/api/v1/collections/notes/records",
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      values: { title: "First note", body: "Trestle is ready." },
+    }),
+  },
+);
+
+const query = new URLSearchParams({ limit: "25", sort: "-createdAt" });
+const page = await request(
+  `/api/v1/collections/notes/records?${query}`,
+);
+
+console.log(note.id, page.items);</code></pre><p>The helper adds the bearer credential consistently and turns non-success responses into JavaScript errors. <code>URLSearchParams</code> safely encodes list options. The returned record includes its ID, version, timestamps and <code>values</code>.</p></section>
+                      </div>
+                      <div class="callout"><strong>Before exposing Trestle</strong><p>Terminate TLS, configure trusted proxies explicitly, protect SQLite files or PostgreSQL credentials, create a tested backup, and review the <a href="./security.html">security boundary</a>.</p></div>
+                      <p>For a deployed browser application, put the frontend and Trestle API behind one public origin or route requests through a same-origin backend. Do not copy a service credential into shipped frontend code.</p>
+                      <p><a class="button" href="./records.html">Build out record operations</a> <a class="button secondary" href="./authentication.html">Add application login</a> <a class="button secondary" href="./reference-clients.html">Use another client</a></p>
+                    </article>
+                  </div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="/assets/js/script.js" defer></script>
 	</body>
