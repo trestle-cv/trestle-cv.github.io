@@ -1,0 +1,30 @@
+<div class="docs-layout">
+  <aside>@input("templates/docs-nav.html")</aside>
+  <article class="prose">
+    <div class="eyebrow">Examples · real product paths</div>
+    <h1>Dogfood applications</h1>
+    <p class="lede">These are separate, runnable applications built against Trestle's published HTTP contracts. They make different architectural choices and expose different parts of the platform to realistic use.</p>
+    <div class="dogfood-grid">
+      <section class="dogfood-card">
+        <div class="eyebrow">User-facing workflow</div>
+        <h2>Incident Desk</h2>
+        <p>An incident-management workspace with application users, rotating sessions, ownership rules, typed records, live updates and record-bound attachments.</p>
+        <ul><li>Browser authentication and refresh rotation</li><li>User-aware list, create, update and delete rules</li><li>SSE replay and authenticated file delivery</li><li>SQLite and PostgreSQL smoke paths</li></ul>
+        <div class="actions"><a class="button" href="@pathto('incident-desk')">Read the walkthrough</a><a class="text-link" href="https://github.com/trestle-dev/dogfood-incident-desk">Source on GitHub →</a></div>
+      </section>
+      <section class="dogfood-card">
+        <div class="eyebrow">High-volume service workflow</div>
+        <h2>Signal Forge</h2>
+        <p>An observability explorer that imports synthetic operational events in 1,000-record transactions, then filters and paginates them through a scoped service credential.</p>
+        <ul><li>Deterministic 10k, 100k and 1m event seeding</li><li>Typed telemetry, services, hosts and deployments</li><li>Bounded server-side filters and cursor pagination</li><li>No direct SQLite access from the application</li></ul>
+        <pre><code>signal-forge bootstrap
+signal-forge seed events 1000000
+npm start</code></pre>
+        <div class="actions"><a class="button" href="https://github.com/trestle-dev/dogfood-signal-forge">Browse Signal Forge</a></div>
+      </section>
+    </div>
+    <h2>Why two examples?</h2>
+    <p>Incident Desk tests identity-heavy collaboration. Signal Forge tests trusted-service access and sustained batch ingestion. Together they show that Trestle is a backend boundary rather than a prescribed frontend framework or application architecture.</p>
+    <div class="callout"><strong>Reproducible, not preloaded</strong><p>Neither repository commits generated application data. Run each bootstrap and seed path against a disposable Trestle data directory to reproduce the exercise.</p></div>
+  </article>
+</div>

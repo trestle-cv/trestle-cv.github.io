@@ -21,7 +21,7 @@
     "public/contributing.html",
     "public/docs.html",
     "public/example-stacks.html",
-    "public/incident-desk.html",
+    "public/examples/dogfood.html",
     "public/index.html",
     "public/install.html",
     "public/postgresql.html",

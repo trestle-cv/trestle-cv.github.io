@@ -426,6 +426,11 @@
       "template": "templates/template.html"
     },
     {
+      "name": "examples/dogfood",
+      "title": "Dogfood examples",
+      "template": "templates/template.html"
+    },
+    {
       "name": "database-support",
       "title": "database-support",
       "template": "templates/template.html"

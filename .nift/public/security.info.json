@@ -45,6 +45,7 @@
     "public/errors.html",
     "public/event-schemas.html",
     "public/example-stacks.html",
+    "public/examples/dogfood.html",
     "public/export-import.html",
     "public/field-types.html",
     "public/file-limits.html",
