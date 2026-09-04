@@ -431,6 +431,26 @@
       "template": "templates/template.html"
     },
     {
+      "name": "build-ledger",
+      "title": "Build Ledger",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "dispatch-board",
+      "title": "Dispatch Board",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "field-notebook",
+      "title": "Field Notebook",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "event-console",
+      "title": "Event Console",
+      "template": "templates/template.html"
+    },
+    {
       "name": "examples/dogfood",
       "title": "Dogfood examples",
       "template": "templates/template.html"

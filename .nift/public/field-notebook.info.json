@@ -1,9 +1,9 @@
 {
-  "name": "file-transfer",
-  "title": "Upload and download files",
+  "name": "field-notebook",
+  "title": "Field Notebook",
   "template": "templates/template.html",
-  "content": "content/file-transfer.html",
-  "output": "public/file-transfer.html",
+  "content": "content/field-notebook.html",
+  "output": "public/field-notebook.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/file-transfer.html",
+    "content/field-notebook.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

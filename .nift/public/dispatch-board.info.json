@@ -1,9 +1,9 @@
 {
-  "name": "file-transfer",
-  "title": "Upload and download files",
+  "name": "dispatch-board",
+  "title": "Dispatch Board",
   "template": "templates/template.html",
-  "content": "content/file-transfer.html",
-  "output": "public/file-transfer.html",
+  "content": "content/dispatch-board.html",
+  "output": "public/dispatch-board.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/file-transfer.html",
+    "content/dispatch-board.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

@@ -1,0 +1,14 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">JavaScript · Express reference application</div><h1>Dispatch Board</h1><p class="lede">A tactile operations queue that demonstrates a deliberately small JavaScript backend, durable task records and optimistic updates without exposing Trestle authority to the browser.</p><img class="product-shot" src="/assets/images/dispatch-board.svg" alt="Dispatch Board with queued, assigned, active and complete task lanes"><h2>What it proves</h2><div class="boundary-grid"><article><span class="kicker">Plain JavaScript</span><h3>A small server is enough</h3><p>Express serves the frontend and three domain routes. No SDK, generated client or framework-specific Trestle integration is required.</p></article><article><span class="kicker">Concurrency</span><h3>No silent lost updates</h3><p>Task changes read the current record version and send it back through <code>If-Match</code> when patching.</p></article><article><span class="kicker">Confinement</span><h3>No general proxy</h3><p>Identifiers are validated and every upstream call is constructed against the fixed <code>db_tasks</code> collection.</p></article></div><h2>Run the example</h2><pre><code>git clone https://github.com/trestle-cv/dogfood-dispatch-board
+cd dogfood-dispatch-board
+npm install
+
+export TRESTLE_URL=http://127.0.0.1:7333
+export TRESTLE_ADMIN_EMAIL=admin@example.test
+export TRESTLE_ADMIN_PASSWORD='choose-a-real-password'
+
+npm run bootstrap
+nift build
+npm run dev</code></pre><p>Start Trestle first and open <code>http://127.0.0.1:4181</code>. Bootstrap creates <code>db_tasks</code>, installs service-only rules and stores its copy-once credential in ignored owner-only configuration.</p><h2>Task workflow</h2><p>A task contains a title, status, priority, owner and note. The browser lists tasks, creates dispatches and advances them through the board. Express validates the complete writable shape, fetches the authoritative record before an update and lets Trestle enforce the version precondition.</p><pre><code>GET   /api/tasks
+POST  /api/tasks
+PATCH /api/tasks/:id</code></pre><h2>Architecture and authority</h2><pre><code>browser -> Express domain API -> Trestle HTTP API -> configured Trestle store</code></pre><p>The service credential stays in Express. It can read and write records but cannot administer collections, users or the server. The example is intentionally ordinary: native <code>fetch()</code>, a small Express process and public Trestle HTTP contracts.</p><h2>Useful checks</h2><pre><code>npm test
+npm run check</code></pre><div class="actions"><a class="button" href="https://github.com/trestle-cv/dogfood-dispatch-board">Browse the repository</a><a class="button secondary" href="@pathto('examples/dogfood')">See all dogfood apps</a></div></article></div>

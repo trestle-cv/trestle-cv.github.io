@@ -1,0 +1,16 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Python · FastAPI reference application</div><h1>Field Notebook</h1><p class="lede">A quiet environmental journal that validates typed field observations with Pydantic and persists them through an asynchronous FastAPI-to-Trestle boundary.</p><img class="product-shot" src="/assets/images/field-notebook.svg" alt="Field Notebook showing categorized environmental observation cards"><h2>What it proves</h2><div class="boundary-grid"><article><span class="kicker">Validation</span><h3>Typed observations</h3><p>Pydantic bounds required text, categories, conditions, notes and temperatures before a record reaches Trestle.</p></article><article><span class="kicker">Python boundary</span><h3>Async public API calls</h3><p>FastAPI exposes two domain endpoints while an <code>httpx</code> client holds the credential and calls one fixed collection.</p></article><article><span class="kicker">Developer experience</span><h3>Docs included</h3><p>The application exposes interactive domain API documentation at <code>/api/docs</code> without exposing Trestle's administrative API.</p></article></div><h2>Run the example</h2><pre><code>git clone https://github.com/trestle-cv/dogfood-field-notebook
+cd dogfood-field-notebook
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -e '.[dev]'
+
+export TRESTLE_URL=http://127.0.0.1:7333
+export TRESTLE_ADMIN_EMAIL=admin@example.test
+export TRESTLE_ADMIN_PASSWORD='choose-a-real-password'
+
+python scripts/bootstrap.py
+nift build
+uvicorn app.main:app --reload --host 127.0.0.1 --port 4182</code></pre><p>Start Trestle first, then open <code>http://127.0.0.1:4182</code>. Bootstrap creates <code>fn_observations</code>, applies service-only rules and saves its copy-once credential in <code>.field-notebook.json</code> with owner-only permissions.</p><h2>Observation contract</h2><p>Each entry has a title and location, a flora, fauna, weather or terrain category, a stable, watch or critical condition, bounded notes and an optional temperature between -80 and 80 degrees. The browser can list and create observations through the domain API; it never supplies an upstream path.</p><pre><code>GET  /api/observations
+POST /api/observations
+GET  /api/docs</code></pre><h2>Architecture and authority</h2><pre><code>browser -> FastAPI domain endpoints -> Trestle HTTP API -> configured Trestle store</code></pre><p>FastAPI owns the narrow browser boundary and Trestle owns schema enforcement and persistence. Static presentation remains independently rebuildable with Nift, and the service credential never enters generated HTML or browser responses.</p><h2>Useful checks</h2><pre><code>pytest
+python -m compileall -q app scripts</code></pre><div class="actions"><a class="button" href="https://github.com/trestle-cv/dogfood-field-notebook">Browse the repository</a><a class="button secondary" href="@pathto('examples/dogfood')">See all dogfood apps</a></div></article></div>

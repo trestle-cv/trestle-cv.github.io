@@ -1,0 +1,14 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">TypeScript · Fastify reference application</div><h1>Event Console</h1><p class="lede">A focused operational stream that records structured events and turns validated level and source selections into bounded Trestle queries.</p><img class="product-shot" src="/assets/images/event-console.svg" alt="Event Console showing a filtered stream of operational events"><h2>What it proves</h2><div class="boundary-grid"><article><span class="kicker">TypeScript</span><h3>Strict domain shapes</h3><p>Event inputs have explicit types, normalized defaults and bounded source and message fields before persistence.</p></article><article><span class="kicker">Query safety</span><h3>Filters are constructed server-side</h3><p>Fastify accepts only known levels and a constrained source value before composing Trestle's filter expression.</p></article><article><span class="kicker">Operational data</span><h3>Structured context</h3><p>Each event carries a level, source, message, JSON context and server-generated occurrence timestamp.</p></article></div><h2>Run the example</h2><pre><code>git clone https://github.com/trestle-cv/dogfood-event-console
+cd dogfood-event-console
+npm install
+
+export TRESTLE_URL=http://127.0.0.1:7333
+export TRESTLE_ADMIN_EMAIL=admin@example.test
+export TRESTLE_ADMIN_PASSWORD='choose-a-real-password'
+
+npm run bootstrap
+nift build
+npm run dev</code></pre><p>Start Trestle first and open <code>http://127.0.0.1:4183</code>. Bootstrap creates <code>ec_events</code>, installs service-only record rules and stores a copy-once service credential in ignored owner-only configuration.</p><h2>Event and query contract</h2><p>The server accepts debug, info, warn, error and critical levels. It defaults an omitted level to info, rejects blank or oversized source and message values, normalizes non-object context to an empty object and generates <code>occurred_at</code> itself. The list endpoint requests at most 100 records and permits only validated level and source filters.</p><pre><code>GET  /api/events?level=error&amp;source=release-worker
+POST /api/events</code></pre><h2>Architecture and authority</h2><pre><code>browser -> Fastify typed domain API -> Trestle HTTP API -> configured Trestle store</code></pre><p>Fastify caps request bodies at 32 KiB and constructs the only allowed collection path. The browser never sees the credential or gains a general-purpose proxy. Trestle owns the durable record and access-control boundary.</p><h2>Useful checks</h2><pre><code>npm run check
+npm run build:server
+npm start</code></pre><div class="actions"><a class="button" href="https://github.com/trestle-cv/dogfood-event-console">Browse the repository</a><a class="button secondary" href="@pathto('examples/dogfood')">See all dogfood apps</a></div></article></div>

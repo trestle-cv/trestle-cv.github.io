@@ -1,9 +1,9 @@
 {
-  "name": "file-transfer",
-  "title": "Upload and download files",
+  "name": "event-console",
+  "title": "Event Console",
   "template": "templates/template.html",
-  "content": "content/file-transfer.html",
-  "output": "public/file-transfer.html",
+  "content": "content/event-console.html",
+  "output": "public/event-console.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/file-transfer.html",
+    "content/event-console.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

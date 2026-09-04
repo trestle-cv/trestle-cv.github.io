@@ -22,9 +22,37 @@ signal-forge seed events 1000000
 npm start</code></pre>
         <div class="actions"><a class="button" href="@pathto('signal-forge')">Read the walkthrough</a><a class="text-link" href="https://github.com/trestle-cv/dogfood-signal-forge">Source on GitHub →</a></div>
       </section>
+      <section class="dogfood-card">
+        <div class="eyebrow">Rust · Axum</div>
+        <h2>Build Ledger</h2>
+        <p>An auditable release-history application for recording project versions, commits, results, timings and artifact locations through a narrow Axum API.</p>
+        <ul><li>Fixed same-origin domain routes</li><li>Typed Rust validation and structured errors</li><li>Scoped service credential retained server-side</li><li>Independently generated Nift frontend</li></ul>
+        <div class="actions"><a class="button" href="@pathto('build-ledger')">Read the walkthrough</a><a class="text-link" href="https://github.com/trestle-cv/dogfood-build-ledger">Source on GitHub →</a></div>
+      </section>
+      <section class="dogfood-card">
+        <div class="eyebrow">JavaScript · Express</div>
+        <h2>Dispatch Board</h2>
+        <p>A tactile operations queue that creates and advances dispatches while using Trestle record versions to prevent lost updates.</p>
+        <ul><li>Small Express domain API</li><li>Optimistic updates with <code>If-Match</code></li><li>Constrained record identifiers and request bodies</li><li>No upstream path selection in the browser</li></ul>
+        <div class="actions"><a class="button" href="@pathto('dispatch-board')">Read the walkthrough</a><a class="text-link" href="https://github.com/trestle-cv/dogfood-dispatch-board">Source on GitHub →</a></div>
+      </section>
+      <section class="dogfood-card">
+        <div class="eyebrow">Python · FastAPI</div>
+        <h2>Field Notebook</h2>
+        <p>A quiet environmental journal whose typed observation form is validated by Pydantic before FastAPI writes durable records to Trestle.</p>
+        <ul><li>Typed flora, fauna, weather and terrain entries</li><li>Bounded text and temperature validation</li><li>Async Trestle HTTP client</li><li>Interactive domain API documentation</li></ul>
+        <div class="actions"><a class="button" href="@pathto('field-notebook')">Read the walkthrough</a><a class="text-link" href="https://github.com/trestle-cv/dogfood-field-notebook">Source on GitHub →</a></div>
+      </section>
+      <section class="dogfood-card">
+        <div class="eyebrow">TypeScript · Fastify</div>
+        <h2>Event Console</h2>
+        <p>A focused operational stream for recording structured events and querying them by validated level and source filters.</p>
+        <ul><li>Strict TypeScript domain shapes</li><li>Bounded Fastify request bodies</li><li>Server-built filter expressions</li><li>Structured JSON context and timestamps</li></ul>
+        <div class="actions"><a class="button" href="@pathto('event-console')">Read the walkthrough</a><a class="text-link" href="https://github.com/trestle-cv/dogfood-event-console">Source on GitHub →</a></div>
+      </section>
     </div>
-    <h2>Why two examples?</h2>
-    <p>Incident Desk tests identity-heavy collaboration. Signal Forge tests trusted-service access and sustained batch ingestion. Together they show that Trestle is a backend boundary rather than a prescribed frontend framework or application architecture.</p>
+    <h2>Why six examples?</h2>
+    <p>Incident Desk tests identity-heavy collaboration and Signal Forge tests sustained batch ingestion. The four smaller applications then hold the product boundary constant while changing the trusted backend: Rust with Axum, JavaScript with Express, Python with FastAPI and TypeScript with Fastify. Together they demonstrate that Trestle is an ordinary language-neutral HTTP service, not a Go-only backend or a prescribed application framework.</p>
     <div class="callout"><strong>Reproducible, not preloaded</strong><p>Neither repository commits generated application data. Run each bootstrap and seed path against a disposable Trestle data directory to reproduce the exercise.</p></div>
   </article>
 </div>
