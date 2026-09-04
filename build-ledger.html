@@ -51,12 +51,20 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></div></aside><article class="prose"><div class="eyebrow">CP16 · Implemented</div><h1>Durable jobs</h1><p class="lede">Trestle persists asynchronous work before execution and uses atomic SQLite claims, finite leases and bounded retry state.</p><h2>Lifecycle</h2><pre><code>pending → running → succeeded
-                  ↘ pending (backoff)
-                  ↘ dead
-pending/running → cancelled</code></pre><p>Workers recover expired running leases at startup and during ordinary polling. Attempts use exponential backoff capped to prevent unbounded shifts. An idempotency key prevents duplicate enqueue records for the same producer operation.</p><h2>Administration</h2><pre><code>GET  /admin/v1/jobs?status=dead
-POST /admin/v1/jobs/{id} {"action":"retry"}
-POST /admin/v1/jobs/{id} {"action":"cancel"}</code></pre><p>The dashboard exposes payload, attempts, terminal error and retry/cancel controls. Payloads should contain stable identifiers rather than copied secrets.</p><h2>Provider storage</h2><p>Durable job claiming is deliberate per provider: SQLite serializes through its single owned connection, while PostgreSQL uses row locking with SKIP LOCKED so concurrent workers each claim a distinct job. Leases, retries, cancellation, dead letters and terminal states are provider-neutral, and a rolled-back transaction never publishes its job.</p></article></div></main>
+                                                  </nav></div></aside><article class="prose"><div class="eyebrow">Rust · Axum reference application</div><h1>Build Ledger</h1><p class="lede">An auditable release-history application that records versions, commits, outcomes, timings and artifact locations through an Axum domain API backed by Trestle.</p><img class="product-shot" src="/assets/images/build-ledger.svg" alt="Build Ledger release history with project, commit and result columns"><h2>What it proves</h2><div class="boundary-grid"><article><span class="kicker">Rust boundary</span><h3>Typed input at the edge</h3><p>Serde decodes each build and Rust validation bounds its project, version, commit and status before any upstream request.</p></article><article><span class="kicker">Authority</span><h3>One fixed collection</h3><p>Axum constructs only the <code>bl_builds</code> record path. The browser cannot choose a Trestle URL or receive the service token.</p></article><article><span class="kicker">Separation</span><h3>Independent frontend</h3><p>Nift builds the static ledger interface while Cargo compiles the backend. Neither layer imports Trestle internals.</p></article></div><h2>Run the example</h2><pre><code>git clone https://github.com/trestle-cv/dogfood-build-ledger
+cd dogfood-build-ledger
+
+export TRESTLE_URL=http://127.0.0.1:7333
+export TRESTLE_ADMIN_EMAIL=admin@example.test
+export TRESTLE_ADMIN_PASSWORD='choose-a-real-password'
+
+python3 scripts/bootstrap.py
+nift build
+cargo run</code></pre><p>Start Trestle on port <code>7333</code> first, then open <code>http://127.0.0.1:4180</code>. Bootstrap creates <code>bl_builds</code>, applies service-only record rules and writes a copy-once credential to the ignored, owner-only <code>.build-ledger.json</code>.</p><h2>Record and route contract</h2><p>Each build stores <code>project</code>, <code>version</code>, <code>commit</code>, <code>status</code>, optional <code>duration_ms</code>, optional <code>artifact</code> and a server-generated <code>recorded_at</code>. Status is confined to queued, running, passed or failed. The browser receives only <code>GET /api/builds</code> and <code>POST /api/builds</code>; Axum translates those calls into the corresponding public collection API requests.</p><h2>Architecture and authority</h2><pre><code>browser -> Axum domain API -> Trestle HTTP API -> configured Trestle store
+                |
+                +-> serves the Nift-generated frontend</code></pre><p>The scoped credential permits record reads and writes, not administration. Trestle remains responsible for durable state, schema enforcement and access rules; Build Ledger never opens Trestle's database.</p><h2>Useful checks</h2><pre><code>cargo fmt --check
+cargo clippy --all-targets -- -D warnings
+cargo test</code></pre><div class="actions"><a class="button" href="https://github.com/trestle-cv/dogfood-build-ledger">Browse the repository</a><a class="button secondary" href="examples/dogfood.html">See all dogfood apps</a></div></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
 		<script src="/assets/js/script.js" defer></script>
 	</body>
