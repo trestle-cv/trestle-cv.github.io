@@ -66,36 +66,14 @@ GET    /api/v1/collections/:collection/records/:id
 PATCH  /api/v1/collections/:collection/records/:id
 DELETE /api/v1/collections/:collection/records/:id</code></pre>
                       <p>Each response includes a stable ID, positive version, created and updated timestamps, and a <code>values</code> object. Use <code>?fields=title,status</code> for value projection and <code>?limit=1..100</code> for bounded lists.</p>
-                      <h2>A small fetch client</h2>
-                      <p>Centralize authorization, JSON decoding and Trestle's error envelope once. The token can be an application-user access token in a browser or a scoped service token in trusted server code.</p>
-                      <pre><code>const baseURL = location.origin;
-
-async function trestle(path, options = {}) {
-  const response = await fetch(new URL(path, baseURL), {
-    ...options,
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${accessToken}`,
-      ...options.headers,
-    },
-  });
-
-  const body = response.status === 204 ? null : await response.json();
-  if (!response.ok) {
-    const error = new Error(body?.error?.message ?? "Trestle request failed");
-    error.code = body?.error?.code;
-    error.requestId = body?.error?.requestId;
-    throw error;
-  }
-  return body;
-}</code></pre>
-                      <p>This browser example assumes your reverse proxy serves the application and Trestle API from one origin. In server-side JavaScript, replace <code>location.origin</code> with a private Trestle URL from configuration. Preserve the machine-readable error code and request ID so the UI can handle expected failures and an operator can trace unexpected ones.</p>
                       <h2>Create and read a record</h2>
-                      <pre><code>const created = await trestle(
+                      <p>Send the access token in the <code>Authorization</code> header and wrap collection fields in <code>values</code>.</p>
+                      <pre><code>const createResponse = await fetch(
   "/api/v1/collections/issues/records",
   {
     method: "POST",
     headers: {
+      Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
       "Idempotency-Key": crypto.randomUUID(),
     },
@@ -105,50 +83,54 @@ async function trestle(path, options = {}) {
   },
 );
 
-const issue = await trestle(
+if (!createResponse.ok) throw new Error("Could not create issue");
+const created = await createResponse.json();
+
+const readResponse = await fetch(
   `/api/v1/collections/issues/records/${encodeURIComponent(created.id)}`,
+  { headers: { Authorization: `Bearer ${accessToken}` } },
 );
+
+if (!readResponse.ok) throw new Error("Could not load issue");
+const issue = await readResponse.json();
 
 console.log(issue.id, issue.version, issue.values.title);</code></pre>
                       <p>The idempotency key makes a retried create safe after a network interruption. Record IDs must still be encoded before being inserted into a URL path.</p>
                       <h2>Update with optimistic concurrency</h2>
-                      <pre><code>const updated = await trestle(
+                      <pre><code>const response = await fetch(
   `/api/v1/collections/issues/records/${encodeURIComponent(issue.id)}`,
   {
     method: "PATCH",
     headers: {
+      Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
       "If-Match": `"${issue.version}"`,
     },
     body: JSON.stringify({ values: { priority: 1 } }),
   },
-);</code></pre>
+);
+
+if (!response.ok) throw new Error("Could not update issue");
+const updated = await response.json();</code></pre>
                       <p><code>If-Match</code> prevents an older screen from silently overwriting a newer edit. If another request already changed the record, Trestle returns <code>412 version_conflict</code>; reload the current record and ask the user how to reconcile it.</p>
                       <h2>Filter and follow cursor pages</h2>
-                      <pre><code>async function* issuePages() {
-  let cursor = "";
+                      <pre><code>const query = new URLSearchParams({
+  limit: "50",
+  sort: "-updatedAt",
+  filter: "priority &lt;= 2",
+  fields: "title,priority",
+});
 
-  do {
-    const query = new URLSearchParams({
-      limit: "50",
-      sort: "-updatedAt",
-      filter: "priority &lt;= 2",
-      fields: "title,priority",
-    });
-    if (cursor) query.set("cursor", cursor);
+const response = await fetch(
+  `/api/v1/collections/issues/records?${query}`,
+  { headers: { Authorization: `Bearer ${accessToken}` } },
+);
 
-    const page = await trestle(
-      `/api/v1/collections/issues/records?${query}`,
-    );
-    yield page.items;
-    cursor = page.nextCursor;
-  } while (cursor);
-}
+if (!response.ok) throw new Error("Could not load issues");
+const page = await response.json();
 
-for await (const issues of issuePages()) {
-  renderIssues(issues);
-}</code></pre>
-                      <p>Use <code>URLSearchParams</code> rather than building query strings by hand. An empty <code>nextCursor</code> means the final page has been reached. Cursor values are opaque and should only be returned to Trestle.</p>
+renderIssues(page.items);</code></pre>
+                      <p><code>URLSearchParams</code> encodes the filters safely. Pass <code>nextCursor</code> back as <code>cursor</code> to load another page; an empty value means there are no more records.</p>
                       <h2>Language-neutral HTTP</h2>
                       <pre><code>curl -X POST http://127.0.0.1:7333/api/v1/collections/issues/records \
   -H 'Authorization: Bearer YOUR_TOKEN' \
