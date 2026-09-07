@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#1F2021">
+		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
+		<title>Trestle</title>
+		<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" href="/assets/css/style.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<header class="site-header">
+			<a class="brand" href="./" aria-label="Trestle home"><span aria-hidden="true">T</span> Trestle</a>
+			<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
+			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="./product.html">Product</a><a href="./quickstart.html">Quickstart</a><a href="examples/dogfood.html">Examples</a><a href="./docs.html">Docs</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a></nav>
+		</header>
+		<main id="main"><main class="redirect-page" data-local-launcher data-product="trestle" data-default-port="7333">
+                    <section class="redirect-card" aria-labelledby="redirect-title">
+                      <p class="eyebrow">MY TRESTLE</p>
+                      <h1 id="redirect-title">Open your local Trestle.</h1>
+                      <p class="redirect-lede">This page remembers the local port used by Trestle in this browser and opens your local installation.</p>
+                      <div class="redirect-error" data-redirect-error role="alert" hidden></div>
+                      <form class="redirect-form" data-redirect-form novalidate>
+                        <label for="trestle-local-port">Local Trestle port</label>
+                        <div class="redirect-port-row">
+                          <span>http://localhost:</span>
+                          <input id="trestle-local-port" name="port" type="number" min="1" max="65535" step="1" inputmode="numeric" autocomplete="off" value="7333" aria-describedby="redirect-port-help">
+                        </div>
+                        <p id="redirect-port-help" class="redirect-help">Use the port configured for your local Trestle service. The default is <code>7333</code>.</p>
+                        <div class="redirect-actions">
+                          <button class="primary" type="submit">Save and open Trestle</button>
+                          <button class="secondary" type="button" data-reset-port>Use default port</button>
+                        </div>
+                      </form>
+                      <p class="redirect-status" data-redirect-status>Preparing Trestle…</p>
+                      <p class="redirect-note">Your port preference is stored only in this browser. No Trestle configuration or credentials are sent to trestle.cv.</p>
+                    </section>
+                  </main></main>
+		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
+		<script src="/assets/js/script.js" defer></script>
+	</body>
+</html>
