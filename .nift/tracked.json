@@ -474,6 +474,11 @@
       "name": "postgresql",
       "title": "postgresql",
       "template": "templates/template.html"
+    },
+    {
+      "name": "redirect",
+      "title": "redirect",
+      "template": "templates/template.html"
     }
   ]
 }
