@@ -1,4 +1,4 @@
-<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Records</div><h1>Querying records</h1><p class="lede">Combine bounded filters, sorting, projection and deterministic cursor pagination through ordinary URL parameters.</p><h2>Filtered list</h2><pre><code>GET /api/v1/collections/issues/records
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Records</div><h1>Querying records</h1><p class="lede">Combine bounded filters, sorting, projection and deterministic cursor pagination through ordinary URL parameters.</p><h2>Filtered list</h2><pre><code class="language-http">GET /api/v1/collections/issues/records
   ?filter=status%20%3D%20%22open%22%20%26%26%20priority%20%3E%3D%203
   &amp;sort=-priority,id
   &amp;fields=title,status,priority
