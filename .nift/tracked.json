@@ -6,6 +6,11 @@
       "template": "templates/template.html"
     },
     {
+      "name": "convenient-access",
+      "title": "Convenient access",
+      "template": "templates/template.html"
+    },
+    {
       "name": "product",
       "title": "Product",
       "template": "templates/template.html"
