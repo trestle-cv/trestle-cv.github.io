@@ -51,7 +51,7 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></div></aside><article class="prose"><div class="eyebrow">Records</div><h1>Querying records</h1><p class="lede">Combine bounded filters, sorting, projection and deterministic cursor pagination through ordinary URL parameters.</p><h2>Filtered list</h2><pre><code>GET /api/v1/collections/issues/records
+                                                  </nav></div></aside><article class="prose"><div class="eyebrow">Records</div><h1>Querying records</h1><p class="lede">Combine bounded filters, sorting, projection and deterministic cursor pagination through ordinary URL parameters.</p><h2>Filtered list</h2><pre><code class="language-http">GET /api/v1/collections/issues/records
   ?filter=status%20%3D%20%22open%22%20%26%26%20priority%20%3E%3D%203
   &amp;sort=-priority,id
   &amp;fields=title,status,priority
