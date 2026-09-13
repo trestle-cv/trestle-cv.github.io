@@ -1,0 +1,4 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Command-line administration · Trestle</title><link rel="stylesheet" href="assets/css/style.css"></head><body><main class="docs-layout"><article class="prose"><div class="eyebrow">Operations</div><h1>Command-line administration</h1><pre><code>trestle setup --email-file /run/secrets/admin-email --password-file /run/secrets/admin-password
+trestle config show --json
+trestle reset --auth --confirm "TRESTLE AUTH"
+trestle reset --all --confirm "TRESTLE ALL"</code></pre><p>Stop Trestle before reset. SQLite backups are retained; PostgreSQL reset fails closed.</p><p><a href="docs.html">Back to documentation</a> · <a href="https://gantry.cv">Gantry</a></p></article></main></body></html>
