@@ -74,6 +74,6 @@ if response.StatusCode/100 != 2 {
 return json.NewDecoder(response.Body).Decode(&page)</code></pre>
     <p>Decode Trestle's error object before returning a generic status error so logs retain its stable code and request ID.</p>
     <h2>Keep the contract visible</h2>
-    <p>Every client above uses the same routes, bearer tokens, record envelopes, limits and error codes. A wrapper should improve ergonomics without pretending it can bypass access rules, gain hidden operations or infer copy-once secrets. Consult the <a href="@pathto('api-reference')">HTTP API reference</a> for route discovery and the <a href="@pathto('records')">Records page</a> for complete fetch examples.</p>
+    <p>Every client above uses the same routes, bearer tokens, record envelopes, limits and error codes. A wrapper should improve ergonomics without pretending it can bypass access rules, gain hidden operations or infer copy-once secrets. Consult the <a href="@path('api-reference')">HTTP API reference</a> for route discovery and the <a href="@path('records')">Records page</a> for complete fetch examples.</p>
   </article>
 </div>

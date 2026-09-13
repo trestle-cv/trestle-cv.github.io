@@ -6,12 +6,12 @@
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
 		<header class="site-header">
-			<a class="brand" href="@pathto('/')" aria-label="Trestle home"><span aria-hidden="true">T</span> Trestle</a>
+			<a class="brand" href="@path('/')" aria-label="Trestle home"><span aria-hidden="true">T</span> Trestle</a>
 			<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
-			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="@pathto('product')">Product</a><a href="@pathto('quickstart')">Quickstart</a><a href="@pathto('examples/dogfood')">Examples</a><a href="@pathto('docs')">Docs</a><a href="@pathto('architecture')">Architecture</a><a href="@pathto('security')">Security</a></nav>
+			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="@path('product')">Product</a><a href="@path('quickstart')">Quickstart</a><a href="@path('examples/dogfood')">Examples</a><a href="@path('docs')">Docs</a><a href="@path('architecture')">Architecture</a><a href="@path('security')">Security</a><a href="https://gantry.cv">Gantry</a></nav>
 		</header>
 		<main id="main">@content</main>
-		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="@pathto('contributing')">Contributing</a><a href="@pathto('docs')">Documentation</a><a href="@pathto('roadmap')">Status</a></nav></footer>
+		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="@path('contributing')">Contributing</a><a href="@path('docs')">Documentation</a><a href="@path('roadmap')">Status</a></nav></footer>
 		<script src="/assets/js/script.js" defer></script>
 	</body>
 </html>

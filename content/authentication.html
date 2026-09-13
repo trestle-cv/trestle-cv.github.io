@@ -107,6 +107,6 @@ async function login(email, password) {
     <p>Create a scoped service account for each deployed workload. Store the copy-once secret in that workload's secret manager and send it only over HTTPS. Never embed a service credential in public JavaScript, where every visitor can recover it.</p>
     <div class="callout"><strong>Recovery boundary</strong><p>Outbound email verification and password recovery are not yet implemented. Do not present a recovery UI that Trestle cannot complete.</p></div>
     <h2>Dogfood path</h2>
-    <p>The Incident Desk keeps administrator sessions out of the application and uses short-lived application-user access tokens for every browser request. <a class="text-link" href="@pathto('incident-desk')">See the complete authentication flow.</a></p>
+    <p>The Incident Desk keeps administrator sessions out of the application and uses short-lived application-user access tokens for every browser request. <a class="text-link" href="@path('incident-desk')">See the complete authentication flow.</a></p>
   </article>
 </div>

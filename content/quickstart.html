@@ -49,8 +49,8 @@ const page = await listResponse.json();
 
 console.log(note.id, page.items);</code></pre><p><code>fetch</code> sends the same HTTP requests as the curl examples. A created record includes its ID, version, timestamps and <code>values</code>; a list returns records in <code>items</code>.</p></section>
     </div>
-    <div class="callout"><strong>Before exposing Trestle</strong><p>Terminate TLS, configure trusted proxies explicitly, protect SQLite files or PostgreSQL credentials, create a tested backup, and review the <a href="@pathto('security')">security boundary</a>.</p></div>
+    <div class="callout"><strong>Before exposing Trestle</strong><p>Terminate TLS, configure trusted proxies explicitly, protect SQLite files or PostgreSQL credentials, create a tested backup, and review the <a href="@path('security')">security boundary</a>.</p></div>
     <p>For a deployed browser application, put the frontend and Trestle API behind one public origin or route requests through a same-origin backend. Do not copy a service credential into shipped frontend code.</p>
-    <p><a class="button" href="@pathto('records')">Build out record operations</a> <a class="button secondary" href="@pathto('authentication')">Add application login</a> <a class="button secondary" href="@pathto('reference-clients')">Use another client</a></p>
+    <p><a class="button" href="@path('records')">Build out record operations</a> <a class="button secondary" href="@path('authentication')">Add application login</a> <a class="button secondary" href="@path('reference-clients')">Use another client</a></p>
   </article>
 </div>

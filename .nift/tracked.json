@@ -479,6 +479,11 @@
       "name": "postgresql",
       "title": "postgresql",
       "template": "templates/template.html"
+    },
+    {
+      "name": "cli",
+      "title": "Command-line administration",
+      "template": "templates/template.html"
     }
   ]
 }

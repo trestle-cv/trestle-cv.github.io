@@ -22,7 +22,7 @@ if (!source.includes('Type: A') || !source.includes('Type: CNAME')) {
 for (const sub of ['cortex.company.com', 'warden.company.com', 'trestle.company.com', 'watchpost.company.com']) {
   if (!source.includes(sub)) throw new Error(`ecosystem map must name ${sub}`);
 }
-for (const leftover of ['@pathto', '@input', '@include']) {
+for (const leftover of ['@path', '@input', '@include']) {
   if (generated && generated.includes(leftover)) throw new Error(`generated output contains unresolved ${leftover}`);
 }
 if (generated && !generated.includes(hostname)) throw new Error('generated deploy page is stale');

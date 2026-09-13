@@ -1,0 +1,5 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Operations</div><h1>Command-line administration</h1><p>Trestle supports headless setup and machine-readable inspection for agents and deployment scripts.</p><pre><code>trestle setup --email-file /run/secrets/admin-email --password-file /run/secrets/admin-password --registration-policy closed
+trestle config show --json
+trestle service status
+trestle reset --auth --confirm "TRESTLE AUTH"
+trestle reset --all --confirm "TRESTLE ALL"</code></pre><p>Stop the service first. Reset commands retain timestamped backups and currently operate on SQLite deployments; PostgreSQL deliberately fails closed so an external database cannot be partially reset. Use the existing backup, restore and migrate commands for database automation.</p></article></div>
