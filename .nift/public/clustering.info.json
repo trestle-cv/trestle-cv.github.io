@@ -1,9 +1,9 @@
 {
-  "name": "trusted-backends",
-  "title": "Trusted backends",
+  "name": "clustering",
+  "title": "Clustering",
   "template": "templates/template.html",
-  "content": "content/trusted-backends.html",
-  "output": "public/trusted-backends.html",
+  "content": "content/clustering.html",
+  "output": "public/clustering.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/trusted-backends.html",
+    "content/clustering.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

@@ -26,6 +26,11 @@
       "template": "templates/template.html"
     },
     {
+      "name": "clustering",
+      "title": "Clustering",
+      "template": "templates/template.html"
+    },
+    {
       "name": "records",
       "title": "Records",
       "template": "templates/template.html"
