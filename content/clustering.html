@@ -1,0 +1,14 @@
+<div class="docs-layout"><aside>@input("templates/docs-nav.html")</aside><article class="prose"><div class="eyebrow">Clustering</div><h1>Run Trestle as an explicitly replicated SQLite cluster.</h1><p class="lede">Trestle clustering uses the shared Gantry Core Raft runtime proven first in Watchpost. It keeps consensus mechanics generic while Trestle owns collection and record semantics.</p><h2>Initial clustered surface</h2><p>The first clustered semantic surface is collection definitions and records. Authentication/session state, credentials, files, jobs, webhook and function execution, audit/events, propagation scheduling and other external side effects are not silently copied into consensus; they remain node-local or deferred until they have an explicit distributed contract.</p><h2>Authority and failure behaviour</h2><pre><code>standalone                 -> ordinary local writes
+replicated ready leader    -> Raft proposal
+replicated ready follower  -> authenticated forward to leader
+replicated unavailable     -> reject; never fall back to local SQL</code></pre><p>Follower writes retain the caller operation identity and wait until the committed index is locally applied before returning.</p><h2>Configuration</h2><pre><code>TRESTLE_REPLICATION_ENABLED=true
+TRESTLE_REPLICATION_NODE_ID=tr_...
+TRESTLE_REPLICATION_LISTEN=10.0.0.10:7440
+TRESTLE_REPLICATION_BOOTSTRAP=true
+TRESTLE_REPLICATION_TLS_CERT=/etc/trestle/replication.crt
+TRESTLE_REPLICATION_TLS_KEY=/etc/trestle/replication.key
+TRESTLE_REPLICATION_TLS_CA=/etc/trestle/replication-ca.crt</code></pre><p>Production clustering requires the complete cert/key/CA triplet. Plaintext is an explicit local-development opt-in. The initial clustered materialization is SQLite-only; PostgreSQL clustering fails closed rather than presenting an unsafe partial mode.</p><h2>Membership</h2><p>Gantry pairing and Raft voter membership are separate. Pair every replication participant, then add voters explicitly. Disabling or revoking a Gantry peer stops replication authorization in both directions; reauthorizing it allows normal catch-up.</p><h2>Durability</h2><pre><code>&lt;data-dir&gt;/
+  trestle.db
+  replication/
+    raft.db
+    snapshots/</code></pre><p>Use stable node IDs and replication addresses. Do not delete Raft state as an upgrade procedure.</p></article></div>
