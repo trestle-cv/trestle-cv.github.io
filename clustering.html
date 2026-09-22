@@ -6,8 +6,8 @@
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Trestle</title>
-		<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -17,52 +17,51 @@
 			<nav id="site-nav" class="site-nav" aria-label="Primary"><a href="./product.html">Product</a><a href="./quickstart.html">Quickstart</a><a href="examples/dogfood.html">Examples</a><a href="./docs.html">Docs</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="https://gantry.cv">Gantry</a></nav>
 		</header>
 		<main id="main"><div class="docs-layout"><aside><div class="docs-navigation"><button class="docs-nav-toggle" type="button" aria-label="Open documentation navigation" aria-expanded="false" aria-controls="docs-nav"><span></span><span></span></button><nav id="docs-nav" class="docs-nav" aria-label="Documentation">
-  <strong>Explore</strong>
-  <a class="docs-home" href="./docs.html">Documentation</a>
-  <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
-  <a class="docs-home" href="./convenient-access.html">Convenient access</a>
-  <a class="docs-home" href="./clustering.html">Clustering</a>
-  <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
-  <details><summary>Data model</summary><div>
-    <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
-    <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
-  </div></details>
-  <details><summary>Queries</summary><div>
-    <a href="./querying.html">Querying</a><a href="./filter-language.html">Filter language</a><a href="./sorting-pagination.html">Sorting &amp; pagination</a><a href="./relation-expansion.html">Relation expansion</a>
-  </div></details>
-  <details><summary>Authentication</summary><div>
-    <a href="./authentication.html">Authentication</a><a href="./auth-collections.html">Auth collections</a><a href="./browser-sessions.html">Browser sessions</a><a href="./native-auth.html">Native clients</a><a href="./recovery.html">Recovery</a>
-    <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
-  </div></details>
-  <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">API clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
-  <details><summary>Example stacks</summary><div><a href="examples/dogfood.html">Dogfood examples</a><a href="./incident-desk.html">Incident Desk</a><a href="./signal-forge.html">Signal Forge</a><a href="./build-ledger.html">Build Ledger</a><a href="./dispatch-board.html">Dispatch Board</a><a href="./field-notebook.html">Field Notebook</a><a href="./event-console.html">Event Console</a><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
-  <details><summary>Access rules</summary><div>
-    <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
-  </div></details>
-  <details><summary>Files</summary><div>
-    <a href="./files.html">Files overview</a><a href="./file-transfer.html">Upload &amp; download</a><a href="./file-rules.html">File authorization</a><a href="./local-storage.html">Local storage</a><a href="./s3-storage.html">S3-compatible storage</a><a href="./s3-providers.html">S3 providers</a><a href="./file-limits.html">File limits</a><a href="./file-troubleshooting.html">Troubleshooting</a>
-  </div></details>
-  <details><summary>Realtime</summary><div><a href="./realtime.html">Realtime overview</a><a href="./event-schemas.html">Event schemas</a></div></details>
-  <details><summary>Automation</summary><div><a href="./jobs.html">Durable jobs</a><a href="./job-delivery.html">Delivery &amp; recovery</a><a href="./webhooks.html">Webhooks</a><a href="./webhook-security.html">Webhook security</a><a href="./aws-lambda.html">AWS Lambda</a><a href="./function-envelope.html">Function envelope</a></div></details>
-  <details><summary>Operations</summary><div>
-    <a href="./cli.html">CLI administration</a><a href="./backups.html">Backups</a><a href="./restore.html">Restore</a><a href="./export-import.html">Export &amp; import</a><a href="./configuration.html">Configuration</a><a href="./operations.html">Health &amp; operations</a><a href="./audit.html">Audit</a><a href="./observability.html">Observability</a><a href="./dashboard.html">Dashboard</a><a href="./first-run.html">First-run setup</a><a href="./admin-security.html">Admin security</a>
-  </div></details>
-  <details><summary>Deployment</summary><div>
-    <a href="./install.html">Install</a><a href="./releases.html">Binary releases</a><a href="./stability.html">Stability</a><a href="./caddy.html">HTTPS with Caddy</a><a href="./nginx.html">HTTPS with nginx</a><a href="./system-service.html">System service</a><a href="./company-deployment.html">Company subdomain deployment</a><a href="./windows.html">Windows</a><a href="./containers.html">Containers</a><a href="./updating.html">Updating</a><a href="./rollback.html">Rollback</a><a href="./deployment-troubleshooting.html">Troubleshooting</a>
-  </div></details>
-  <details><summary>Project</summary><div>
-    <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
-  </div></details>
-</nav></div>
-</aside><article class="prose"><div class="eyebrow">Clustering</div><h1>Pair nodes, manage shared configuration, and optionally replicate SQLite data.</h1><p class="lede">Trestle has two deliberately separate distributed surfaces: Gantry clustering establishes authenticated peer relationships for operations and configuration propagation; SQLite replication uses Raft for authoritative collection and record state. Pairing a node never silently makes it a Raft voter.</p>
-<h2>Choose the surface you need</h2><table><thead><tr><th>Surface</th><th>Purpose</th><th>Database</th></tr></thead><tbody><tr><td>Gantry cluster</td><td>Pair nodes, aggregate health/status, compare nodes, audit cluster actions and propagate selected configuration</td><td>SQLite or PostgreSQL</td></tr><tr><td>Raft replication</td><td>Replicate collection definitions and records with quorum-authoritative writes</td><td>SQLite only</td></tr></tbody></table>
-<h2>Gantry peer clustering</h2><p>Each installation has its own node identity. Pairing is explicit and invitation based: initialize the identity, create a one-time invitation on one node, begin the join from the other, approve it, then collect the approval. Production public endpoints use HTTPS; plaintext peer transport is only available through the explicit insecure-development setting.</p><pre><code>trestle cluster init --name node-a --endpoint https://a.example.com
+                                                    <strong>Explore</strong>
+                                                    <a class="docs-home" href="./docs.html">Documentation</a>
+                                                    <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
+                                                    <a class="docs-home" href="./convenient-access.html">Convenient access</a>
+                                                    <a class="docs-home" href="./clustering.html">Clustering</a>
+                                                    <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
+                                                    <details><summary>Data model</summary><div>
+                                                      <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                                                      <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
+                                                    </div></details>
+                                                    <details><summary>Queries</summary><div>
+                                                      <a href="./querying.html">Querying</a><a href="./filter-language.html">Filter language</a><a href="./sorting-pagination.html">Sorting &amp; pagination</a><a href="./relation-expansion.html">Relation expansion</a>
+                                                    </div></details>
+                                                    <details><summary>Authentication</summary><div>
+                                                      <a href="./authentication.html">Authentication</a><a href="./auth-collections.html">Auth collections</a><a href="./browser-sessions.html">Browser sessions</a><a href="./native-auth.html">Native clients</a><a href="./recovery.html">Recovery</a>
+                                                      <a href="./trusted-backends.html">Trusted backends</a><a href="./service-accounts.html">Service accounts</a><a href="./personal-tokens.html">Personal tokens</a><a href="./secret-management.html">Secret management</a>
+                                                    </div></details>
+                                                    <details><summary>API &amp; clients</summary><div><a href="./api-reference.html">API reference</a><a href="./reference-clients.html">API clients</a><a href="./ai-agents.html">AI agents</a><a href="./errors.html">Errors</a></div></details>
+                                                    <details><summary>Example stacks</summary><div><a href="examples/dogfood.html">Dogfood examples</a><a href="./incident-desk.html">Incident Desk</a><a href="./signal-forge.html">Signal Forge</a><a href="./build-ledger.html">Build Ledger</a><a href="./dispatch-board.html">Dispatch Board</a><a href="./field-notebook.html">Field Notebook</a><a href="./event-console.html">Event Console</a><a href="./example-stacks.html">Stack architectures</a><a href="./trusted-backends.html">Trusted backends</a><a href="./browser-sessions.html">Browser clients</a><a href="./native-auth.html">Native clients</a></div></details>
+                                                    <details><summary>Access rules</summary><div>
+                                                      <a href="./access-rules.html">Access rules</a><a href="./rule-language.html">Rule language</a><a href="./rule-recipes.html">Rule recipes</a><a href="./rule-debugging.html">Rule debugging</a><a href="./rules-service-accounts.html">Rules &amp; services</a>
+                                                    </div></details>
+                                                    <details><summary>Files</summary><div>
+                                                      <a href="./files.html">Files overview</a><a href="./file-transfer.html">Upload &amp; download</a><a href="./file-rules.html">File authorization</a><a href="./local-storage.html">Local storage</a><a href="./s3-storage.html">S3-compatible storage</a><a href="./s3-providers.html">S3 providers</a><a href="./file-limits.html">File limits</a><a href="./file-troubleshooting.html">Troubleshooting</a>
+                                                    </div></details>
+                                                    <details><summary>Realtime</summary><div><a href="./realtime.html">Realtime overview</a><a href="./event-schemas.html">Event schemas</a></div></details>
+                                                    <details><summary>Automation</summary><div><a href="./jobs.html">Durable jobs</a><a href="./job-delivery.html">Delivery &amp; recovery</a><a href="./webhooks.html">Webhooks</a><a href="./webhook-security.html">Webhook security</a><a href="./aws-lambda.html">AWS Lambda</a><a href="./function-envelope.html">Function envelope</a></div></details>
+                                                    <details><summary>Operations</summary><div>
+                                                      <a href="./cli.html">CLI administration</a><a href="./backups.html">Backups</a><a href="./restore.html">Restore</a><a href="./export-import.html">Export &amp; import</a><a href="./configuration.html">Configuration</a><a href="./operations.html">Health &amp; operations</a><a href="./audit.html">Audit</a><a href="./observability.html">Observability</a><a href="./dashboard.html">Dashboard</a><a href="./first-run.html">First-run setup</a><a href="./admin-security.html">Admin security</a>
+                                                    </div></details>
+                                                    <details><summary>Deployment</summary><div>
+                                                      <a href="./install.html">Install</a><a href="./releases.html">Binary releases</a><a href="./stability.html">Stability</a><a href="./caddy.html">HTTPS with Caddy</a><a href="./nginx.html">HTTPS with nginx</a><a href="./system-service.html">System service</a><a href="./company-deployment.html">Company subdomain deployment</a><a href="./windows.html">Windows</a><a href="./containers.html">Containers</a><a href="./updating.html">Updating</a><a href="./rollback.html">Rollback</a><a href="./deployment-troubleshooting.html">Troubleshooting</a>
+                                                    </div></details>
+                                                    <details><summary>Project</summary><div>
+                                                      <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
+                                                    </div></details>
+                                                  </nav></div></aside><article class="prose"><div class="eyebrow">Clustering</div><h1>Pair nodes, manage shared configuration, and optionally replicate SQLite data.</h1><p class="lede">Trestle has two deliberately separate distributed surfaces: Gantry clustering establishes authenticated peer relationships for operations and configuration propagation; SQLite replication uses Raft for authoritative collection and record state. Pairing a node never silently makes it a Raft voter.</p>
+                  <h2>Choose the surface you need</h2><table><thead><tr><th>Surface</th><th>Purpose</th><th>Database</th></tr></thead><tbody><tr><td>Gantry cluster</td><td>Pair nodes, aggregate health/status, compare nodes, audit cluster actions and propagate selected configuration</td><td>SQLite or PostgreSQL</td></tr><tr><td>Raft replication</td><td>Replicate collection definitions and records with quorum-authoritative writes</td><td>SQLite only</td></tr></tbody></table>
+                  <h2>Gantry peer clustering</h2><p>Each installation has its own node identity. Pairing is explicit and invitation based: initialize the identity, create a one-time invitation on one node, begin the join from the other, approve it, then collect the approval. Production public endpoints use HTTPS; plaintext peer transport is only available through the explicit insecure-development setting.</p><pre><code>trestle cluster init --name node-a --endpoint https://a.example.com
 trestle cluster invite --secret-file /tmp/trestle-invite
 trestle cluster join --url https://a.example.com --token-file /tmp/trestle-invite
 trestle cluster joins
 trestle cluster approve --id &lt;join-id&gt;
 trestle cluster collect --id &lt;outbound-join-id&gt;</code></pre>
-<h2>Cluster administration</h2><pre><code>trestle cluster members
+                  <h2>Cluster administration</h2><pre><code>trestle cluster members
 trestle cluster status --target all
 trestle cluster status --target local
 trestle cluster status --target members
@@ -70,31 +69,30 @@ trestle cluster status --target node:&lt;node-id&gt;
 trestle cluster rotate --id &lt;node-id&gt; --secret-file /secure/new-credential
 trestle cluster revoke --id &lt;node-id&gt;
 trestle cluster remove --id &lt;node-id&gt;</code></pre><p><code>trestle cluster reject --id &lt;join-id&gt;</code> rejects a pending join. Cluster actions are recorded in the cluster audit history.</p>
-<h2>Management UI and API</h2><p>The management application includes a Cluster view for identity, members, pending and outbound joins, status, audit history and propagation. The administrator API exposes identity, members, invitations, joins, outbound joins, summary, comparison, audit and propagation under <code>/admin/v1/cluster/...</code>. Peer RPC lives under <code>/api/cluster/v1/...</code> and uses cluster credentials rather than application-user credentials.</p>
-<h2>Compare and propagate configuration</h2><p>Trestle can compare supported product configuration across paired nodes and propagate selected configuration through the shared Gantry propagation contract. Propagation supports preview/dry-run before apply, target selection, durable profiles and reconciliation history. Trestle exports validated configuration envelopes and applies them through product semantics rather than copying raw database rows.</p><p>Propagation is not database replication. It distributes supported configuration; it does not copy arbitrary records, credentials or node identity.</p>
-<h2>SQLite Raft replication</h2><p>Replication is optional and separate from Gantry pairing. It replicates collection definitions and records as semantic mutations through Raft. Authentication/session state, credentials, files, jobs, webhook and function execution, audit/events and other external side effects are not silently replayed. PostgreSQL replication fails closed rather than presenting a partial clustered mode.</p><pre><code>TRESTLE_REPLICATION_ENABLED=true
+                  <h2>Management UI and API</h2><p>The management application includes a Cluster view for identity, members, pending and outbound joins, status, audit history and propagation. The administrator API exposes identity, members, invitations, joins, outbound joins, summary, comparison, audit and propagation under <code>/admin/v1/cluster/...</code>. Peer RPC lives under <code>/api/cluster/v1/...</code> and uses cluster credentials rather than application-user credentials.</p>
+                  <h2>Compare and propagate configuration</h2><p>Trestle can compare supported product configuration across paired nodes and propagate selected configuration through the shared Gantry propagation contract. Propagation supports preview/dry-run before apply, target selection, durable profiles and reconciliation history. Trestle exports validated configuration envelopes and applies them through product semantics rather than copying raw database rows.</p><p>Propagation is not database replication. It distributes supported configuration; it does not copy arbitrary records, credentials or node identity.</p>
+                  <h2>SQLite Raft replication</h2><p>Replication is optional and separate from Gantry pairing. It replicates collection definitions and records as semantic mutations through Raft. Authentication/session state, credentials, files, jobs, webhook and function execution, audit/events and other external side effects are not silently replayed. PostgreSQL replication fails closed rather than presenting a partial clustered mode.</p><pre><code>TRESTLE_REPLICATION_ENABLED=true
 TRESTLE_REPLICATION_NODE_ID=node-a
 TRESTLE_REPLICATION_LISTEN=10.0.0.10:7440
 TRESTLE_REPLICATION_TLS_CERT=/etc/trestle/node-a.crt
 TRESTLE_REPLICATION_TLS_KEY=/etc/trestle/node-a.key
 TRESTLE_REPLICATION_TLS_CA=/etc/trestle/replication-ca.crt</code></pre><p>Production replication requires the complete certificate/key/CA triplet. Plaintext is an explicit local-development opt-in.</p>
-<h2>Form a replicated cluster</h2><ol><li>Configure SQLite replication and stable node IDs/addresses on every node.</li><li>Pair every participant through <code>trestle cluster ...</code> so peers authenticate in both directions.</li><li>Bootstrap one node with <code>TRESTLE_REPLICATION_BOOTSTRAP=true</code>.</li><li>Verify the leader with <code>trestle replicate status</code>.</li><li>Add each remaining voter explicitly with <code>trestle replicate join &lt;node-id&gt; &lt;raft-address&gt;</code>.</li><li>Verify voter membership and readiness from the cluster.</li></ol><p>Gantry membership and Raft voter membership remain separate throughout this process.</p>
-<h2>Replication operations</h2><pre><code>trestle replicate status
+                  <h2>Form a replicated cluster</h2><ol><li>Configure SQLite replication and stable node IDs/addresses on every node.</li><li>Pair every participant through <code>trestle cluster ...</code> so peers authenticate in both directions.</li><li>Bootstrap one node with <code>TRESTLE_REPLICATION_BOOTSTRAP=true</code>.</li><li>Verify the leader with <code>trestle replicate status</code>.</li><li>Add each remaining voter explicitly with <code>trestle replicate join &lt;node-id&gt; &lt;raft-address&gt;</code>.</li><li>Verify voter membership and readiness from the cluster.</li></ol><p>Gantry membership and Raft voter membership remain separate throughout this process.</p>
+                  <h2>Replication operations</h2><pre><code>trestle replicate status
 trestle replicate join &lt;node-id&gt; &lt;raft-address&gt;
 trestle replicate snapshot</code></pre><p>Cluster and replication commands must use the same Trestle environment as the running service. On a systemd installation, load the configured service environment so the CLI targets the correct data directory and database.</p>
-<h2>Quorum and follower writes</h2><pre><code>3/3  - normal operation
+                  <h2>Quorum and follower writes</h2><pre><code>3/3  - normal operation
 2/3  - quorum remains; authoritative writes continue
 1/3  - authoritative mutations fail closed; no local SQLite fallback</code></pre><p>Mutations may be submitted to a healthy ready follower. It authenticates the request, forwards the semantic mutation to the leader, waits for the committed index to apply locally, then returns. A catching-up follower can transiently return <code>replication unavailable</code> (503); the mutation is not invisibly committed.</p>
-<h2>Durability, snapshots and recovery</h2><pre><code>&lt;data-dir&gt;/
+                  <h2>Durability, snapshots and recovery</h2><pre><code>&lt;data-dir&gt;/
   trestle.db
   replication/
     raft.db
     snapshots/</code></pre><p>The SQLite product database, Raft log and snapshots are all meaningful durable state. Restarts, whole-cluster restarts and offline-follower catch-up rebuild through committed Raft state. <code>trestle replicate snapshot</code> forces a snapshot. Do not manually copy, edit or delete Raft state as an upgrade procedure.</p>
-<h2>Idempotency and preconditions</h2><p>Caller idempotency is consensus-owned: the same <code>Idempotency-Key</code> and semantic intent replay the original committed result on any node; reusing a key for different content is a 409 conflict. Record updates and deletes use <code>If-Match</code>; stale versions are caller conflicts and never silently overwrite newer state.</p>
-<h2>Backup and restore boundary</h2><p>Portable backups intentionally exclude cluster identity, private signing keys, membership credentials and topology. A restored node generates a new identity and must be paired again. Restore into a destination that already contains cluster identity or membership fails closed rather than merging trust state.</p>
-<h2>Security and failure boundary</h2><p>Disabling or revoking a Gantry peer stops cluster authorization in both directions; Raft membership is a separate operator decision. Credential rotation changes the local outbound credential and version. Production Raft transport uses mutual TLS. The replicated data surface remains collections and records only; files, credentials, sessions, jobs, integrations, audit/events and other side effects remain node-local unless a separate distributed contract explicitly says otherwise.</p></article></div>
-</main>
+                  <h2>Idempotency and preconditions</h2><p>Caller idempotency is consensus-owned: the same <code>Idempotency-Key</code> and semantic intent replay the original committed result on any node; reusing a key for different content is a 409 conflict. Record updates and deletes use <code>If-Match</code>; stale versions are caller conflicts and never silently overwrite newer state.</p>
+                  <h2>Backup and restore boundary</h2><p>Portable backups intentionally exclude cluster identity, private signing keys, membership credentials and topology. A restored node generates a new identity and must be paired again. Restore into a destination that already contains cluster identity or membership fails closed rather than merging trust state.</p>
+                  <h2>Security and failure boundary</h2><p>Disabling or revoking a Gantry peer stops cluster authorization in both directions; Raft membership is a separate operator decision. Credential rotation changes the local outbound credential and version. Production Raft transport uses mutual TLS. The replicated data surface remains collections and records only; files, credentials, sessions, jobs, integrations, audit/events and other side effects remain node-local unless a separate distributed contract explicitly says otherwise.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="/assets/js/script.js" defer></script>
+		<script src="assets/js/script.js" defer></script>
 	</body>
 </html>

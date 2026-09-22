@@ -6,8 +6,8 @@
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Trestle</title>
-		<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -21,9 +21,10 @@
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
                                                     <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
                                                     <a class="docs-home" href="./convenient-access.html">Convenient access</a>
+                                                    <a class="docs-home" href="./clustering.html">Clustering</a>
                                                     <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
                                                     <details><summary>Data model</summary><div>
-                                                      <a href="./clustering.html">Clustering</a><a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                                                      <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
                                                     <details><summary>Queries</summary><div>
@@ -64,6 +65,6 @@
   ]
 }</code></pre><h2>Naming</h2><p>Names begin with a lowercase ASCII letter, contain lowercase letters, digits and underscores, and are at most 63 characters. Treat them like API identifiers: prefer <code>due_at</code> over a display label such as “Due date”. Leading underscores and reserved names are rejected.</p><h2>Choose field types deliberately</h2><ul><li>Use <code>select</code> for a controlled state such as open/closed, not free text.</li><li>Use <code>datetime</code> for comparable timestamps and normalize to UTC.</li><li>Use <code>relation</code> when a value identifies another record, while remembering target-aware physical foreign keys are not yet generated.</li><li>Use <code>json</code> for genuinely variable metadata, not as an escape hatch for every field.</li><li>Use <code>unique</code> only for application invariants; it has write and migration costs.</li></ul><h2>Defaults and required fields</h2><p>Defaults must be valid JSON and match the field type. A required field with a sensible default can make additive evolution safe. A required field without a default needs a data backfill before existing rows can satisfy it.</p><h2>Design for access rules</h2><p>Store policy-relevant values such as <code>owner_id</code>, <code>team_id</code> or <code>visibility</code> as explicit fields. Hiding ownership inside a JSON blob makes rules, indexes and migrations harder to reason about.</p><h2>Metadata and storage</h2><p>Trestle assigns stable internal IDs to collections and fields. User names never become SQL identifiers. The complete metadata definition and physical SQLite table change in one transaction.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="/assets/js/script.js" defer></script>
+		<script src="assets/js/script.js" defer></script>
 	</body>
 </html>

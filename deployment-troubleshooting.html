@@ -6,8 +6,8 @@
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Trestle</title>
-		<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -21,9 +21,10 @@
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
                                                     <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
                                                     <a class="docs-home" href="./convenient-access.html">Convenient access</a>
+                                                    <a class="docs-home" href="./clustering.html">Clustering</a>
                                                     <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
                                                     <details><summary>Data model</summary><div>
-                                                      <a href="./clustering.html">Clustering</a><a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                                                      <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
                                                     <details><summary>Queries</summary><div>
@@ -54,6 +55,6 @@
                                                     </div></details>
                                                   </nav></div></aside><article class="prose"><div class="eyebrow">Operations</div><h1>Deployment troubleshooting</h1><p class="lede">Start with the authenticated Settings diagnostics and a redacted support bundle, then verify each trust boundary independently.</p><h2>Cookies are not Secure</h2><p>Confirm the proxy's immediate address is in <code>TRESTLE_TRUSTED_PROXIES</code> and that it replaces <code>X-Forwarded-Proto</code> with <code>https</code>. Trestle ignores that header from every other peer.</p><h2>Login reports an origin error</h2><p>Preserve the public <code>Host</code> header and scheme. Do not rewrite browser origins or expose Trestle on a second public hostname without a deliberate routing policy.</p><h2>SSE connects but events arrive late</h2><p>Disable proxy buffering and extend the upstream read timeout. Clients must reconnect with <code>Last-Event-ID</code> and handle replay duplicates.</p><h2>Uploads fail at the proxy</h2><p>Increase the proxy body limit above Trestle's configured upload maximum plus multipart overhead. A proxy rejection occurs before Trestle can return its structured error.</p><h2>Wrong client address in logs</h2><p>Ensure every trusted hop is listed and every untrusted edge replaces forwarded headers. Trestle walks the chain from the immediate peer and stops at the first untrusted address.</p><h2>Support bundle</h2><p>Download it from Settings. It includes build identity, platform, listener, storage mode, timeout and trusted-proxy configuration, but excludes credentials, tokens, database contents and file paths.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="/assets/js/script.js" defer></script>
+		<script src="assets/js/script.js" defer></script>
 	</body>
 </html>

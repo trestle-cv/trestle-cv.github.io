@@ -6,8 +6,8 @@
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Trestle</title>
-		<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -21,9 +21,10 @@
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
                                                     <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
                                                     <a class="docs-home" href="./convenient-access.html">Convenient access</a>
+                                                    <a class="docs-home" href="./clustering.html">Clustering</a>
                                                     <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
                                                     <details><summary>Data model</summary><div>
-                                                      <a href="./clustering.html">Clustering</a><a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                                                      <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
                                                     <details><summary>Queries</summary><div>
@@ -54,6 +55,6 @@
                                                     </div></details>
                                                   </nav></div></aside><article class="prose"><div class="eyebrow">Deployment</div><h1>Windows</h1><p class="lede">Windows amd64 and arm64 ZIP archives contain <code>trestle.exe</code>, README and license with the dashboard already embedded.</p><h2>Install</h2><ol><li>Download the matching ZIP and <code>SHA256SUMS</code>.</li><li>Verify the checksum in PowerShell with <code>Get-FileHash -Algorithm SHA256</code>.</li><li>Extract to an administrator-controlled directory.</li><li>Run <code>trestle.exe version</code>, then start on loopback for first-run setup.</li></ol><pre><code>.\trestle.exe --listen 127.0.0.1:7333 --data-dir C:\ProgramData\Trestle</code></pre><p>No Windows service wrapper is bundled yet. Use a service manager that forwards stop requests and restricts the service identity's access to the data directory.</p><div class="callout"><strong>Proxy boundary</strong><p>If IIS or another proxy terminates HTTPS, trust only its immediate address and verify that it replaces forwarded headers. The Caddy and nginx examples describe the required protocol behavior even when the Windows proxy syntax differs.</p></div></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="/assets/js/script.js" defer></script>
+		<script src="assets/js/script.js" defer></script>
 	</body>
 </html>

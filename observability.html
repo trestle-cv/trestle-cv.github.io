@@ -6,8 +6,8 @@
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Trestle</title>
-		<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -21,9 +21,10 @@
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
                                                     <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
                                                     <a class="docs-home" href="./convenient-access.html">Convenient access</a>
+                                                    <a class="docs-home" href="./clustering.html">Clustering</a>
                                                     <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
                                                     <details><summary>Data model</summary><div>
-                                                      <a href="./clustering.html">Clustering</a><a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                                                      <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
                                                     <details><summary>Queries</summary><div>
@@ -57,6 +58,6 @@ GET /system/ready
 GET /system/version
 GET /admin/v1/operations</code></pre><p>The first three endpoints are deliberately narrow. The authenticated operations summary includes collection, file, session and event counts plus the SQLite page-derived size.</p><h2>Logging</h2><p>Every HTTP request receives an <code>X-Request-ID</code> and a structured completion log. Audit facts retain the same identifier for supported mutations. Logs are operational evidence, not a substitute for backups or durable metrics.</p><h2>Retention</h2><p>Keep logs and exported audit facts according to the deployment's privacy and incident-response requirements. Avoid indefinite retention by accident.</p><h2>Provider storage</h2><p>The operations summary reports provider facts on both engines: SQLite reports page-based database size and PostgreSQL reports <code>pg_database_size(current_database())</code>, with bounded object counts and the audit boundary note.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="/assets/js/script.js" defer></script>
+		<script src="assets/js/script.js" defer></script>
 	</body>
 </html>

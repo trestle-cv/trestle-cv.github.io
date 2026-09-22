@@ -6,8 +6,8 @@
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Trestle</title>
-		<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -21,9 +21,10 @@
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
                                                     <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
                                                     <a class="docs-home" href="./convenient-access.html">Convenient access</a>
+                                                    <a class="docs-home" href="./clustering.html">Clustering</a>
                                                     <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
                                                     <details><summary>Data model</summary><div>
-                                                      <a href="./clustering.html">Clustering</a><a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                                                      <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
                                                     <details><summary>Queries</summary><div>
@@ -59,6 +60,6 @@ pending/running → cancelled</code></pre><p>Workers recover expired running lea
 POST /admin/v1/jobs/{id} {"action":"retry"}
 POST /admin/v1/jobs/{id} {"action":"cancel"}</code></pre><p>The dashboard exposes payload, attempts, terminal error and retry/cancel controls. Payloads should contain stable identifiers rather than copied secrets.</p><h2>Provider storage</h2><p>Durable job claiming is deliberate per provider: SQLite serializes through its single owned connection, while PostgreSQL uses row locking with SKIP LOCKED so concurrent workers each claim a distinct job. Leases, retries, cancellation, dead letters and terminal states are provider-neutral, and a rolled-back transaction never publishes its job.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="/assets/js/script.js" defer></script>
+		<script src="assets/js/script.js" defer></script>
 	</body>
 </html>

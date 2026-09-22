@@ -6,8 +6,8 @@
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Trestle</title>
-		<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -21,9 +21,10 @@
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
                                                     <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
                                                     <a class="docs-home" href="./convenient-access.html">Convenient access</a>
+                                                    <a class="docs-home" href="./clustering.html">Clustering</a>
                                                     <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
                                                     <details><summary>Data model</summary><div>
-                                                      <a href="./clustering.html">Clustering</a><a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                                                      <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
                                                     <details><summary>Queries</summary><div>
@@ -52,7 +53,7 @@
                                                     <details><summary>Project</summary><div>
                                                       <a href="./product.html">Product</a><a href="./architecture.html">Architecture</a><a href="./security.html">Security</a><a href="./battle-tested.html">Battle tested</a><a href="./functions.html">Functions</a><a href="./roadmap.html">Roadmap</a><a href="./contributing.html">Contributing</a>
                                                     </div></details>
-                                                  </nav></div></aside><article class="prose"><div class="eyebrow">JavaScript · Express reference application</div><h1>Dispatch Board</h1><p class="lede">A tactile operations queue that demonstrates a deliberately small JavaScript backend, durable task records and optimistic updates without exposing Trestle authority to the browser.</p><img class="product-shot" src="/assets/images/dispatch-board.svg" alt="Dispatch Board with queued, assigned, active and complete task lanes"><h2>What it proves</h2><div class="boundary-grid"><article><span class="kicker">Plain JavaScript</span><h3>A small server is enough</h3><p>Express serves the frontend and three domain routes. No SDK, generated client or framework-specific Trestle integration is required.</p></article><article><span class="kicker">Concurrency</span><h3>No silent lost updates</h3><p>Task changes read the current record version and send it back through <code>If-Match</code> when patching.</p></article><article><span class="kicker">Confinement</span><h3>No general proxy</h3><p>Identifiers are validated and every upstream call is constructed against the fixed <code>db_tasks</code> collection.</p></article></div><h2>Run the example</h2><pre><code>git clone https://github.com/trestle-cv/dogfood-dispatch-board
+                                                  </nav></div></aside><article class="prose"><div class="eyebrow">JavaScript · Express reference application</div><h1>Dispatch Board</h1><p class="lede">A tactile operations queue that demonstrates a deliberately small JavaScript backend, durable task records and optimistic updates without exposing Trestle authority to the browser.</p><img class="product-shot" src="assets/images/dispatch-board.svg" alt="Dispatch Board with queued, assigned, active and complete task lanes"><h2>What it proves</h2><div class="boundary-grid"><article><span class="kicker">Plain JavaScript</span><h3>A small server is enough</h3><p>Express serves the frontend and three domain routes. No SDK, generated client or framework-specific Trestle integration is required.</p></article><article><span class="kicker">Concurrency</span><h3>No silent lost updates</h3><p>Task changes read the current record version and send it back through <code>If-Match</code> when patching.</p></article><article><span class="kicker">Confinement</span><h3>No general proxy</h3><p>Identifiers are validated and every upstream call is constructed against the fixed <code>db_tasks</code> collection.</p></article></div><h2>Run the example</h2><pre><code>git clone https://github.com/trestle-cv/dogfood-dispatch-board
 cd dogfood-dispatch-board
 npm install
 
@@ -67,6 +68,6 @@ POST  /api/tasks
 PATCH /api/tasks/:id</code></pre><h2>Architecture and authority</h2><pre><code>browser -> Express domain API -> Trestle HTTP API -> configured Trestle store</code></pre><p>The service credential stays in Express. It can read and write records but cannot administer collections, users or the server. The example is intentionally ordinary: native <code>fetch()</code>, a small Express process and public Trestle HTTP contracts.</p><h2>Useful checks</h2><pre><code>npm test
 npm run check</code></pre><div class="actions"><a class="button" href="https://github.com/trestle-cv/dogfood-dispatch-board">Browse the repository</a><a class="button secondary" href="examples/dogfood.html">See all dogfood apps</a></div></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="/assets/js/script.js" defer></script>
+		<script src="assets/js/script.js" defer></script>
 	</body>
 </html>

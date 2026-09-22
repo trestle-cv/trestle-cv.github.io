@@ -6,8 +6,8 @@
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Trestle</title>
-		<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -21,9 +21,10 @@
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
                                                     <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
                                                     <a class="docs-home" href="./convenient-access.html">Convenient access</a>
+                                                    <a class="docs-home" href="./clustering.html">Clustering</a>
                                                     <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
                                                     <details><summary>Data model</summary><div>
-                                                      <a href="./clustering.html">Clustering</a><a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                                                      <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
                                                     <details><summary>Queries</summary><div>
@@ -54,6 +55,6 @@
                                                     </div></details>
                                                   </nav></div></aside><article class="prose"><div class="eyebrow">CP07 · Record workflows</div><h1>Administration dashboard</h1><p class="lede">Trestle now serves its Nift-built vanilla interface directly from the Go executable. The dashboard now supports collection and record creation, inspection, editing and deletion while retaining its fixed-viewport layout contract.</p><h2>Fixed viewport</h2><p>The dashboard root occupies exactly <code>100vw × 100dvh</code>. The page itself cannot scroll horizontally or vertically. Navigation and workspace content own bounded scroll regions using <code>min-width: 0</code>, <code>min-height: 0</code> and overscroll containment.</p><h2>Responsive workspace</h2><p>The top bar includes a visible <strong>Log out</strong> action. Desktop uses navigation and workspace columns. Navigation becomes a focusable drawer before it can squeeze the workspace. Record tables become labelled cards on phone-sized screens, while intermediate widths keep overflow inside the table rather than the page. Keyboard focus remains visible and reduced-motion preferences disable meaningful animation.</p><h2>Embedded production assets</h2><p>Generated files live inside the web package and are embedded at compile time. HTML is served without caching; assets receive bounded caching and every response carries a restrictive Content Security Policy.</p><h2>Development override</h2><p><code>--static-dir</code> or <code>TRESTLE_STATIC_DIR</code> serves an explicit directory for frontend development. Startup emits a warning so an override cannot be mistaken for an ordinary production launch.</p><div class="callout"><strong>Current scope</strong><p>Collection and record workflows are active. Stale edits are rejected using record versions, validation errors remain visible, and long values remain bounded inside the table rather than widening the page. Record lists use cursor pagination and selectable bulk deletion.</p></div><h2>Refreshable dashboard routes</h2><p>Every administration destination has a stable browser path. Refreshing <code>/jobs</code> reopens Jobs, while <code>/collections/issues</code> returns directly to the records for <code>issues</code>. Unknown or malformed paths fall back to Overview.</p></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="/assets/js/script.js" defer></script>
+		<script src="assets/js/script.js" defer></script>
 	</body>
 </html>

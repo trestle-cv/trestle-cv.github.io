@@ -6,8 +6,8 @@
 		<meta name="theme-color" content="#1F2021">
 		<meta name="description" content="Trestle is an open-source, self-hosted backend platform for data, authentication, files, realtime and automation.">
 		<title>Trestle</title>
-		<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
@@ -21,9 +21,10 @@
                                                     <a class="docs-home" href="./docs.html">Documentation</a>
                                                     <a class="docs-home" href="./quickstart.html">Five-minute quickstart</a>
                                                     <a class="docs-home" href="./convenient-access.html">Convenient access</a>
+                                                    <a class="docs-home" href="./clustering.html">Clustering</a>
                                                     <details><summary>Databases</summary><div><a href="./database-support.html">SQLite and PostgreSQL</a><a href="./postgresql.html">Use PostgreSQL</a><a href="./postgres-configuration.html">PostgreSQL configuration</a><a href="./sqlite.html">Use SQLite</a><a href="./database-architecture.html">Database architecture</a><a href="./migrations.html">Cross-provider migration</a></div></details>
                                                     <details><summary>Data model</summary><div>
-                                                      <a href="./clustering.html">Clustering</a><a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
+                                                      <a href="./collections.html">Collections</a><a href="./field-types.html">Field types</a><a href="./schema-design.html">Schema design</a><a href="./schema-changes.html">Schema changes</a><a href="./physical-schema.html">Physical schema</a>
                                                       <a href="./records.html">Records</a><a href="./record-writes.html">Creating &amp; updating</a><a href="./batch-operations.html">Batch operations</a><a href="./errors.html">Errors</a>
                                                     </div></details>
                                                     <details><summary>Queries</summary><div>
@@ -57,6 +58,6 @@
 readinessProbe:
   httpGet: {path: /system/ready, port: 7333}</code></pre><p>A process can be healthy while readiness returns <code>503 not_ready</code>, for example during migration failure or database initialization problems.</p><h2>Authenticated operations summary</h2><p><code>/admin/v1/operations</code> reports the configured provider, bounded object counts and an audit boundary note. Database size is reported for both providers: SQLite uses page-based size and PostgreSQL uses <code>pg_database_size(current_database())</code>.</p><h2>Request IDs</h2><pre><code>curl -i "$TRESTLE_URL/system/ready" -H "X-Request-ID: deploy-check-42"</code></pre><p>Every response receives an <code>X-Request-ID</code>. Reuse it across your frontend, domain service and Trestle call so audit facts and structured logs can be correlated without logging credentials or request bodies.</p><h2>Shutdown</h2><p><code>SIGINT</code> and <code>SIGTERM</code> remove readiness, stop accepting new work and allow in-flight requests to finish within the configured timeout. Job workers run under the same shutdown context and recover expired leases after restart.</p><div class="callout"><strong>Pre-release boundary</strong><p>CP22 provides verified archives and proxy guidance. Trestle remains pre-release until CP23 completes the stable-release hardening campaign.</p></div></article></div></main>
 		<footer><p>Trestle is being built in the open.</p><nav aria-label="Footer"><a href="./contributing.html">Contributing</a><a href="./docs.html">Documentation</a><a href="./roadmap.html">Status</a></nav></footer>
-		<script src="/assets/js/script.js" defer></script>
+		<script src="assets/js/script.js" defer></script>
 	</body>
 </html>
